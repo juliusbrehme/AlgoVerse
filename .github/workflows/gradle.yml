@@ -59,6 +59,12 @@ jobs:
         run: ./gradlew checkstyleMain
         working-directory: ${{env.working-directory }}
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: checkstyleMain.html
+          path: ./api/build/reports/checkstyle/main.html
+
   checkstyleTest:
     runs-on: ubuntu-latest
     env:
@@ -78,7 +84,7 @@ jobs:
         run: chmod +x gradlew
         working-directory: ${{env.working-directory }}
 
-      - name: Checkstyle Main
+      - name: Checkstyle Test
         run: ./gradlew checkstyleTest
         working-directory: ${{env.working-directory }}
 
