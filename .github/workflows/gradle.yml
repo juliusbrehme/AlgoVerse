@@ -46,10 +46,9 @@ jobs:
       - name: Run check style
         uses: dbelyaev/action-checkstyle@master
         with:
-          workdir: ./api
           github_token: ${{ secrets.github_token }}
           reporter: 'github-check'
-          checkstyle_config: ./config/checkstyle/google_checks.xml
+          checkstyle_config: ./api/config/checkstyle/google_checks.xml
 
 
 
