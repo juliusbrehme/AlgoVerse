@@ -25,6 +25,8 @@ dependencies {
 checkstyle {
 	configFile = file("${rootDir}/config/checkstyle/google_checks.xml")
 	toolVersion '10.12.3'
+	ignoreFailures = false
+	maxWarnings = 0
 }
 
 // To generate an HTML report instead of XML
