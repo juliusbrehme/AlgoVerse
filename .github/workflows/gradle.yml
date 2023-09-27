@@ -36,20 +36,19 @@ jobs:
       run: ./gradlew clean build
       working-directory: ${{env.working-directory }}
 
-  checkstyle:
-    name: Checkstyle job
+  checkstyle_job:
     runs-on: ubuntu-latest
-    
+    name: Checkstyle job
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@v3
-
-    - name: Run check style
-      uses: dbelyaev/action-checkstyle@master
-      with:
-        github_token: ${{ secrets.github_token }}
-        reporter: github-pr-check
-        checkstyle_config: ./api/config/checkstyle/google_checks.xml
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run check style
+        uses: nikitasavinov/checkstyle-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: 'github-pr-check'
+          tool_name: 'testtool'
+          workdir: './api'
 
 
 
