@@ -89,6 +89,13 @@ jobs:
         run: ./gradlew checkstyleTest
         working-directory: ${{env.working-directory }}
 
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: checkstyleTest.html
+          path: ./api/build/reports/checkstyle/test.html
+
 
   spotbugsMain:
     runs-on: ubuntu-latest
@@ -113,6 +120,13 @@ jobs:
         run: ./gradlew spotbugsMain
         working-directory: ${{env.working-directory }}
 
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: spotbugsMain.html
+          path: ./api/build/reports/spotbugs/main.html
+
   spotbugsTest:
     runs-on: ubuntu-latest
     env:
@@ -135,6 +149,13 @@ jobs:
       - name: Spotbugs Main
         run: ./gradlew spotbugsTest
         working-directory: ${{env.working-directory }}
+
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: spotbugsTest.html
+          path: ./api/build/reports/spotbugs/test.html
 
 
 
