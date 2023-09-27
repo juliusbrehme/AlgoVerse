@@ -49,7 +49,7 @@ jobs:
           workdir: ./api
           github_token: ${{ secrets.github_token }}
           reporter: 'github-check'
-          chekstyle_config: ./config/checkstyle/google_checks.xml
+          checkstyle_config: ./config/checkstyle/google_checks.xml
 
 
 
