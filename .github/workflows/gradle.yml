@@ -38,8 +38,9 @@ jobs:
       working-directory: ${{env.working-directory }}
 
   checkstyle:
-    name: checkstyle
+
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
