@@ -14,9 +14,7 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     env:
       working-directory: ./api
 
@@ -39,7 +37,6 @@ jobs:
       working-directory: ${{env.working-directory }}
 
   checkstyle:
-
     runs-on: ubuntu-latest
     
     steps:
@@ -48,7 +45,7 @@ jobs:
       
     - name: Check the style
       uses: dbelyaev/action-checkstyle@master
-    - with:
+      with:
         github_token: ${{ secrets.github_token }}
         reporter: github-pr-review
         checkstyle_config: ./api/config/checkstyle/google_checks.xml
