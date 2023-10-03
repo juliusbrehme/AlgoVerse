@@ -22,6 +22,13 @@ public class ExceptionHandling {
     return ex.getMessage();
   }
 
+  @ResponseBody
+  @ExceptionHandler(WrongInputOfBoardSizeAndPoints.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public String wrongInputOfBoardAndPoints(WrongInputOfBoardSizeAndPoints ex) {
+    return ex.getMessage();
+  }
+
   public static class WrongCoordinateInputException extends IllegalArgumentException {
     public WrongCoordinateInputException() {
       super("The input array for the coordinates should only contain two integers.");
@@ -31,6 +38,12 @@ public class ExceptionHandling {
   public static class WrongWallInputException extends IllegalArgumentException {
     public WrongWallInputException() {
       super("The input of the 2d array for the wall should only contain two integers in the nested array.");
+    }
+  }
+
+  public static class WrongInputOfBoardSizeAndPoints extends IllegalArgumentException {
+    public WrongInputOfBoardSizeAndPoints() {
+      super("The starting/end points are not in the field.");
     }
   }
 
