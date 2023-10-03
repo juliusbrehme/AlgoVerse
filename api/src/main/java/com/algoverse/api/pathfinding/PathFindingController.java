@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * This class is the controller for the path finding.
+ */
 @SuppressWarnings("unused")
 @SuppressFBWarnings("EI_EXPOSE_REP2")
 @RestController
@@ -19,11 +22,23 @@ public class PathFindingController {
 
   private final PathFindingService pathFindingService;
 
+  /**
+   * Constructor to be able to use PathFindingService.
+   *
+   * @param pathFindingService The PathFindingService
+   */
   public PathFindingController(PathFindingService pathFindingService) {
     this.pathFindingService = pathFindingService;
   }
 
   // TODO: implement a random nodes generator, s. PathFindingService
+
+  /**
+   * This method generates random starting and end node.
+   *
+   * @param boardSize The size of the board
+   * @return Return starting and end node
+   */
   @GetMapping("/pathfinding/random/nodes")
   public Coordinates[] createRandomNodes(@RequestParam(value = "size") int[] boardSize) {
     if (boardSize.length != 2) {
@@ -33,6 +48,13 @@ public class PathFindingController {
   }
 
   // TODO: implement a random board generator, s. PathFindingService
+
+  /**
+   * This method generates a random board with the size being set.
+   *
+   * @param boardSize The size of the board
+   * @return The board information with starting, ending node and obstacles
+   */
   @GetMapping("pathfinding/random/board")
   public BoardInformation createRandomBoard(@RequestParam(value = "size") int[] boardSize) {
     if (boardSize.length != 2) {
@@ -41,6 +63,16 @@ public class PathFindingController {
     return pathFindingService.randomBoardGenerator(new Coordinates(boardSize[0], boardSize[1]));
   }
 
+  /**
+   * This method finds the paths from the starting point to ending point.
+   *
+   * @param startingNode The start node
+   * @param endingNode   The end node
+   * @param wall         The set obstacles, can be empty as well
+   * @param boardSize    The size of the board
+   * @param strategy     The strategy to be used
+   * @return Returns a record Path that holds the path and the visited nodes
+   */
   @GetMapping("pathfinding/findpath")
   public Path findPath(@RequestParam(value = "startpoint") int[] startingNode,
                        @RequestParam(value = "endpoint") int[] endingNode,

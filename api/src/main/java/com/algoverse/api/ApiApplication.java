@@ -3,6 +3,9 @@ package com.algoverse.api;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Spring boot class to start the application.
+ */
 @SpringBootApplication
 public class ApiApplication {
 

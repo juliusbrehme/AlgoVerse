@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Dijkstra path finding strategy.
+ */
 public class Dijkstra implements Strategy {
 
   public Dijkstra() {
@@ -83,6 +86,15 @@ public class Dijkstra implements Strategy {
     return new Path(ImmutableList.copyOf(path), ImmutableList.copyOf(visitedNodes));
   }
 
+  /**
+   * This method is to generate the next neighbors for the path finding algorithm.
+   *
+   * @param node         The node to generate the neighbors from
+   * @param wall         All obstacles, those nodes can not be visited or used
+   * @param visitedNodes All already visited nodes
+   * @param boardSize    The size of the board
+   * @return Returns a list of all neighbors, that still need to be visited
+   */
   public List<Coordinates> getNeighbors(Coordinates node, ImmutableMap<Coordinates, Integer> wall,
                                         HashMap<Coordinates, Integer> visitedNodes,
                                         Coordinates boardSize) {

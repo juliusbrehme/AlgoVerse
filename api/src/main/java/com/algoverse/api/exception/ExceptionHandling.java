@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Class to advice the Controller how to handle certain exceptions.
+ */
 @SuppressWarnings("unused")
 @ControllerAdvice
 public class ExceptionHandling {
@@ -31,13 +34,22 @@ public class ExceptionHandling {
     return ex.getMessage();
   }
 
+  /**
+   * Exception for handling the wrong input for coordinates.
+   */
   public static class WrongCoordinateInputException extends IllegalArgumentException {
     public WrongCoordinateInputException() {
       super("The input array for the coordinates should only contain two integers.");
     }
   }
 
+  /**
+   * Exception for handling the wrong input for wall coordinates.
+   */
   public static class WrongWallInputException extends IllegalArgumentException {
+    /**
+     * The constructor.
+     */
     public WrongWallInputException() {
       super(
           "The input of the 2d array for the wall should only "
@@ -45,7 +57,13 @@ public class ExceptionHandling {
     }
   }
 
+  /**
+   * Exception for handling wrong input in terms of starting or ending node is not set on board.
+   */
   public static class WrongInputOfBoardSizeAndPoints extends IllegalArgumentException {
+    /**
+     * The constructor.
+     */
     public WrongInputOfBoardSizeAndPoints() {
       super("The starting/end points are not in the field.");
     }
