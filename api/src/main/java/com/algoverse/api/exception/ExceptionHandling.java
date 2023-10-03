@@ -34,6 +34,13 @@ public class ExceptionHandling {
     return ex.getMessage();
   }
 
+  @ResponseBody
+  @ExceptionHandler(WrongInputOfBoardSizeAndWalls.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public String wrongInputOfBoardAndWalls(WrongInputOfBoardSizeAndWalls ex) {
+    return ex.getMessage();
+  }
+
   /**
    * Exception for handling the wrong input for coordinates.
    */
@@ -58,7 +65,7 @@ public class ExceptionHandling {
   }
 
   /**
-   * Exception for handling wrong input in terms of starting or ending node is not set on board.
+   * Exception for handling wrong input in terms of starting or ending node is not set on the board.
    */
   public static class WrongInputOfBoardSizeAndPoints extends IllegalArgumentException {
     /**
@@ -66,6 +73,18 @@ public class ExceptionHandling {
      */
     public WrongInputOfBoardSizeAndPoints() {
       super("The starting/end points are not in the field.");
+    }
+  }
+
+  /**
+   * Exception for handling wrong input in terms of coordinates of the wall are not set on the board.
+   */
+  public static class WrongInputOfBoardSizeAndWalls extends IllegalArgumentException {
+    /**
+     * The constructor.
+     */
+    public WrongInputOfBoardSizeAndWalls() {
+      super("Some coordinates of the wall are not in the field.");
     }
   }
 
