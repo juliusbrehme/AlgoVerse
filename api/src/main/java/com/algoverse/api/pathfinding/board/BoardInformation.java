@@ -1,7 +1,9 @@
 package com.algoverse.api.pathfinding.board;
 
+import java.util.HashMap;
+
 public record BoardInformation(Coordinates startingNode,
                                Coordinates endingNode,
-                               Coordinates[] wall,
+                               HashMap<Coordinates, Integer> wall,
                                Coordinates boardSize) {
 }
