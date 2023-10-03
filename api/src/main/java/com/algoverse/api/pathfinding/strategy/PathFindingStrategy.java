@@ -6,7 +6,7 @@ import com.algoverse.api.pathfinding.board.BoardInformation;
  * The interface for the Strategy. Every new implemented path finding strategy
  * should implement this interface.
  */
-public interface Strategy {
+public interface PathFindingStrategy {
 
   /**
    * This method is generating the path of the path finding algorithm.

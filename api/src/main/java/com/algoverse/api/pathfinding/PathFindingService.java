@@ -4,8 +4,8 @@ import com.algoverse.api.pathfinding.board.BoardInformation;
 import com.algoverse.api.pathfinding.board.Coordinates;
 import com.algoverse.api.pathfinding.strategy.Dijkstra;
 import com.algoverse.api.pathfinding.strategy.Path;
-import com.algoverse.api.pathfinding.strategy.Strategies;
-import com.algoverse.api.pathfinding.strategy.Strategy;
+import com.algoverse.api.pathfinding.strategy.PathFindingStrategies;
+import com.algoverse.api.pathfinding.strategy.PathFindingStrategy;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,30 +14,31 @@ import org.springframework.stereotype.Service;
 @Service
 public class PathFindingService {
 
-  private Strategy strategy;
+  private PathFindingStrategy pathFindingStrategy;
 
   /**
    * This method sets the strategy for path finding.
    *
-   * @param strategy Strategy to use for path finding
+   * @param pathFindingStrategy Strategy to use for path finding
    */
-  public void setStrategy(Strategy strategy) {
-    this.strategy = strategy;
+  public void setStrategy(PathFindingStrategy pathFindingStrategy) {
+    this.pathFindingStrategy = pathFindingStrategy;
   }
 
   /**
    * This method delegates the path finding to the selected strategy.
    *
-   * @param board      The whole board information with starting/end node, obstacles etc.
-   * @param strategies The enum value of the strategy that should be used for path finding
+   * @param board                 The whole board information with starting/end node, obstacles etc.
+   * @param pathFindingStrategies The enum value of the strategy that should be used for path
+   *                              finding
    * @return Returns the record path with the path and the visited nodes
    */
-  public Path findPath(BoardInformation board, Strategies strategies) {
+  public Path findPath(BoardInformation board, PathFindingStrategies pathFindingStrategies) {
     // Switch to use different strategies
-    if (strategies == Strategies.DIJKSTRA) {
+    if (pathFindingStrategies == PathFindingStrategies.DIJKSTRA) {
       setStrategy(new Dijkstra());
     }
-    return strategy.findPath(board);
+    return pathFindingStrategy.findPath(board);
   }
 
 

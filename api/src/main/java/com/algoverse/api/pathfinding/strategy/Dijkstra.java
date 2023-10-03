@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Dijkstra path finding strategy.
  */
-public class Dijkstra implements Strategy {
+public class Dijkstra implements PathFindingStrategy {
 
   public Dijkstra() {
   }
