@@ -2,12 +2,13 @@ package com.algoverse.api.pathfinding.strategy;
 
 import com.algoverse.api.pathfinding.board.BoardInformation;
 import com.algoverse.api.pathfinding.board.Coordinates;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class Dijkstra implements Strategy{
+public class Dijkstra implements Strategy {
 
   public Dijkstra() {
   }
@@ -15,13 +16,10 @@ public class Dijkstra implements Strategy{
   @Override
   public Path findPath(BoardInformation board) {
 
-    Coordinates startingNode = board.startingNode();
-    System.out.println(Integer.toString(startingNode.x()) + Integer.toString(startingNode.y()));
-    Coordinates endingNode = board.endingNode();
-    System.out.println(Integer.toString(endingNode.x()) + Integer.toString(endingNode.y()));
-    HashMap<Coordinates, Integer> obstacle = board.wall();
-    Coordinates boardSize = board.boardSize();
-    System.out.println(Integer.toString(boardSize.x()) + Integer.toString(boardSize.y()));
+    final Coordinates startingNode = board.startingNode();
+    final Coordinates endingNode = board.endingNode();
+    final ImmutableMap<Coordinates, Integer> obstacle = board.wall();
+    final Coordinates boardSize = board.boardSize();
 
     HashMap<Coordinates, Coordinates> prevNodes = new HashMap<>();
     // To see in what directions the nodes were visited
@@ -41,10 +39,6 @@ public class Dijkstra implements Strategy{
         }
       }
     }
-    for (int i = 0; i < adjacentMatrix.length; i++) {
-      System.out.print(Arrays.toString(adjacentMatrix[i]));
-    }
-    System.out.println();
 
     List<Coordinates> nextNodes = new ArrayList<>();
     nextNodes.add(startingNode);
@@ -53,16 +47,12 @@ public class Dijkstra implements Strategy{
     while (!nextNodes.isEmpty()) {
       Coordinates node = nextNodes.get(0);
       nextNodes.remove(0);
-      System.out.println("Gerade die Node: " + node);
-      System.out.println("Zu visiteden Node: " + nextNodes);
       visitedNodes.add(node);
       vistedNode.put(node, 1);
-      System.out.println("Schon besuchte Nodes: " + vistedNode);
       List<Coordinates> neighbors = getNeighbors(node, obstacle, vistedNode, boardSize);
-      System.out.println("Zunäcsht betrachteten Nachbarn: " + neighbors);
-      for (Coordinates neighbor: neighbors) {
-        if (adjacentMatrix[neighbor.x()][neighbor.y()] > adjacentMatrix[node.x()][node.y()] + 1 ||
-            adjacentMatrix[neighbor.x()][neighbor.y()] == -1) {
+      for (Coordinates neighbor : neighbors) {
+        if (adjacentMatrix[neighbor.x()][neighbor.y()] > adjacentMatrix[node.x()][node.y()] + 1
+            || adjacentMatrix[neighbor.x()][neighbor.y()] == -1) {
           adjacentMatrix[neighbor.x()][neighbor.y()] = adjacentMatrix[node.x()][node.y()] + 1;
           prevNodes.put(neighbor, node);
         }
@@ -74,20 +64,14 @@ public class Dijkstra implements Strategy{
           }
         }
       }
-      for (int i = 0; i < adjacentMatrix.length; i++) {
-        System.out.print(Arrays.toString(adjacentMatrix[i]));
-      }
-      System.out.println();
     }
-
-    System.out.println(prevNodes);
 
     // determining the actual path, not just the cost
     Coordinates node = endingNode;
     List<Coordinates> path = new ArrayList<>();
-    // check if a solution exist, because if there is no entry for the endingNode, there is no solution
+    // check if a solution exist
     if (prevNodes.get(node) == null) {
-      return new Path(path, visitedNodes);
+      return new Path(ImmutableList.copyOf(path), ImmutableList.copyOf(visitedNodes));
     }
 
     while (!node.equals(startingNode)) {
@@ -96,33 +80,40 @@ public class Dijkstra implements Strategy{
     }
     path.add(0, startingNode);
 
-    return new Path(path, visitedNodes);
+    return new Path(ImmutableList.copyOf(path), ImmutableList.copyOf(visitedNodes));
   }
 
-  public List<Coordinates> getNeighbors(Coordinates node, HashMap<Coordinates, Integer> wall, HashMap<Coordinates, Integer> visitedNodes, Coordinates boardSize) {
-    // if we allow weighted nodes, implemented getNeighbors with a priorityQueue(heap), so that we use a priority as an attribute
-    // getNeighbors updates that priorityQueue. Changes need to be made to findPath as well
+  public List<Coordinates> getNeighbors(Coordinates node, ImmutableMap<Coordinates, Integer> wall,
+                                        HashMap<Coordinates, Integer> visitedNodes,
+                                        Coordinates boardSize) {
+    // if we allow weighted nodes, implemented getNeighbors with a priorityQueue(heap),
+    // so that we use a priority as an attribute getNeighbors updates that priorityQueue.
+    // Changes need to be made to findPath as well
 
     List<Coordinates> neighbors = new ArrayList<>();
-    if (0 <= node.x() + 1 && node.x() + 1 < boardSize.x() && 0 <= node.y() && node.y() < boardSize.y())  {
+    if (0 <= node.x() + 1 && node.x() + 1 < boardSize.x() && 0 <= node.y()
+        && node.y() < boardSize.y()) {
       Coordinates neighbor = new Coordinates(node.x() + 1, node.y());
       if (wall.get(neighbor) == null && visitedNodes.get(neighbor) == null) {
         neighbors.add(neighbor);
       }
     }
-    if (0 <= node.x() && node.x() < boardSize.x() && 0 <= node.y() + 1 && node.y() + 1 < boardSize.y()) {
+    if (0 <= node.x() && node.x() < boardSize.x() && 0 <= node.y() + 1
+        && node.y() + 1 < boardSize.y()) {
       Coordinates neighbor = new Coordinates(node.x(), node.y() + 1);
       if (wall.get(neighbor) == null && visitedNodes.get(neighbor) == null) {
         neighbors.add(neighbor);
       }
     }
-    if (0 <= node.x() - 1 && node.x() - 1 < boardSize.x() && 0 <= node.y() && node.y() < boardSize.y()) {
+    if (0 <= node.x() - 1 && node.x() - 1 < boardSize.x() && 0 <= node.y()
+        && node.y() < boardSize.y()) {
       Coordinates neighbor = new Coordinates(node.x() - 1, node.y());
       if (wall.get(neighbor) == null && visitedNodes.get(neighbor) == null) {
         neighbors.add(neighbor);
       }
     }
-    if (0 <= node.x() && node.x() < boardSize.x() && 0 <= node.y() - 1 && node.y() - 1 < boardSize.y()) {
+    if (0 <= node.x() && node.x() < boardSize.x() && 0 <= node.y() - 1
+        && node.y() - 1 < boardSize.y()) {
       Coordinates neighbor = new Coordinates(node.x(), node.y() - 1);
       if (wall.get(neighbor) == null && visitedNodes.get(neighbor) == null) {
         neighbors.add(neighbor);

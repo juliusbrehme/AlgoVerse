@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+@SuppressWarnings("unused")
 @ControllerAdvice
 public class ExceptionHandling {
 
@@ -15,6 +16,7 @@ public class ExceptionHandling {
   public String wrongCoordinateInput(WrongCoordinateInputException ex) {
     return ex.getMessage();
   }
+
   @ResponseBody
   @ExceptionHandler(WrongWallInputException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -37,7 +39,9 @@ public class ExceptionHandling {
 
   public static class WrongWallInputException extends IllegalArgumentException {
     public WrongWallInputException() {
-      super("The input of the 2d array for the wall should only contain two integers in the nested array.");
+      super(
+          "The input of the 2d array for the wall should only "
+              + "contain two integers in the nested array.");
     }
   }
 

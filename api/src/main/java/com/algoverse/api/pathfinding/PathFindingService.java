@@ -26,11 +26,13 @@ public class PathFindingService {
 
 
   // TODO: implement a random nodes generator
+  @SuppressWarnings("unused")
   public Coordinates[] randomNodeGenerator(Coordinates boardSize) {
     return null;
   }
 
   // TODO: implement a random board generator
+  @SuppressWarnings("unused")
   public BoardInformation randomBoardGenerator(Coordinates boardSize) {
     return null;
   }
