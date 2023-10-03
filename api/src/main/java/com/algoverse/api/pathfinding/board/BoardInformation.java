@@ -1,9 +1,10 @@
 package com.algoverse.api.pathfinding.board;
 
-import java.util.HashMap;
+import com.google.common.collect.ImmutableMap;
+
 
 public record BoardInformation(Coordinates startingNode,
                                Coordinates endingNode,
-                               HashMap<Coordinates, Integer> wall,
+                               ImmutableMap<Coordinates, Integer> wall,
                                Coordinates boardSize) {
 }
