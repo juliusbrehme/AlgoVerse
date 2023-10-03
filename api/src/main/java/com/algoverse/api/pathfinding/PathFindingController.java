@@ -89,20 +89,32 @@ public class PathFindingController {
         || endingNode[1] >= boardSize[1]) {
       throw new ExceptionHandling.WrongInputOfBoardSizeAndPoints();
     }
-    HashMap<Coordinates, Integer> obstacle = new HashMap<>();
-    if (!(wall.length == 1 && wall[0].length == 0)) {
-      for (int[] coordinates : wall) {
-        if (coordinates.length != 2) {
-          throw new ExceptionHandling.WrongWallInputException();
-        }
-        obstacle.put(new Coordinates(coordinates[0], coordinates[1]), 1);
-      }
-    }
+    HashMap<Coordinates, Integer> obstacle =
+        getCoordinatesIntegerHashMap(wall, boardSize);
     return pathFindingService.findPath(
         new BoardInformation(new Coordinates(startingNode[0], startingNode[1]),
             new Coordinates(endingNode[0], endingNode[1]),
             ImmutableMap.copyOf(obstacle),
             new Coordinates(boardSize[0], boardSize[1])),
         strategy);
+  }
+
+  private static HashMap<Coordinates, Integer> getCoordinatesIntegerHashMap(int[][] wall,
+                                                                            int[] boardSize) {
+    HashMap<Coordinates, Integer> obstacle = new HashMap<>();
+    if (!(wall.length == 1 && wall[0].length == 0)) {
+      for (int[] coordinates : wall) {
+        if (coordinates.length != 2) {
+          throw new ExceptionHandling.WrongWallInputException();
+        }
+        if (coordinates[0] < 0 || coordinates[1] < 0 || coordinates[0] >= boardSize[0]
+            || coordinates[1] >= boardSize[1]) {
+          System.out.println("test");
+          throw new ExceptionHandling.WrongInputOfBoardSizeAndWalls();
+        }
+        obstacle.put(new Coordinates(coordinates[0], coordinates[1]), 1);
+      }
+    }
+    return obstacle;
   }
 }
