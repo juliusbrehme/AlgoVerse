@@ -77,7 +77,8 @@ public class ExceptionHandling {
   }
 
   /**
-   * Exception for handling wrong input in terms of coordinates of the wall are not set on the board.
+   * Exception for handling wrong input in terms of coordinates
+   * of the wall are not set on the board.
    */
   public static class WrongInputOfBoardSizeAndWalls extends IllegalArgumentException {
     /**

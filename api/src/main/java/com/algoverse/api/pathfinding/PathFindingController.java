@@ -33,6 +33,27 @@ public class PathFindingController {
 
   // TODO: implement a random nodes generator, s. PathFindingService
 
+  private static HashMap<Coordinates, Integer> getCoordinatesIntegerHashMap(int[][] wall,
+                                                                            int[] boardSize) {
+    HashMap<Coordinates, Integer> obstacle = new HashMap<>();
+    if (!(wall.length == 1 && wall[0].length == 0)) {
+      for (int[] coordinates : wall) {
+        if (coordinates.length != 2) {
+          throw new ExceptionHandling.WrongWallInputException();
+        }
+        if (coordinates[0] < 0 || coordinates[1] < 0 || coordinates[0] >= boardSize[0]
+            || coordinates[1] >= boardSize[1]) {
+          System.out.println("test");
+          throw new ExceptionHandling.WrongInputOfBoardSizeAndWalls();
+        }
+        obstacle.put(new Coordinates(coordinates[0], coordinates[1]), 1);
+      }
+    }
+    return obstacle;
+  }
+
+  // TODO: implement a random board generator, s. PathFindingService
+
   /**
    * This method generates random starting and end node.
    *
@@ -46,8 +67,6 @@ public class PathFindingController {
     }
     return pathFindingService.randomNodeGenerator(new Coordinates(boardSize[0], boardSize[1]));
   }
-
-  // TODO: implement a random board generator, s. PathFindingService
 
   /**
    * This method generates a random board with the size being set.
@@ -97,24 +116,5 @@ public class PathFindingController {
             ImmutableMap.copyOf(obstacle),
             new Coordinates(boardSize[0], boardSize[1])),
         strategy);
-  }
-
-  private static HashMap<Coordinates, Integer> getCoordinatesIntegerHashMap(int[][] wall,
-                                                                            int[] boardSize) {
-    HashMap<Coordinates, Integer> obstacle = new HashMap<>();
-    if (!(wall.length == 1 && wall[0].length == 0)) {
-      for (int[] coordinates : wall) {
-        if (coordinates.length != 2) {
-          throw new ExceptionHandling.WrongWallInputException();
-        }
-        if (coordinates[0] < 0 || coordinates[1] < 0 || coordinates[0] >= boardSize[0]
-            || coordinates[1] >= boardSize[1]) {
-          System.out.println("test");
-          throw new ExceptionHandling.WrongInputOfBoardSizeAndWalls();
-        }
-        obstacle.put(new Coordinates(coordinates[0], coordinates[1]), 1);
-      }
-    }
-    return obstacle;
   }
 }
