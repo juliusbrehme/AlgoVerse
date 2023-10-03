@@ -4,6 +4,6 @@ import com.algoverse.api.pathfinding.board.BoardInformation;
 
 public interface Strategy {
 
-  Path findPath(BoardInformation board, Strategies strategies);
+  Path findPath(BoardInformation board);
 
 }
