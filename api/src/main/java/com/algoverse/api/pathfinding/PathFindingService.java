@@ -19,8 +19,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PathFindingService {
 
-  private PathFindingStrategy pathFindingStrategy;
   private static final Random RAND = new Random();
+  private PathFindingStrategy pathFindingStrategy;
 
   /**
    * This method sets the strategy for path finding.
@@ -71,6 +71,7 @@ public class PathFindingService {
   }
 
   // TODO: implement a random maze generator
+  @SuppressWarnings("unused")
   public BoardInformation randomMazeGenerator(Coordinates boardSize) {
     return null;
   }

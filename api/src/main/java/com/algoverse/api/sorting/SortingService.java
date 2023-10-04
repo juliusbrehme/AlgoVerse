@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class SortingService {
 
-  private SortingStrategy sortingStrategy;
   private static final Random RAND = new Random();
+  private SortingStrategy sortingStrategy;
 
   public void setSortingStrategy(SortingStrategy sortingStrategy) {
     this.sortingStrategy = sortingStrategy;
