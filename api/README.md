@@ -57,7 +57,7 @@ The request:
 ```
 http://localhost:8080/pathfinding/findpath?startpoint=0,0&endpoint=3,3&size=4,4&wall=2,2&wall=2,3&strategy=DIJKSTRA
 ```
-Here the board size is set to a 3*3 board with the starting point in the upper left corner. The ending point is (3,3) 
+Here the board size is set to a 4x4 board with the starting point in the upper left corner. The ending point is (3,3) 
 and obstacles are found on (2,2) and (2,3). The strategy is set to DIJKSTRA
 
 #### Random board request
