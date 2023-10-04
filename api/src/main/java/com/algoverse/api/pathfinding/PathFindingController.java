@@ -7,6 +7,7 @@ import com.algoverse.api.pathfinding.strategy.Path;
 import com.algoverse.api.pathfinding.strategy.PathFindingStrategies;
 import com.google.common.collect.ImmutableMap;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import java.util.Arrays;
 import java.util.HashMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -102,14 +103,16 @@ public class PathFindingController {
   private HashMap<Coordinates, Integer> getCoordinatesIntegerHashMap(int[][] wall,
                                                                      int[] boardSize) {
     HashMap<Coordinates, Integer> obstacle = new HashMap<>();
-    if (!(wall.length == 1 && wall[0].length == 0)) {
+    // check if only one obstacle is given or if it is empty request
+    if (wall.length == 2 && wall[0].length == 1 && wall[1].length == 1) {
+      obstacle.put(new Coordinates(wall[0][0], wall[1][0]), 1);
+    } else if (!(wall.length == 1 && wall[0].length == 0)) {
       for (int[] coordinates : wall) {
         if (coordinates.length != 2) {
           throw new ExceptionHandling.WrongWallInputException();
         }
         if (coordinates[0] < 0 || coordinates[1] < 0 || coordinates[0] >= boardSize[0]
             || coordinates[1] >= boardSize[1]) {
-          System.out.println("test");
           throw new ExceptionHandling.WrongInputOfBoardSizeAndWalls();
         }
         obstacle.put(new Coordinates(coordinates[0], coordinates[1]), 1);
