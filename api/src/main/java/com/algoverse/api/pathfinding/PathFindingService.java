@@ -36,7 +36,7 @@ public class PathFindingService {
   public Path findPath(BoardInformation board, PathFindingStrategies pathFindingStrategies) {
     // Switch to use different strategies
     if (pathFindingStrategies == PathFindingStrategies.DIJKSTRA) {
-      setStrategy(new Dijkstra());
+      setStrategy(Dijkstra.createDijkstra());
     }
     return pathFindingStrategy.findPath(board);
   }

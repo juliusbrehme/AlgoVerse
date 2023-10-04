@@ -13,7 +13,17 @@ import java.util.List;
  */
 public class Dijkstra implements PathFindingStrategy {
 
-  public Dijkstra() {
+  private Dijkstra() {
+  }
+
+
+  /**
+   * Static Factory Method.
+   *
+   * @return Return a Dijkstra Object
+   */
+  public static Dijkstra createDijkstra() {
+    return new Dijkstra();
   }
 
   @Override
