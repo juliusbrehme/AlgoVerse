@@ -38,8 +38,7 @@ public class SortingController {
    *
    * @param toSort     The array that is to be sorted
    * @param strategies The strategy that is supposed to be used
-   * @return Returns a list of a list where every swap is saved in the list, the last element is
-   *         the sorted array
+   * @return Returns a list of a list where every swap is saved in the list
    */
   @GetMapping("sorting/sort")
   public List<List<Integer>> sort(@RequestParam(value = "toSort") int[] toSort,

@@ -23,12 +23,11 @@ public class SortingService {
    *
    * @param toSort            The array that is to be sorted
    * @param sortingStrategies The strategy that is supposed to be used
-   * @return Returns a list of a list where every swap is saved in the list, the last element is
-   *         the sorted array
+   * @return Returns a list of a list where every swap is saved in the list
    */
   public List<List<Integer>> sort(int[] toSort, SortingStrategies sortingStrategies) {
     if (sortingStrategies == SortingStrategies.SELECTIONSORT) {
-      setSortingStrategy(new SelectionSort());
+      setSortingStrategy(SelectionSort.createSelectionSort());
     }
     return sortingStrategy.sort(toSort);
   }

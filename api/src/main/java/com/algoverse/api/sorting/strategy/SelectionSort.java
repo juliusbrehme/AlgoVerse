@@ -8,6 +8,19 @@ import java.util.List;
  * Selection sort implementation.
  */
 public class SelectionSort implements SortingStrategy {
+
+  private SelectionSort() {
+  }
+
+  /**
+   * Static Factory Method.
+   *
+   * @return Return a SelectionSort object
+   */
+  public static SelectionSort createSelectionSort() {
+    return new SelectionSort();
+  }
+
   @Override
   public List<List<Integer>> sort(int[] toSort) {
 

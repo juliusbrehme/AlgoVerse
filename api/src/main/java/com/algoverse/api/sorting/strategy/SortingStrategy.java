@@ -12,8 +12,7 @@ public interface SortingStrategy {
    * This method is to sort the given integer array.
    *
    * @param toSort The input as an array
-   * @return Returns a list of a list where every swap is saved in the list, the last element is
-   *         the sorted array
+   * @return Returns a list of a list where every swap is saved in the list
    */
   List<List<Integer>> sort(int[] toSort);
 }
