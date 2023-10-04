@@ -5,9 +5,9 @@ import com.algoverse.api.pathfinding.board.BoardInformation;
 import com.algoverse.api.pathfinding.board.Coordinates;
 import com.algoverse.api.pathfinding.strategy.Path;
 import com.algoverse.api.pathfinding.strategy.PathFindingStrategies;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.util.Arrays;
 import java.util.HashMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,8 +32,6 @@ public class PathFindingController {
     this.pathFindingService = pathFindingService;
   }
 
-  // TODO: implement a random nodes generator, s. PathFindingService
-
   /**
    * This method generates random starting and end node.
    *
@@ -41,27 +39,28 @@ public class PathFindingController {
    * @return Return starting and end node
    */
   @GetMapping("/pathfinding/random/nodes")
-  public Coordinates[] createRandomNodes(@RequestParam(value = "size") int[] boardSize) {
+  public ImmutableList<Coordinates> createRandomNodes(
+      @RequestParam(value = "size") int[] boardSize) {
     if (boardSize.length != 2) {
       throw new ExceptionHandling.WrongCoordinateInputException();
     }
     return pathFindingService.randomNodeGenerator(new Coordinates(boardSize[0], boardSize[1]));
   }
 
-  // TODO: implement a random board generator, s. PathFindingService
+  // TODO: implement a random maze generator, s. PathFindingService
 
   /**
-   * This method generates a random board with the size being set.
+   * This method generates a random maze with the size being set.
    *
    * @param boardSize The size of the board
    * @return The board information with starting, ending node and obstacles
    */
-  @GetMapping("pathfinding/random/board")
-  public BoardInformation createRandomBoard(@RequestParam(value = "size") int[] boardSize) {
+  @GetMapping("pathfinding/random/maze")
+  public BoardInformation createRandomMaze(@RequestParam(value = "size") int[] boardSize) {
     if (boardSize.length != 2) {
       throw new ExceptionHandling.WrongCoordinateInputException();
     }
-    return pathFindingService.randomBoardGenerator(new Coordinates(boardSize[0], boardSize[1]));
+    return pathFindingService.randomMazeGenerator(new Coordinates(boardSize[0], boardSize[1]));
   }
 
   /**

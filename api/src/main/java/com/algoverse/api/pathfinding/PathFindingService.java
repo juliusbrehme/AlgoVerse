@@ -6,6 +6,11 @@ import com.algoverse.api.pathfinding.strategy.Dijkstra;
 import com.algoverse.api.pathfinding.strategy.Path;
 import com.algoverse.api.pathfinding.strategy.PathFindingStrategies;
 import com.algoverse.api.pathfinding.strategy.PathFindingStrategy;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +20,7 @@ import org.springframework.stereotype.Service;
 public class PathFindingService {
 
   private PathFindingStrategy pathFindingStrategy;
+  private static final Random RAND = new Random();
 
   /**
    * This method sets the strategy for path finding.
@@ -41,16 +47,31 @@ public class PathFindingService {
     return pathFindingStrategy.findPath(board);
   }
 
+  /**
+   * Method to create random nodes.
+   *
+   * @param boardSize The size of the board
+   * @return Returns an immutable list of two coordinates, starting and end node
+   */
+  public ImmutableList<Coordinates> randomNodeGenerator(Coordinates boardSize) {
+    int randX1 = RAND.nextInt(boardSize.x());
+    int randY1 = RAND.nextInt(boardSize.y());
+    Coordinates startNode = new Coordinates(randX1, randY1);
 
-  // TODO: implement a random nodes generator
-  @SuppressWarnings("unused")
-  public Coordinates[] randomNodeGenerator(Coordinates boardSize) {
-    return null;
+    int randX2 = RAND.nextInt(boardSize.x());
+    int randY2 = RAND.nextInt(boardSize.y());
+    Coordinates endNode = new Coordinates(randX2, randY2);
+
+    while (startNode.equals(endNode)) {
+      endNode = new Coordinates(RAND.nextInt(boardSize.x()), RAND.nextInt(boardSize.y()));
+    }
+
+    List<Coordinates> coordinatesList = new ArrayList<>(Arrays.asList(startNode, endNode));
+    return ImmutableList.copyOf(coordinatesList);
   }
 
-  // TODO: implement a random board generator
-  @SuppressWarnings("unused")
-  public BoardInformation randomBoardGenerator(Coordinates boardSize) {
+  // TODO: implement a random maze generator
+  public BoardInformation randomMazeGenerator(Coordinates boardSize) {
     return null;
   }
 
