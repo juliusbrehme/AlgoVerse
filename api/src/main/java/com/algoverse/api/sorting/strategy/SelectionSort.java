@@ -1,5 +1,6 @@
 package com.algoverse.api.sorting.strategy;
 
+import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,10 +23,10 @@ public class SelectionSort implements SortingStrategy {
   }
 
   @Override
-  public List<List<Integer>> sort(int[] toSort) {
+  public ImmutableList<ImmutableList<Integer>> sort(int[] toSort) {
 
-    List<List<Integer>> sortedLists = new ArrayList<>();
-    sortedLists.add(Arrays.stream(toSort).boxed().toList());
+    List<ImmutableList<Integer>> sortedLists = new ArrayList<>();
+    sortedLists.add(ImmutableList.copyOf(Arrays.stream(toSort).boxed().toList()));
 
     int lastIndex = toSort.length;
     int insertIndex = 0;
@@ -39,10 +40,10 @@ public class SelectionSort implements SortingStrategy {
         insertIndexCopy++;
       }
       swap(toSort, minimum, insertIndex);
-      sortedLists.add(Arrays.stream(toSort).boxed().toList());
+      sortedLists.add(ImmutableList.copyOf(Arrays.stream(toSort).boxed().toList()));
       insertIndex++;
     }
-    return sortedLists;
+    return ImmutableList.copyOf(sortedLists);
   }
 
   /**

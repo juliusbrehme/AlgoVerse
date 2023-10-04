@@ -1,6 +1,6 @@
 package com.algoverse.api.sorting.strategy;
 
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 /**
  * This is the interface for the different sorting algorithms. Every sorting algorithm should
@@ -14,5 +14,5 @@ public interface SortingStrategy {
    * @param toSort The input as an array
    * @return Returns a list of a list where every swap is saved in the list
    */
-  List<List<Integer>> sort(int[] toSort);
+  ImmutableList<ImmutableList<Integer>> sort(int[] toSort);
 }
