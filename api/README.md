@@ -6,12 +6,14 @@
   - [Pathfinding](#pathfinding)
     - [Pathfinding request](#pathfinding-request)
       - [Example request](#example-request)
-    - [Random board request](#random-board-request)
     - [Random nodes request](#random-nodes-request)
+      - [Example request](#example-request-1)
+    - [Random maze request](#random-maze-request)
   - [Sorting](#sorting)
     - [Sorting request](#sorting-request)
-      - [Example request](#example-request-1)
+      - [Example request](#example-request-2)
     - [Random numbers request](#random-numbers-request)
+      - [Example request](#example-request-3)
 
 ## Installation
 To use the project gradle needs to be installed. Follow the [Installation Guide](https://gradle.org/install/) of the 
@@ -60,10 +62,18 @@ http://localhost:8080/pathfinding/findpath?startpoint=0,0&endpoint=3,3&size=4,4&
 Here the board size is set to a 4x4 board with the starting point in the upper left corner. The ending point is (3,3) 
 and obstacles are found on (2,2) and (2,3). The strategy is set to DIJKSTRA
 
-#### Random board request
-// TODO
-
 #### Random nodes request
+This request will return two nodes, one is the starting node and one is the end node. The parameter `size: int[]` is 
+the size of the board.
+
+##### Example request
+The request:
+```
+localhost:8080/pathfinding/random/nodes?size=10,10
+```
+will return the following `[{"x":6,"y":4},{"x":6,"y":0}]`, with the integers being randomized.
+
+#### Random maze request
 // TODO
 
 ### Sorting
@@ -88,10 +98,18 @@ The request:
 ```
 http://localhost:8080/sorting/sort?toSort=3,235,52,324,54,23,2,12,234,3&strategy=SELECTIONSORT
 ```
-The input are integers in an array and the output is a nested array, with the last element beeing the sorted 
+The input are integers in an array and the output is a nested array, with the last element being the sorted 
 array.
 
 #### Random numbers request
-// TODO
+This request will return a random list of integers. The parameter `size: int` is the size of the list, that will be
+generated.
+
+##### Example request
+The request:
+```
+http://localhost:8080/sorting/random/numbers?size=5
+```
+will return the following `[43,4,49,15,46]`, with the integers being randomized.
 
 
