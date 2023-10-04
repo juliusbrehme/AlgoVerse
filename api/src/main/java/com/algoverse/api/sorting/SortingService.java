@@ -3,7 +3,10 @@ package com.algoverse.api.sorting;
 import com.algoverse.api.sorting.strategy.SelectionSort;
 import com.algoverse.api.sorting.strategy.SortingStrategies;
 import com.algoverse.api.sorting.strategy.SortingStrategy;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class SortingService {
 
   private SortingStrategy sortingStrategy;
+  private static final Random RAND = new Random();
 
   public void setSortingStrategy(SortingStrategy sortingStrategy) {
     this.sortingStrategy = sortingStrategy;
@@ -25,21 +29,24 @@ public class SortingService {
    * @param sortingStrategies The strategy that is supposed to be used
    * @return Returns a list of a list where every swap is saved in the list
    */
-  public List<List<Integer>> sort(int[] toSort, SortingStrategies sortingStrategies) {
+  public ImmutableList<ImmutableList<Integer>> sort(int[] toSort,
+                                                    SortingStrategies sortingStrategies) {
     if (sortingStrategies == SortingStrategies.SELECTIONSORT) {
       setSortingStrategy(SelectionSort.createSelectionSort());
     }
     return sortingStrategy.sort(toSort);
   }
 
-  // TODO: implement random array of int generator
-
   /**
    * This method creates an array of random integers.
    *
-   * @return Array of random integers
+   * @return Immutable list of random integers
    */
-  public int[] createRandomNumbers() {
-    return null;
+  public ImmutableList<Integer> createRandomNumbers(int size) {
+    List<Integer> randomList = new ArrayList<>();
+    for (int i = 0; i < size; i++) {
+      randomList.add(RAND.nextInt(100));
+    }
+    return ImmutableList.copyOf(randomList);
   }
 }

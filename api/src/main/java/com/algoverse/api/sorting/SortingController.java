@@ -1,8 +1,8 @@
 package com.algoverse.api.sorting;
 
 import com.algoverse.api.sorting.strategy.SortingStrategies;
+import com.google.common.collect.ImmutableList;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,16 +21,16 @@ public class SortingController {
     this.sortingService = sortingService;
   }
 
-  // TODO: implement random array of int generator, s. SortingService
 
   /**
    * This method creates an array of random integers.
    *
-   * @return Returns an array of random integers
+   * @param size The size of the generated array
+   * @return Returns an immutable list of random integers
    */
   @GetMapping("sorting/random/numbers")
-  public int[] createRandomNumbers() {
-    return sortingService.createRandomNumbers();
+  public ImmutableList<Integer> createRandomNumbers(@RequestParam(value = "size") int size) {
+    return sortingService.createRandomNumbers(size);
   }
 
   /**
@@ -41,8 +41,9 @@ public class SortingController {
    * @return Returns a list of a list where every swap is saved in the list
    */
   @GetMapping("sorting/sort")
-  public List<List<Integer>> sort(@RequestParam(value = "toSort") int[] toSort,
-                                  @RequestParam(value = "strategy") SortingStrategies strategies) {
+  public ImmutableList<ImmutableList<Integer>> sort(@RequestParam(value = "toSort") int[] toSort,
+                                                    @RequestParam(value = "strategy")
+                                                    SortingStrategies strategies) {
     return sortingService.sort(toSort, strategies);
   }
 }
