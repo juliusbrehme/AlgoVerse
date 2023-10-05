@@ -4,7 +4,6 @@ import com.algoverse.api.ExceptionHandling;
 import com.algoverse.api.pathfinding.board.BoardInformation;
 import com.algoverse.api.pathfinding.board.Coordinates;
 import com.algoverse.api.pathfinding.strategy.Path;
-import com.algoverse.api.pathfinding.strategy.PathFindingStrategies;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -79,7 +78,7 @@ public class PathFindingController {
                        @RequestParam(value = "wall", required = false, defaultValue = " ")
                        int[][] wall,
                        @RequestParam(value = "size") int[] boardSize,
-                       @RequestParam(value = "strategy") PathFindingStrategies strategy) {
+                       @RequestParam(value = "strategy") PathFindingFactory.Strategies strategy) {
     if (startingNode.length != 2 || endingNode.length != 2 || boardSize.length != 2) {
       throw new ExceptionHandling.WrongCoordinateInputException();
     }

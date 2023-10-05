@@ -2,10 +2,7 @@ package com.algoverse.api.pathfinding;
 
 import com.algoverse.api.pathfinding.board.BoardInformation;
 import com.algoverse.api.pathfinding.board.Coordinates;
-import com.algoverse.api.pathfinding.strategy.Dijkstra;
 import com.algoverse.api.pathfinding.strategy.Path;
-import com.algoverse.api.pathfinding.strategy.PathFindingStrategies;
-import com.algoverse.api.pathfinding.strategy.PathFindingStrategy;
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,16 +17,6 @@ import org.springframework.stereotype.Service;
 public class PathFindingService {
 
   private static final Random RAND = new Random();
-  private PathFindingStrategy pathFindingStrategy;
-
-  /**
-   * This method sets the strategy for path finding.
-   *
-   * @param pathFindingStrategy Strategy to use for path finding
-   */
-  public void setStrategy(PathFindingStrategy pathFindingStrategy) {
-    this.pathFindingStrategy = pathFindingStrategy;
-  }
 
   /**
    * This method delegates the path finding to the selected strategy.
@@ -39,12 +26,11 @@ public class PathFindingService {
    *                              finding
    * @return Returns the record path with the path and the visited nodes
    */
-  public Path findPath(BoardInformation board, PathFindingStrategies pathFindingStrategies) {
-    // Switch to use different strategies
-    if (pathFindingStrategies == PathFindingStrategies.DIJKSTRA) {
-      setStrategy(Dijkstra.createDijkstra());
-    }
-    return pathFindingStrategy.findPath(board);
+  public Path findPath(BoardInformation board,
+                       PathFindingFactory.Strategies pathFindingStrategies) {
+    PathFindingFactory pathFindingFactory =
+        PathFindingFactory.createPathFindingStrategy(pathFindingStrategies);
+    return pathFindingFactory.findPath(board);
   }
 
   /**
