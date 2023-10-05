@@ -1,4 +1,4 @@
-package com.algoverse.api.exception;
+package com.algoverse.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
