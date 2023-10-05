@@ -1,6 +1,6 @@
 package com.algoverse.api.pathfinding;
 
-import com.algoverse.api.exception.ExceptionHandling;
+import com.algoverse.api.ExceptionHandling;
 import com.algoverse.api.pathfinding.board.BoardInformation;
 import com.algoverse.api.pathfinding.board.Coordinates;
 import com.algoverse.api.pathfinding.strategy.Path;

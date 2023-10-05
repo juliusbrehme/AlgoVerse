@@ -37,7 +37,7 @@ To make a request for pathfinding, it is always `.../pathfinding/<depending_on_r
 To find the path between the starting and end node the URL will be `.../pathfinding/findpath?...` and the following 
 parameters are needed:
 ```
-strategy: DIJKSTRA (as for now) -> This sets the strategy that is beeing used
+strategy: DIJKSTRA (case-insensitive) -> This sets the strategy that is beeing used
 startpoint: int[2] -> Sets the starting node on the board
 endpoint: int[2] -> Sets the ending node on the baord
 wall (optional): int[][2] -> Sets obstacles, nodes that can not be used (if not given, no obstacles are set)
@@ -57,7 +57,7 @@ different nodes were visited.
 ##### Example request
 The request:
 ```
-http://localhost:8080/pathfinding/findpath?startpoint=0,0&endpoint=3,3&size=4,4&wall=2,2&wall=2,3&strategy=DIJKSTRA
+http://localhost:8080/pathfinding/findpath?startpoint=0,0&endpoint=3,3&size=4,4&wall=2,2&wall=2,3&strategy=dijkstra
 ```
 Here the board size is set to a 4x4 board with the starting point in the upper left corner. The ending point is (3,3) 
 and obstacles are found on (2,2) and (2,3). The strategy is set to DIJKSTRA
@@ -85,7 +85,7 @@ To make a request for sorting, it is always `.../sorting/<depending_on_request>`
 To sort the input numbers the URL will be `.../sorting/sort?...` and the following
 parameters are needed:
 ```
-strategy: SELECTIONSORT (as for now) -> This sets the strategy that is beeing used
+strategy: SELECTIONSORT (case-insensitive) -> This sets the strategy that is beeing used
 toSort: int[] -> input array of integers
 ```
 The API will return a JSON object with nested arrays, each array after one iteration of the sorting algorithm:
@@ -96,7 +96,7 @@ The API will return a JSON object with nested arrays, each array after one itera
 ##### Example request
 The request:
 ```
-http://localhost:8080/sorting/sort?toSort=3,235,52,324,54,23,2,12,234,3&strategy=SELECTIONSORT
+http://localhost:8080/sorting/sort?toSort=3,235,52,324,54,23,2,12,234,3&strategy=selectionsort
 ```
 The input are integers in an array and the output is a nested array, with the last element being the sorted 
 array.
