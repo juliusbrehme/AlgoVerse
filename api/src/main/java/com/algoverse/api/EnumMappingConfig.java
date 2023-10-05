@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * This class is added to addFormatters. It converts a String to an Enum, so that the get request
  * can be case-insensitive.
  */
+@SuppressWarnings("unnused")
 @Configuration
 public class EnumMappingConfig implements WebMvcConfigurer {
   @Override
