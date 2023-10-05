@@ -1,8 +1,5 @@
 package com.algoverse.api.sorting;
 
-import com.algoverse.api.sorting.strategy.SelectionSort;
-import com.algoverse.api.sorting.strategy.SortingStrategies;
-import com.algoverse.api.sorting.strategy.SortingStrategy;
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +13,6 @@ import org.springframework.stereotype.Service;
 public class SortingService {
 
   private static final Random RAND = new Random();
-  private SortingStrategy sortingStrategy;
-
-  public void setSortingStrategy(SortingStrategy sortingStrategy) {
-    this.sortingStrategy = sortingStrategy;
-  }
 
   /**
    * This method delegates the sorting to the given sorting strategy.
@@ -30,11 +22,9 @@ public class SortingService {
    * @return Returns a list of a list where every swap is saved in the list
    */
   public ImmutableList<ImmutableList<Integer>> sort(int[] toSort,
-                                                    SortingStrategies sortingStrategies) {
-    if (sortingStrategies == SortingStrategies.SELECTIONSORT) {
-      setSortingStrategy(SelectionSort.createSelectionSort());
-    }
-    return sortingStrategy.sort(toSort);
+                                                    SortingFactory.Strategies sortingStrategies) {
+    SortingFactory sortingFactory = SortingFactory.createSortingStrategy(sortingStrategies);
+    return sortingFactory.sort(toSort);
   }
 
   /**

@@ -1,6 +1,5 @@
 package com.algoverse.api.sorting;
 
-import com.algoverse.api.sorting.strategy.SortingStrategies;
 import com.google.common.collect.ImmutableList;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +42,7 @@ public class SortingController {
   @GetMapping("sorting/sort")
   public ImmutableList<ImmutableList<Integer>> sort(@RequestParam(value = "toSort") int[] toSort,
                                                     @RequestParam(value = "strategy")
-                                                    SortingStrategies strategies) {
+                                                    SortingFactory.Strategies strategies) {
     return sortingService.sort(toSort, strategies);
   }
 }
