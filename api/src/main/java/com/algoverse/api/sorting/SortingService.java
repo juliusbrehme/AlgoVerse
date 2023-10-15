@@ -1,9 +1,6 @@
 package com.algoverse.api.sorting;
 
 import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,8 +8,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SortingService {
-
-  private static final Random RAND = new Random();
 
   /**
    * This method delegates the sorting to the given sorting strategy.
@@ -33,10 +28,6 @@ public class SortingService {
    * @return Immutable list of random integers
    */
   public ImmutableList<Integer> createRandomNumbers(int size) {
-    List<Integer> randomList = new ArrayList<>();
-    for (int i = 0; i < size; i++) {
-      randomList.add(RAND.nextInt(100));
-    }
-    return ImmutableList.copyOf(randomList);
+    return ImmutableList.copyOf(SortingFactory.createRandomArray(size));
   }
 }

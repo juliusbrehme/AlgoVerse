@@ -3,12 +3,16 @@ package com.algoverse.api.sorting;
 import com.algoverse.api.sorting.strategy.SelectionSort;
 import com.algoverse.api.sorting.strategy.SortingStrategy;
 import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * The factory to create the different strategies and use the different strategies.
  */
 public class SortingFactory {
 
+  private static final Random RAND = new Random();
   private final SortingStrategy strategy;
 
   private SortingFactory(SortingStrategy strategy) {
@@ -29,6 +33,19 @@ public class SortingFactory {
         throw new IllegalArgumentException("The enum does not exist and the strategy could not "
             + "be initialized.");
     }
+  }
+
+  /**
+   * This method creates an array of random integers.
+   *
+   * @return Immutable list of random integers
+   */
+  public static List<Integer> createRandomArray(int size) {
+    List<Integer> randomList = new ArrayList<>();
+    for (int i = 0; i < size; i++) {
+      randomList.add(RAND.nextInt(100));
+    }
+    return randomList;
   }
 
   /**
