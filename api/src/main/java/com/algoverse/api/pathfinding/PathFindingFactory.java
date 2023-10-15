@@ -1,15 +1,22 @@
 package com.algoverse.api.pathfinding;
 
 import com.algoverse.api.pathfinding.board.BoardInformation;
+import com.algoverse.api.pathfinding.board.Coordinates;
 import com.algoverse.api.pathfinding.strategy.Dijkstra;
 import com.algoverse.api.pathfinding.strategy.Path;
 import com.algoverse.api.pathfinding.strategy.PathFindingStrategy;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 /**
  * The factory to create the different strategies and use the different strategies.
  */
 public class PathFindingFactory {
 
+  private static final Random RAND = new Random();
   private final PathFindingStrategy strategy;
 
   private PathFindingFactory(PathFindingStrategy strategy) {
@@ -34,6 +41,29 @@ public class PathFindingFactory {
   }
 
   /**
+   * Method to create random nodes.
+   *
+   * @param boardSize The size of the board
+   * @return Returns an immutable list of two coordinates, starting and end node
+   */
+  public static ImmutableList<Coordinates> randomNodeGenerator(Coordinates boardSize) {
+    int randX1 = RAND.nextInt(0, boardSize.x());
+    int randY1 = RAND.nextInt(0, boardSize.y());
+    Coordinates startNode = new Coordinates(randX1, randY1);
+
+    int randX2 = RAND.nextInt(0, boardSize.x());
+    int randY2 = RAND.nextInt(0, boardSize.y());
+    Coordinates endNode = new Coordinates(randX2, randY2);
+
+    while (startNode.equals(endNode)) {
+      endNode = new Coordinates(RAND.nextInt(boardSize.x()), RAND.nextInt(boardSize.y()));
+    }
+
+    List<Coordinates> coordinatesList = new ArrayList<>(Arrays.asList(startNode, endNode));
+    return ImmutableList.copyOf(coordinatesList);
+  }
+
+  /**
    * Method to find the path. Delegates to the used strategy.
    *
    * @param board The information of the board
@@ -42,6 +72,7 @@ public class PathFindingFactory {
   public Path findPath(BoardInformation board) {
     return strategy.findPath(board);
   }
+
 
   /**
    * The enum for all the path finding strategies.
