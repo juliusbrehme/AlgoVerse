@@ -85,13 +85,17 @@ To make a request for sorting, it is always `.../sorting/<depending_on_request>`
 To sort the input numbers the URL will be `.../sorting/sort?...` and the following
 parameters are needed:
 ```
-strategy: SELECTIONSORT (case-insensitive) -> This sets the strategy that is beeing used
+strategy: SELECTIONSORT, INSERTIONSORT, BUBBLESORT, QUICKSORT, MERGESORT (case-insensitive) 
+          -> This sets the strategy that is beeing used
 toSort: int[] -> input array of integers
 ```
 The API will return a JSON object with nested arrays, each array after one iteration of the sorting algorithm:
 ```
 [[3,235,52,324,54,23,2,12,234,3],[2,235,52,324,54,23,3,12,234,3],[2,3,52,324,54,23,235,12,234,3],...]
 ```
+Only for Quicksort the last entry of the JSON object will be an array of the used pivot elements used for every sorting 
+step. This is done, so that it is possible to highlight the pivot element when visualizing. Second last element will be
+the sorted array.
 
 ##### Example request
 The request:
