@@ -1,6 +1,7 @@
 package com.algoverse.api.sorting;
 
 import com.google.common.collect.ImmutableList;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,7 +17,7 @@ public class SortingService {
    * @param sortingStrategies The strategy that is supposed to be used
    * @return Returns a list of a list where every swap is saved in the list
    */
-  public ImmutableList<ImmutableList<Integer>> sort(int[] toSort,
+  public ImmutableList<ImmutableList<Integer>> sort(List<Integer> toSort,
                                                     SortingFactory.Strategies sortingStrategies) {
     SortingFactory sortingFactory = SortingFactory.createSortingStrategy(sortingStrategies);
     return sortingFactory.sort(toSort);

@@ -2,6 +2,7 @@ package com.algoverse.api.sorting;
 
 import com.google.common.collect.ImmutableList;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,7 +41,8 @@ public class SortingController {
    * @return Returns a list of a list where every swap is saved in the list
    */
   @GetMapping("sorting/sort")
-  public ImmutableList<ImmutableList<Integer>> sort(@RequestParam(value = "toSort") int[] toSort,
+  public ImmutableList<ImmutableList<Integer>> sort(@RequestParam(value = "toSort")
+                                                    List<Integer> toSort,
                                                     @RequestParam(value = "strategy")
                                                     SortingFactory.Strategies strategies) {
     return sortingService.sort(toSort, strategies);
