@@ -3,6 +3,7 @@ package com.algoverse.api;
 import static com.google.common.truth.Truth.assertThat;
 import static java.lang.Math.abs;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.algoverse.api.pathfinding.PathFindingFactory;
 import com.algoverse.api.pathfinding.board.BoardInformation;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
@@ -141,8 +143,8 @@ public class PathFindingTests {
       Path pathInformation = factory.findPath(boardInformation);
 
       List<Coordinates> path = pathInformation.path().asList();
-      assertEquals(boardInformation.startingNode(), path.get(0));
-      assertEquals(boardInformation.endingNode(), Iterables.getLast(path));
+      assertThat(boardInformation.startingNode()).isEqualTo(path.get(0));
+      assertThat(boardInformation.endingNode()).isEqualTo(Iterables.getLast(path));
     }
   }
 
@@ -161,7 +163,7 @@ public class PathFindingTests {
       BoardInformation boardInformation = testBoard(false, false, true);
       Path pathInformation = factory.findPath(boardInformation);
 
-      assertEquals(0, pathInformation.path().size());
+      assertThat(0).isEqualTo(pathInformation.path().size());
       assertThat(pathInformation.visitedNodes()).containsNoneIn(boardInformation.wall().keySet());
     }
   }
@@ -199,7 +201,7 @@ public class PathFindingTests {
         }
       }
 
-      assertEquals(expected, pathInformation.path());
+      assertThat(expected).isEqualTo(pathInformation.path());
     }
   }
 
@@ -235,8 +237,7 @@ public class PathFindingTests {
           index++;
         }
       }
-
-      assertEquals(expected, pathInformation.path());
+      assertThat(expected).isEqualTo(pathInformation.path());
     }
   }
 
@@ -277,8 +278,8 @@ public class PathFindingTests {
         }
       }
 
-      assertEquals(expected, pathInformation.path());
-      assertEquals(expected, pathInformation.visitedNodes());
+      assertThat(expected).isEqualTo(pathInformation.path());
+      assertThat(expected).isEqualTo(pathInformation.visitedNodes());
       assertThat(pathInformation.visitedNodes()).containsNoneIn(board.wall().keySet());
 
     }
@@ -305,7 +306,7 @@ public class PathFindingTests {
       // Manhattan distance is the shortest path
       int shortestPath =
           abs(startingNode.x() - endingNode.x()) + abs(startingNode.y() - endingNode.y());
-      assertEquals(shortestPath, pathInformation.path().size() - 1);
+      assertThat(shortestPath).isEqualTo(pathInformation.path().size() - 1);
     }
   }
 
@@ -331,7 +332,7 @@ public class PathFindingTests {
     Path pathInformation = factory.findPath(
         new BoardInformation(startingNode, endingNode, ImmutableMap.copyOf(walls), boardSize));
 
-    assertEquals(18, pathInformation.path().size() - 1);
+    assertThat(18).isEqualTo(pathInformation.path().size() - 1);
     assertThat(pathInformation.visitedNodes()).containsNoneIn(walls.keySet());
   }
 
@@ -361,7 +362,7 @@ public class PathFindingTests {
     Path pathInformation = factory.findPath(
         new BoardInformation(startingNode, endingNode, ImmutableMap.copyOf(walls), boardSize));
 
-    assertEquals(20, pathInformation.path().size() - 1);
+    assertThat(20).isEqualTo(pathInformation.path().size() - 1);
     assertThat(pathInformation.visitedNodes()).containsNoneIn(walls.keySet());
   }
 
@@ -385,8 +386,8 @@ public class PathFindingTests {
     Path pathInformation = factory.findPath(
         new BoardInformation(startingNode, endingNode, ImmutableMap.copyOf(walls), boardSize));
 
-    assertEquals(startingNode, pathInformation.path().get(0));
-    assertEquals(endingNode, Iterables.getLast(pathInformation.path()));
+    assertThat(startingNode).isEqualTo(pathInformation.path().get(0));
+    assertThat(endingNode).isEqualTo(Iterables.getLast(pathInformation.path()));
     assertThat(pathInformation.visitedNodes()).containsNoneIn(walls.keySet());
   }
 
@@ -414,10 +415,9 @@ public class PathFindingTests {
     Path pathInformation = factory.findPath(
         new BoardInformation(startingNode, endingNode, ImmutableMap.copyOf(walls), boardSize));
 
-    assertEquals(startingNode, pathInformation.path().get(0));
-    assertEquals(endingNode, Iterables.getLast(pathInformation.path()));
+    assertThat(startingNode).isEqualTo(pathInformation.path().get(0));
+    assertThat(endingNode).isEqualTo(Iterables.getLast(pathInformation.path()));
     assertThat(pathInformation.visitedNodes()).containsNoneIn(walls.keySet());
   }
-
 
 }
