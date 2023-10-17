@@ -43,43 +43,44 @@ public class MergeSort implements SortingStrategy {
   }
 
   private void merge(List<Integer> toSort, int left, int mid, int right) {
-    int i, j, k;
+    int i;
+    int j;
     int n = mid - left + 1;
     int m = right - mid;
 
-    int[] L = new int[n];
-    int[] R = new int[m];
+    int[] leftArr = new int[n];
+    int[] rightArr = new int[m];
 
     for (i = 0; i < n; i++) {
-      L[i] = toSort.get(left + i);
+      leftArr[i] = toSort.get(left + i);
     }
     for (j = 0; j < m; j++) {
-      R[j] = toSort.get(mid + 1 + j);
+      rightArr[j] = toSort.get(mid + 1 + j);
     }
 
     i = 0;
     j = 0;
-    k = left;
+    int k = left;
 
     while (i < n && j < m) {
-      if (L[i] <= R[j]) {
-        toSort.set(k, L[i]);
+      if (leftArr[i] <= rightArr[j]) {
+        toSort.set(k, leftArr[i]);
         i++;
       } else {
-        toSort.set(k, R[j]);
+        toSort.set(k, rightArr[j]);
         j++;
       }
       k++;
     }
 
     while (i < n) {
-      toSort.set(k, L[i]);
+      toSort.set(k, leftArr[i]);
       i++;
       k++;
     }
 
     while (j < m) {
-      toSort.set(k, R[j]);
+      toSort.set(k, rightArr[j]);
       j++;
       k++;
 
