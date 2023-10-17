@@ -5,8 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.algoverse.api.sorting.SortingFactory;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
-import com.google.common.primitives.Ints;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
@@ -26,11 +28,17 @@ public class SortingTests {
   @EnumSource(SortingFactory.Strategies.class)
   public void sortingArrayOfSize5(SortingFactory.Strategies strategies) {
     factory = SortingFactory.createSortingStrategy(strategies);
-    int[] sortArray = Ints.toArray(SortingFactory.createRandomArray(5));
-    int[] sortedArray = Arrays.copyOf(sortArray, sortArray.length);
-    Arrays.sort(sortedArray);
-    assertEquals(ImmutableList.copyOf(Arrays.stream(sortedArray).boxed().toList()),
-        Iterables.getLast(factory.sort(sortArray)));
+    List<Integer> sortArray = SortingFactory.createRandomArray(5);
+    List<Integer> expected = new java.util.ArrayList<>(List.copyOf(sortArray));
+    Collections.sort(expected);
+    if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
+      ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
+      assertEquals(sortArray,
+          actual.get(actual.size() - 2));
+    } else {
+      assertEquals(expected,
+          Iterables.getLast(factory.sort(sortArray)));
+    }
   }
 
   /**
@@ -42,11 +50,17 @@ public class SortingTests {
   @EnumSource(SortingFactory.Strategies.class)
   public void sortingArrayOfSize10(SortingFactory.Strategies strategies) {
     factory = SortingFactory.createSortingStrategy(strategies);
-    int[] sortArray = Ints.toArray(SortingFactory.createRandomArray(10));
-    int[] sortedArray = Arrays.copyOf(sortArray, sortArray.length);
-    Arrays.sort(sortedArray);
-    assertEquals(ImmutableList.copyOf(Arrays.stream(sortedArray).boxed().toList()),
-        Iterables.getLast(factory.sort(sortArray)));
+    List<Integer> sortArray = SortingFactory.createRandomArray(10);
+    List<Integer> expected = new java.util.ArrayList<>(List.copyOf(sortArray));
+    Collections.sort(expected);
+    if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
+      ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
+      assertEquals(sortArray,
+          actual.get(actual.size() - 2));
+    } else {
+      assertEquals(expected,
+          Iterables.getLast(factory.sort(sortArray)));
+    }
   }
 
   /**
@@ -58,11 +72,17 @@ public class SortingTests {
   @EnumSource(SortingFactory.Strategies.class)
   public void sortingArrayOfSize15(SortingFactory.Strategies strategies) {
     factory = SortingFactory.createSortingStrategy(strategies);
-    int[] sortArray = Ints.toArray(SortingFactory.createRandomArray(15));
-    int[] sortedArray = Arrays.copyOf(sortArray, sortArray.length);
-    Arrays.sort(sortedArray);
-    assertEquals(ImmutableList.copyOf(Arrays.stream(sortedArray).boxed().toList()),
-        Iterables.getLast(factory.sort(sortArray)));
+    List<Integer> sortArray = SortingFactory.createRandomArray(15);
+    List<Integer> expected = new java.util.ArrayList<>(List.copyOf(sortArray));
+    Collections.sort(expected);
+    if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
+      ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
+      assertEquals(sortArray,
+          actual.get(actual.size() - 2));
+    } else {
+      assertEquals(expected,
+          Iterables.getLast(factory.sort(sortArray)));
+    }
   }
 
   /**
@@ -74,11 +94,17 @@ public class SortingTests {
   @EnumSource(SortingFactory.Strategies.class)
   public void sortingArrayOfSize20(SortingFactory.Strategies strategies) {
     factory = SortingFactory.createSortingStrategy(strategies);
-    int[] sortArray = Ints.toArray(SortingFactory.createRandomArray(20));
-    int[] sortedArray = Arrays.copyOf(sortArray, sortArray.length);
-    Arrays.sort(sortedArray);
-    assertEquals(ImmutableList.copyOf(Arrays.stream(sortedArray).boxed().toList()),
-        Iterables.getLast(factory.sort(sortArray)));
+    List<Integer> sortArray = SortingFactory.createRandomArray(20);
+    List<Integer> expected = new java.util.ArrayList<>(List.copyOf(sortArray));
+    Collections.sort(expected);
+    if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
+      ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
+      assertEquals(sortArray,
+          actual.get(actual.size() - 2));
+    } else {
+      assertEquals(expected,
+          Iterables.getLast(factory.sort(sortArray)));
+    }
   }
 
   /**
@@ -90,11 +116,17 @@ public class SortingTests {
   @EnumSource(SortingFactory.Strategies.class)
   public void sortingArrayOfSize25(SortingFactory.Strategies strategies) {
     factory = SortingFactory.createSortingStrategy(strategies);
-    int[] sortArray = Ints.toArray(SortingFactory.createRandomArray(25));
-    int[] sortedArray = Arrays.copyOf(sortArray, sortArray.length);
-    Arrays.sort(sortedArray);
-    assertEquals(ImmutableList.copyOf(Arrays.stream(sortedArray).boxed().toList()),
-        Iterables.getLast(factory.sort(sortArray)));
+    List<Integer> sortArray = SortingFactory.createRandomArray(25);
+    List<Integer> expected = new java.util.ArrayList<>(List.copyOf(sortArray));
+    Collections.sort(expected);
+    if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
+      ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
+      assertEquals(sortArray,
+          actual.get(actual.size() - 2));
+    } else {
+      assertEquals(expected,
+          Iterables.getLast(factory.sort(sortArray)));
+    }
   }
 
   /**
@@ -106,11 +138,17 @@ public class SortingTests {
   @EnumSource(SortingFactory.Strategies.class)
   public void sortingOfSameIntegers(SortingFactory.Strategies strategies) {
     factory = SortingFactory.createSortingStrategy(strategies);
-    int[] sortArray = {0, 0, 0, 0, 0, 0, 0};
-    int[] sortedArray = Arrays.copyOf(sortArray, sortArray.length);
-    Arrays.sort(sortedArray);
-    assertEquals(ImmutableList.copyOf(Arrays.stream(sortedArray).boxed().toList()),
-        Iterables.getLast(factory.sort(sortArray)));
+    List<Integer> sortArray = Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0);
+    List<Integer> expected = new ArrayList<>(List.copyOf(sortArray));
+    Collections.sort(expected);
+    if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
+      ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
+      assertEquals(expected,
+          actual.get(actual.size() - 2));
+    } else {
+      assertEquals(expected,
+          Iterables.getLast(factory.sort(sortArray)));
+    }
   }
 
   /**
@@ -122,12 +160,16 @@ public class SortingTests {
   @EnumSource(SortingFactory.Strategies.class)
   public void sortingEmptyArray(SortingFactory.Strategies strategies) {
     factory = SortingFactory.createSortingStrategy(strategies);
-    int[] sortArray = {};
-    int[] sortedArray = Arrays.copyOf(sortArray, sortArray.length);
-    Arrays.sort(sortedArray);
-    assertEquals(ImmutableList.copyOf(Arrays.stream(sortedArray).boxed().toList()),
-        Iterables.getLast(factory.sort(sortArray)));
+    List<Integer> sortArray = List.of();
+    List<Integer> expected = new ArrayList<>(List.copyOf(sortArray));
+    Collections.sort(expected);
+    if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
+      ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
+      assertEquals(expected,
+          actual.get(actual.size() - 2));
+    } else {
+      assertEquals(expected,
+          Iterables.getLast(factory.sort(sortArray)));
+    }
   }
-
-
 }
