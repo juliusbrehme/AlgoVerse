@@ -23,9 +23,9 @@ import org.junit.jupiter.params.provider.EnumSource;
  */
 public class PathFindingTests {
 
-  private PathFindingFactory factory;
   private static final int NUMBER_OF_TESTS = 10;
   private static final Random RAND = new Random();
+  private PathFindingFactory factory;
 
   /*
    * Skip test if a strategy does not support to the shortest path.
