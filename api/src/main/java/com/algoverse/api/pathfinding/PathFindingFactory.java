@@ -31,13 +31,12 @@ public class PathFindingFactory {
    */
   public static PathFindingFactory createPathFindingStrategy(
       PathFindingFactory.Strategies strategy) {
-    switch (strategy) {
-      case DIJKSTRA:
-        return new PathFindingFactory(Dijkstra.createDijkstra());
-      default:
-        throw new IllegalArgumentException("The enum does not exist and the strategy could not "
+    return switch (strategy) {
+      case DIJKSTRA -> new PathFindingFactory(Dijkstra.createDijkstra());
+      default ->
+          throw new IllegalArgumentException("The enum does not exist and the strategy could not "
             + "be initialized.");
-    }
+    };
   }
 
   /**

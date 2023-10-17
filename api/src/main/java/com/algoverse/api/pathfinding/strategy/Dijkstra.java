@@ -71,7 +71,7 @@ public class Dijkstra implements PathFindingStrategy {
         }
         // already visited and we do not need to visit again
         if (vistedNode.get(neighbor) == null) {
-          // possible alread in nextNodes
+          // possible already in nextNodes
           if (!nextNodes.contains(neighbor)) {
             nextNodes.add(neighbor);
           }
@@ -96,51 +96,5 @@ public class Dijkstra implements PathFindingStrategy {
     return new Path(ImmutableList.copyOf(path), ImmutableList.copyOf(visitedNodes));
   }
 
-  /**
-   * This method is to generate the next neighbors for the path finding algorithm.
-   *
-   * @param node         The node to generate the neighbors from
-   * @param wall         All obstacles, those nodes can not be visited or used
-   * @param visitedNodes All already visited nodes
-   * @param boardSize    The size of the board
-   * @return Returns a list of all neighbors, that still need to be visited
-   */
-  public List<Coordinates> getNeighbors(Coordinates node, ImmutableMap<Coordinates, Integer> wall,
-                                        HashMap<Coordinates, Integer> visitedNodes,
-                                        Coordinates boardSize) {
-    // if we allow weighted nodes, implemented getNeighbors with a priorityQueue(heap),
-    // so that we use a priority as an attribute getNeighbors updates that priorityQueue.
-    // Changes need to be made to findPath as well
 
-    List<Coordinates> neighbors = new ArrayList<>();
-    if (0 <= node.x() + 1 && node.x() + 1 < boardSize.x() && 0 <= node.y()
-        && node.y() < boardSize.y()) {
-      Coordinates neighbor = new Coordinates(node.x() + 1, node.y());
-      if (wall.get(neighbor) == null && visitedNodes.get(neighbor) == null) {
-        neighbors.add(neighbor);
-      }
-    }
-    if (0 <= node.x() && node.x() < boardSize.x() && 0 <= node.y() + 1
-        && node.y() + 1 < boardSize.y()) {
-      Coordinates neighbor = new Coordinates(node.x(), node.y() + 1);
-      if (wall.get(neighbor) == null && visitedNodes.get(neighbor) == null) {
-        neighbors.add(neighbor);
-      }
-    }
-    if (0 <= node.x() - 1 && node.x() - 1 < boardSize.x() && 0 <= node.y()
-        && node.y() < boardSize.y()) {
-      Coordinates neighbor = new Coordinates(node.x() - 1, node.y());
-      if (wall.get(neighbor) == null && visitedNodes.get(neighbor) == null) {
-        neighbors.add(neighbor);
-      }
-    }
-    if (0 <= node.x() && node.x() < boardSize.x() && 0 <= node.y() - 1
-        && node.y() - 1 < boardSize.y()) {
-      Coordinates neighbor = new Coordinates(node.x(), node.y() - 1);
-      if (wall.get(neighbor) == null && visitedNodes.get(neighbor) == null) {
-        neighbors.add(neighbor);
-      }
-    }
-    return neighbors;
-  }
 }
