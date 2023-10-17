@@ -30,21 +30,16 @@ public class SortingFactory {
    * @return Returns the factory with the strategy
    */
   public static SortingFactory createSortingStrategy(Strategies strategy) {
-    switch (strategy) {
-      case SELECTIONSORT:
-        return new SortingFactory(SelectionSort.createSelectionSort());
-      case BUBBLESORT:
-        return new SortingFactory(BubbleSort.createBubbleSort());
-      case INSERTIONSORT:
-        return new SortingFactory(InsertionSort.createInsertionSort());
-      case MERGESORT:
-        return new SortingFactory(MergeSort.createMergeSort());
-      case QUICKSORT:
-        return new SortingFactory(QuickSort.createQuickSort());
-      default:
-        throw new IllegalArgumentException("The enum does not exist and the strategy could not "
-            + "be initialized.");
-    }
+    return switch (strategy) {
+      case SELECTIONSORT -> new SortingFactory(SelectionSort.createSelectionSort());
+      case BUBBLESORT -> new SortingFactory(BubbleSort.createBubbleSort());
+      case INSERTIONSORT -> new SortingFactory(InsertionSort.createInsertionSort());
+      case MERGESORT -> new SortingFactory(MergeSort.createMergeSort());
+      case QUICKSORT -> new SortingFactory(QuickSort.createQuickSort());
+      default ->
+          throw new IllegalArgumentException("The enum does not exist and the strategy could not "
+              + "be initialized.");
+    };
   }
 
   /**

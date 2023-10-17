@@ -3,14 +3,11 @@ package com.algoverse.api.sorting.strategy;
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Implementation of quick sort.
  */
 public class QuickSort implements SortingStrategy {
-
-  private static final Random RAND = new Random();
 
   private QuickSort() {
 
