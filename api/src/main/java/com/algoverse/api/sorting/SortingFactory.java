@@ -1,5 +1,9 @@
 package com.algoverse.api.sorting;
 
+import com.algoverse.api.sorting.strategy.BubbleSort;
+import com.algoverse.api.sorting.strategy.InsertionSort;
+import com.algoverse.api.sorting.strategy.MergeSort;
+import com.algoverse.api.sorting.strategy.QuickSort;
 import com.algoverse.api.sorting.strategy.SelectionSort;
 import com.algoverse.api.sorting.strategy.SortingStrategy;
 import com.google.common.collect.ImmutableList;
@@ -29,6 +33,14 @@ public class SortingFactory {
     switch (strategy) {
       case SELECTIONSORT:
         return new SortingFactory(SelectionSort.createSelectionSort());
+      case BUBBLESORT:
+        return new SortingFactory(BubbleSort.createBubbleSort());
+      case INSERTIONSORT:
+        return new SortingFactory(InsertionSort.createInsertionSort());
+      case MERGESORT:
+        return new SortingFactory(MergeSort.createMergeSort());
+      case QUICKSORT:
+        return new SortingFactory(QuickSort.createQuickSort());
       default:
         throw new IllegalArgumentException("The enum does not exist and the strategy could not "
             + "be initialized.");
@@ -54,7 +66,7 @@ public class SortingFactory {
    * @param toSort The array that is to be sorted
    * @return Returns a list of list with each step saved in a list
    */
-  public ImmutableList<ImmutableList<Integer>> sort(int[] toSort) {
+  public ImmutableList<ImmutableList<Integer>> sort(List<Integer> toSort) {
     return strategy.sort(toSort);
   }
 
@@ -62,6 +74,6 @@ public class SortingFactory {
    * Enum for all the sorting strategies.
    */
   public enum Strategies {
-    SELECTIONSORT
+    SELECTIONSORT, BUBBLESORT, INSERTIONSORT, MERGESORT, QUICKSORT
   }
 }
