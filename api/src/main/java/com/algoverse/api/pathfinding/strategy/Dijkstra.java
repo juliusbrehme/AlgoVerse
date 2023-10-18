@@ -58,8 +58,7 @@ public class Dijkstra implements PathFindingStrategy {
 
     // pathfinding algorithm, we will look at every node and don't stop early
     while (!nextNodes.isEmpty()) {
-      Coordinates node = nextNodes.get(0);
-      nextNodes.remove(0);
+      Coordinates node = nextNodes.remove(0);
       visitedNodes.add(node);
       vistedNode.put(node, 1);
       List<Coordinates> neighbors = getNeighbors(node, obstacle, vistedNode, boardSize);
