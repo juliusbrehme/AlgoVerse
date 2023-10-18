@@ -31,8 +31,8 @@ public interface PathFindingStrategy {
    * @return Returns a list of all neighbors, that still need to be visited
    */
   default List<Coordinates> getNeighbors(Coordinates node, ImmutableMap<Coordinates, Integer> wall,
-                                        HashMap<Coordinates, Integer> visitedNodes,
-                                        Coordinates boardSize) {
+                                         HashMap<Coordinates, Integer> visitedNodes,
+                                         Coordinates boardSize) {
     // if we allow weighted nodes, implement getNeighbors with a priorityQueue (heap),
     // so that we use a priority as an attribute getNeighbors updates that priorityQueue.
     // Changes need to be made to findPath as well
