@@ -101,10 +101,10 @@ public class Astar implements PathFindingStrategy {
    */
   private static class Tuple implements Comparable<Tuple> {
 
-    private Coordinates node;
-    private int cost;
+    private final Coordinates node;
+    private final int cost;
 
-    private int dist;
+    private final  int dist;
 
     public Tuple(Coordinates node, int cost, int dist) {
       this.node = node;
@@ -127,13 +127,7 @@ public class Astar implements PathFindingStrategy {
     // The manhattan distance plus the cost is the comparing factor
     @Override
     public int compareTo(Tuple tuple) {
-      if (getCost() + getDist() > tuple.getCost() + tuple.getDist()) {
-        return 1;
-      } else if (getCost() + getDist() < tuple.getCost() + tuple.getDist()) {
-        return -1;
-      } else {
-        return 0;
-      }
+      return Integer.compare(getCost() + getDist(), tuple.getCost() + tuple.getDist());
     }
 
     // we need equals only to check if a certain node is in the nextNode list. Therefore, we care
@@ -146,10 +140,9 @@ public class Astar implements PathFindingStrategy {
       if (o == null) {
         return false;
       }
-      if (!(o instanceof Tuple)) {
+      if (!(o instanceof Tuple tuple)) {
         return false;
       }
-      Tuple tuple = (Tuple) o;
       return tuple.getNode().equals(getNode());
     }
 
