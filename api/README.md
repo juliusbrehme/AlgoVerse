@@ -37,7 +37,7 @@ To make a request for pathfinding, it is always `.../pathfinding/<depending_on_r
 To find the path between the starting and end node the URL will be `.../pathfinding/findpath?...` and the following 
 parameters are needed:
 ```
-strategy: DIJKSTRA (case-insensitive) -> This sets the strategy that is beeing used
+strategy: DIJKSTRA, DFS, BFS, ASTAR (case-insensitive) -> This sets the strategy that is beeing used
 startpoint: int[2] -> Sets the starting node on the board
 endpoint: int[2] -> Sets the ending node on the baord
 wall (optional): int[][2] -> Sets obstacles, nodes that can not be used (if not given, no obstacles are set)
