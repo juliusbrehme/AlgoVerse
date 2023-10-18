@@ -2,6 +2,7 @@ package com.algoverse.api.pathfinding;
 
 import com.algoverse.api.pathfinding.board.BoardInformation;
 import com.algoverse.api.pathfinding.board.Coordinates;
+import com.algoverse.api.pathfinding.strategy.Astar;
 import com.algoverse.api.pathfinding.strategy.BreadthFirstSearch;
 import com.algoverse.api.pathfinding.strategy.DepthFirstSearch;
 import com.algoverse.api.pathfinding.strategy.Dijkstra;
@@ -37,6 +38,7 @@ public class PathFindingFactory {
       case DIJKSTRA -> new PathFindingFactory(Dijkstra.createDijkstra());
       case DFS -> new PathFindingFactory(DepthFirstSearch.createDepthFirstSearch());
       case BFS -> new PathFindingFactory(BreadthFirstSearch.createBreadthFirstSearch());
+      case ASTAR -> new PathFindingFactory(Astar.createAstar());
       default ->
           throw new IllegalArgumentException("The enum does not exist and the strategy could not "
               + "be initialized.");
@@ -81,6 +83,6 @@ public class PathFindingFactory {
    * The enum for all the path finding strategies.
    */
   public enum Strategies {
-    DIJKSTRA, DFS, BFS
+    DIJKSTRA, DFS, BFS, ASTAR
   }
 }
