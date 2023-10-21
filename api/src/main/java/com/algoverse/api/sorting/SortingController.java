@@ -28,7 +28,7 @@ public class SortingController {
    * @param size The size of the generated array
    * @return Returns an immutable list of random integers
    */
-  @GetMapping("sorting/random/numbers")
+  @GetMapping("sorting/random-numbers")
   public ImmutableList<Integer> createRandomNumbers(@RequestParam(value = "size") int size) {
     return sortingService.createRandomNumbers(size);
   }

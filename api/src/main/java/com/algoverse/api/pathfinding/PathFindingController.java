@@ -37,7 +37,7 @@ public class PathFindingController {
    * @param boardSize The size of the board
    * @return Return starting and end node
    */
-  @GetMapping("/pathfinding/random/nodes")
+  @GetMapping("/pathfinding/random-nodes")
   public ImmutableList<Coordinates> createRandomNodes(
       @RequestParam(value = "size") int[] boardSize) {
     if (boardSize.length != 2) {
@@ -54,7 +54,7 @@ public class PathFindingController {
    * @param boardSize The size of the board
    * @return The board information with starting, ending node and obstacles
    */
-  @GetMapping("pathfinding/random/maze")
+  @GetMapping("pathfinding/random-maze")
   public BoardInformation createRandomMaze(@RequestParam(value = "size") int[] boardSize) {
     if (boardSize.length != 2) {
       throw new ExceptionHandling.WrongCoordinateInputException();
@@ -90,6 +90,7 @@ public class PathFindingController {
     }
     HashMap<Coordinates, Integer> obstacle =
         getCoordinatesIntegerHashMap(wall, boardSize);
+
     return pathFindingService.findPath(
         new BoardInformation(new Coordinates(startingNode[0], startingNode[1]),
             new Coordinates(endingNode[0], endingNode[1]),
