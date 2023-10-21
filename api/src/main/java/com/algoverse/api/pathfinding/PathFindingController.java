@@ -43,6 +43,10 @@ public class PathFindingController {
     if (boardSize.length != 2) {
       throw new ExceptionHandling.WrongCoordinateInputException();
     }
+    if (boardSize[0] == 0 || boardSize[1] == 0
+        || (boardSize[0] == 1 && boardSize[1] == 1)) {
+      throw new ExceptionHandling.IllegalBoundForBoardSize();
+    }
     return pathFindingService.randomNodeGenerator(new Coordinates(boardSize[0], boardSize[1]));
   }
 
@@ -58,6 +62,10 @@ public class PathFindingController {
   public BoardInformation createRandomMaze(@RequestParam(value = "size") int[] boardSize) {
     if (boardSize.length != 2) {
       throw new ExceptionHandling.WrongCoordinateInputException();
+    }
+    if (boardSize[0] == 0 || boardSize[1] == 0
+        || (boardSize[0] == 1 && boardSize[1] == 1)) {
+      throw new ExceptionHandling.IllegalBoundForBoardSize();
     }
     return pathFindingService.randomMazeGenerator(new Coordinates(boardSize[0], boardSize[1]));
   }
