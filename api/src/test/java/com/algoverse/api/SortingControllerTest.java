@@ -13,6 +13,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+/**
+ * Test the calls to the sorting controller.
+ */
 @WebMvcTest(controllers = SortingController.class)
 public class SortingControllerTest {
 
@@ -25,6 +28,11 @@ public class SortingControllerTest {
   @Autowired
   private SortingController sortingController;
 
+  /**
+   * Test the call to sort an array.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void sortCallTest() throws Exception {
     mockMvc.perform(get("/sorting/sort")
@@ -33,20 +41,30 @@ public class SortingControllerTest {
         .andExpect(status().isOk());
   }
 
+  /**
+   * Test the call to sort an array with wrong input. Exception should be thrown.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void sortWithWrongStrategyTest() throws Exception {
     mockMvc.perform(get("/sorting/sort")
-        .param("toSort", "4", "3", "2", "1")
-        .param("strategy", "selection"))
+            .param("toSort", "4", "3", "2", "1")
+            .param("strategy", "selection"))
         .andExpect(status().isBadRequest())
-        .andExpect(result -> assertTrue(result.getResolvedException() instanceof
-            MethodArgumentTypeMismatchException));
+        .andExpect(result -> assertTrue(result.getResolvedException()
+            instanceof MethodArgumentTypeMismatchException));
   }
 
+  /**
+   * Test the call to create random array.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void createRandomNumberCallTest() throws Exception {
     mockMvc.perform(get("/sorting/random-numbers")
-        .param("size", "100"))
+            .param("size", "100"))
         .andExpect(status().isOk());
   }
 

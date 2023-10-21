@@ -13,6 +13,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+/**
+ * Class to test the api get request.
+ */
 @WebMvcTest(controllers = PathFindingController.class)
 public class PathFindingControllerTest {
 
@@ -25,16 +28,26 @@ public class PathFindingControllerTest {
   @Autowired
   private PathFindingController pathFindingController;
 
+  /**
+   * Test the call to find path.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void findPathCallTest() throws Exception {
     mockMvc.perform(get("/pathfinding/findpath")
-        .param("startpoint", "0", "0")
-        .param("endpoint", "9", "9")
-        .param("size", "10", "10")
-        .param("strategy", "dijkstra"))
+            .param("startpoint", "0", "0")
+            .param("endpoint", "9", "9")
+            .param("size", "10", "10")
+            .param("strategy", "dijkstra"))
         .andExpect(status().isOk());
   }
 
+  /**
+   * Test the call to find path with wrong input. Exception should be thrown.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void findPathWrongWrongStartingPointTest() throws Exception {
     mockMvc.perform(get("/pathfinding/findpath")
@@ -43,10 +56,15 @@ public class PathFindingControllerTest {
             .param("size", "10", "10")
             .param("strategy", "dijkstra"))
         .andExpect(status().isBadRequest())
-        .andExpect(result -> assertTrue(result.getResolvedException() instanceof
-            ExceptionHandling.WrongCoordinateInputException));
+        .andExpect(result -> assertTrue(result.getResolvedException()
+            instanceof ExceptionHandling.WrongCoordinateInputException));
   }
 
+  /**
+   * Test the call to find path with wrong input. Exception should be thrown.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void findPathWrongEndingPointTest() throws Exception {
     mockMvc.perform(get("/pathfinding/findpath")
@@ -55,10 +73,15 @@ public class PathFindingControllerTest {
             .param("size", "10", "10")
             .param("strategy", "dijkstra"))
         .andExpect(status().isBadRequest())
-        .andExpect(result -> assertTrue(result.getResolvedException() instanceof
-            ExceptionHandling.WrongCoordinateInputException));
+        .andExpect(result -> assertTrue(result.getResolvedException()
+            instanceof ExceptionHandling.WrongCoordinateInputException));
   }
 
+  /**
+   * Test the call to find path with wrong input. Exception should be thrown.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void findPathPointNotOnBoardTest() throws Exception {
     mockMvc.perform(get("/pathfinding/findpath")
@@ -67,10 +90,15 @@ public class PathFindingControllerTest {
             .param("size", "10", "2")
             .param("strategy", "dijkstra"))
         .andExpect(status().isBadRequest())
-        .andExpect(result -> assertTrue(result.getResolvedException() instanceof
-            ExceptionHandling.WrongInputOfBoardSizeAndPoints));
+        .andExpect(result -> assertTrue(result.getResolvedException()
+            instanceof ExceptionHandling.WrongInputOfBoardSizeAndPoints));
   }
 
+  /**
+   * Test the call to find path with wrong input. Exception should be thrown.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void findPathPointNoStrategyTest() throws Exception {
     mockMvc.perform(get("/pathfinding/findpath")
@@ -79,21 +107,31 @@ public class PathFindingControllerTest {
             .param("size", "10", "10")
             .param("strategy", "dijkt"))
         .andExpect(status().isBadRequest())
-        .andExpect(result -> assertTrue(result.getResolvedException() instanceof
-            MethodArgumentTypeMismatchException));
+        .andExpect(result -> assertTrue(result.getResolvedException()
+            instanceof MethodArgumentTypeMismatchException));
   }
 
+  /**
+   * Test the call to create random nodes.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void createRandomNodesCallTest() throws Exception {
     mockMvc.perform(get("/pathfinding/random-nodes")
-        .param("size", "10", "10"))
+            .param("size", "10", "10"))
         .andExpect(status().isOk());
   }
 
+  /**
+   * Test the call to create a random maze.
+   *
+   * @throws Exception Exception
+   */
   @Test
   public void createRandomMazeCallTest() throws Exception {
     mockMvc.perform(get("/pathfinding/random-maze")
-        .param("size", "10", "10"))
+            .param("size", "10", "10"))
         .andExpect(status().isOk());
   }
 }
