@@ -104,7 +104,7 @@ public class Astar implements PathFindingStrategy {
     private final Coordinates node;
     private final int cost;
 
-    private final  int dist;
+    private final int dist;
 
     public Tuple(Coordinates node, int cost, int dist) {
       this.node = node;
