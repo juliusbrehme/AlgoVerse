@@ -1,44 +1,65 @@
 package com.algoverse.api;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
  * Class to advice the Controller how to handle certain exceptions.
  */
 @SuppressWarnings("unused")
 @ControllerAdvice
-public class ExceptionHandling {
+public class ExceptionHandling extends ResponseEntityExceptionHandler {
 
   @ResponseBody
   @ExceptionHandler(WrongCoordinateInputException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public String wrongCoordinateInput(WrongCoordinateInputException ex) {
-    return ex.getMessage();
+  public ResponseEntity<Object> wrongCoordinateInput(WrongCoordinateInputException ex) {
+    Map<String, Object> map = new HashMap<>();
+    map.put("timestamp", LocalDateTime.now());
+    map.put("message", ex.getMessage());
+    map.put("status", HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
   }
 
   @ResponseBody
   @ExceptionHandler(WrongWallInputException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public String wrongWallInput(WrongWallInputException ex) {
-    return ex.getMessage();
+  public ResponseEntity<Object> wrongWallInput(WrongWallInputException ex) {
+    Map<String, Object> map = new HashMap<>();
+    map.put("timestamp", LocalDateTime.now());
+    map.put("message", ex.getMessage());
+    map.put("status", HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
   }
 
   @ResponseBody
   @ExceptionHandler(WrongInputOfBoardSizeAndPoints.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public String wrongInputOfBoardAndPoints(WrongInputOfBoardSizeAndPoints ex) {
-    return ex.getMessage();
+  public ResponseEntity<Object> wrongInputOfBoardAndPoints(WrongInputOfBoardSizeAndPoints ex) {
+    Map<String, Object> map = new HashMap<>();
+    map.put("timestamp", LocalDateTime.now());
+    map.put("message", ex.getMessage());
+    map.put("status", HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
   }
 
   @ResponseBody
   @ExceptionHandler(WrongInputOfBoardSizeAndWalls.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public String wrongInputOfBoardAndWalls(WrongInputOfBoardSizeAndWalls ex) {
-    return ex.getMessage();
+  public ResponseEntity<Object> wrongInputOfBoardAndWalls(WrongInputOfBoardSizeAndWalls ex) {
+    Map<String, Object> map = new HashMap<>();
+    map.put("timestamp", LocalDateTime.now());
+    map.put("message", ex.getMessage());
+    map.put("status", HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
   }
 
   /**
