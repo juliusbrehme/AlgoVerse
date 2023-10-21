@@ -1,11 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import SideBar from "./components/SideBar";
+import SearchBar from "./components/SearchBar";
+import Home from "./components/pages/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <>
+      <Router>
+        <SearchBar />
+        <Routes>
+          <Route path="/home" exact Component={Home} />
+        </Routes>
+        <SideBar />
+      </Router>
+    </>
   );
 }
 

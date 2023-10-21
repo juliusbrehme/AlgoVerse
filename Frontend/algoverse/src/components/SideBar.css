@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+}
+
+.side-bar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #334a64;
+  overflow-x: hidden;
+  padding-top: 50px;
+}
+
+.side-bar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.side-bar a:hover {
+  color: #f1f1f1;
+}
