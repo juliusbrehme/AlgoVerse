@@ -13,6 +13,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 /**
  * Test class to test if the API is working.
  */
+@SuppressWarnings("unused")
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class ApiApplicationTests {
 
@@ -32,11 +33,9 @@ class ApiApplicationTests {
 
   /**
    * Tests if a get request can be made for path finding and if a response is generated.
-   *
-   * @throws Exception Exception
    */
   @Test
-  public void pathFindingTest() throws Exception {
+  public void pathFindingTest() {
     String result = restTemplate.getForObject("http://localhost:" + port
             + "/pathfinding/findpath?startpoint=0,0&endpoint=4,4&size=5,5&strategy=DIJKSTRA",
         String.class);
@@ -46,11 +45,9 @@ class ApiApplicationTests {
 
   /**
    * Tests if a get request can be made for creating random nodes and if a response is generated.
-   *
-   * @throws Exception Exception
    */
   @Test
-  public void createRandomNodeTest() throws Exception {
+  public void createRandomNodeTest() {
     String result = restTemplate.getForObject("http://localhost:" + port
         + "/pathfinding/random-nodes?size=2,1", String.class);
 
@@ -59,11 +56,9 @@ class ApiApplicationTests {
 
   /**
    * Tests if a get request can be made for sorting and if a response is generated.
-   *
-   * @throws Exception Exception
    */
   @Test
-  public void sortTest() throws Exception {
+  public void sortTest() {
     String result = restTemplate.getForObject("http://localhost:" + port
         + "/sorting/sort?toSort=3,2,1&strategy=selectionsort", String.class);
 
@@ -73,11 +68,9 @@ class ApiApplicationTests {
 
   /**
    * Tests if a get request can be made for creating a random array and if a response is generated.
-   *
-   * @throws Exception Exception
    */
   @Test
-  public void createRandomNumbersTest() throws Exception {
+  public void createRandomNumbersTest() {
     String result = restTemplate.getForObject("http://localhost:" + port
             + "/sorting/random-numbers?size=10", String.class);
 

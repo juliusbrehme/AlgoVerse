@@ -16,6 +16,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 /**
  * Class to test the api get request.
  */
+@SuppressWarnings("unused")
 @WebMvcTest(controllers = PathFindingController.class)
 public class PathFindingControllerTest {
 

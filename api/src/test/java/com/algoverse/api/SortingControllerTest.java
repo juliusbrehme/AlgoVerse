@@ -16,6 +16,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 /**
  * Test the calls to the sorting controller.
  */
+@SuppressWarnings("unused")
 @WebMvcTest(controllers = SortingController.class)
 public class SortingControllerTest {
 
