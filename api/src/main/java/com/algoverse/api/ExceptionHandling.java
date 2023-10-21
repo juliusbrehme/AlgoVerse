@@ -18,6 +18,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class ExceptionHandling extends ResponseEntityExceptionHandler {
 
+  /**
+   * Method to create the error message.
+   *
+   * @param ex The exception that is thrown
+   * @return Return the ResponseEntity
+   */
   @ResponseBody
   @ExceptionHandler(WrongCoordinateInputException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -29,6 +35,12 @@ public class ExceptionHandling extends ResponseEntityExceptionHandler {
     return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
   }
 
+  /**
+   * Method to create the error message.
+   *
+   * @param ex The exception that is thrown
+   * @return Return the ResponseEntity
+   */
   @ResponseBody
   @ExceptionHandler(WrongWallInputException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -40,6 +52,12 @@ public class ExceptionHandling extends ResponseEntityExceptionHandler {
     return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
   }
 
+  /**
+   * Method to create the error message.
+   *
+   * @param ex The exception that is thrown
+   * @return Return the ResponseEntity
+   */
   @ResponseBody
   @ExceptionHandler(WrongInputOfBoardSizeAndPoints.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -51,10 +69,33 @@ public class ExceptionHandling extends ResponseEntityExceptionHandler {
     return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
   }
 
+  /**
+   * Method to create the error message.
+   *
+   * @param ex The exception that is thrown
+   * @return Return the ResponseEntity
+   */
   @ResponseBody
   @ExceptionHandler(WrongInputOfBoardSizeAndWalls.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ResponseEntity<Object> wrongInputOfBoardAndWalls(WrongInputOfBoardSizeAndWalls ex) {
+    Map<String, Object> map = new HashMap<>();
+    map.put("timestamp", LocalDateTime.now());
+    map.put("message", ex.getMessage());
+    map.put("status", HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
+  }
+
+  /**
+   * Method to create the error message.
+   *
+   * @param ex The exception that is thrown
+   * @return Return the ResponseEntity
+   */
+  @ResponseBody
+  @ExceptionHandler(IllegalBoundForBoardSize.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public ResponseEntity<Object> wrongInputOfBoardSize(IllegalBoundForBoardSize ex) {
     Map<String, Object> map = new HashMap<>();
     map.put("timestamp", LocalDateTime.now());
     map.put("message", ex.getMessage());
@@ -110,4 +151,15 @@ public class ExceptionHandling extends ResponseEntityExceptionHandler {
     }
   }
 
+  /**
+   * Exception for handling wrong input for the board size.
+   */
+  public static class IllegalBoundForBoardSize extends IllegalArgumentException {
+    /**
+     * The constructor.
+     */
+    public IllegalBoundForBoardSize() {
+      super("Size of the board must be at least 1x2 or 2x1.");
+    }
+  }
 }
