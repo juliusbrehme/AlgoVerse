@@ -69,7 +69,7 @@ the size of the board.
 ##### Example request
 The request:
 ```
-localhost:8080/pathfinding/random/nodes?size=10,10
+localhost:8080/pathfinding/random-nodes?size=10,10
 ```
 will return the following `[{"x":6,"y":4},{"x":6,"y":0}]`, with the integers being randomized.
 
@@ -112,7 +112,7 @@ generated.
 ##### Example request
 The request:
 ```
-http://localhost:8080/sorting/random/numbers?size=5
+http://localhost:8080/sorting/random-numbers?size=5
 ```
 will return the following `[43,4,49,15,46]`, with the integers being randomized.
 
