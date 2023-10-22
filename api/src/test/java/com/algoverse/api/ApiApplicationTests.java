@@ -72,7 +72,7 @@ class ApiApplicationTests {
   @Test
   public void createRandomNumbersTest() {
     String result = restTemplate.getForObject("http://localhost:" + port
-            + "/sorting/random-numbers?size=10", String.class);
+        + "/sorting/random-numbers?size=10", String.class);
 
     assertThat(result).isNotEmpty();
   }
