@@ -10,6 +10,7 @@ function App() {
       <Router>
         <SearchBar />
         <Routes>
+          <Route path="/" exact Component={Home} />
           <Route path="/home" exact Component={Home} />
         </Routes>
         <SideBar />
