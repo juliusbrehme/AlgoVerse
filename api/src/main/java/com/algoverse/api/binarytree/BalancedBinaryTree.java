@@ -210,6 +210,7 @@ public class BalancedBinaryTree {
   /**
    * The strategies for searching.
    */
+  @SuppressWarnings("unused")
   public enum Strategy {
     BFS, DFS
   }
