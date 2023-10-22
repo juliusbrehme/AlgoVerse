@@ -148,7 +148,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install --save-dev @babel/plugin-proposal-private-property-in-object
+          npm install
         working-directory: ${{env.working-directory }}
 
       - name: build
