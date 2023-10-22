@@ -1,3 +1,6 @@
+# What to do in order to get the project to work
+Run npm install command in terminal once you are located in the root of the frontend part of the project. This will install all dependencies required for the project to work in any computer.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
