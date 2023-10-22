@@ -7,7 +7,7 @@ import com.google.common.collect.ImmutableList;
 import org.springframework.stereotype.Service;
 
 /**
- * The Service to controll the path finding.
+ * The Service to control the path finding.
  */
 @Service
 public class PathFindingService {
