@@ -2,8 +2,8 @@ package com.algoverse.api.binarytree;
 
 import com.google.common.collect.ImmutableList;
 import jakarta.annotation.Nullable;
+import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -15,6 +15,10 @@ public class BalancedBinaryTree {
 
   private Node root;
 
+
+  private BalancedBinaryTree() {
+    this.root = null;
+  }
 
   public static BalancedBinaryTree createBinaryTree(int size) {
     BalancedBinaryTree tree = new BalancedBinaryTree();
@@ -30,10 +34,6 @@ public class BalancedBinaryTree {
       binTree.addNode(tree.get(i));
     }
     return binTree;
-  }
-
-  private BalancedBinaryTree() {
-    this.root = null;
   }
 
   public void addNode(int value) {
@@ -133,26 +133,40 @@ public class BalancedBinaryTree {
   }
 
   private ImmutableList<Integer> dfs(int value) {
-    ArrayList<Integer> visitedNodes = new ArrayList<>();
-    return ImmutableList.copyOf(dfsRecursive(visitedNodes, root, value, 0));
+    List<Integer> visitedNodes = new ArrayList<>();
+
+    if (root.getValue() == value) {
+      return ImmutableList.of(0);
+    }
+
+    List<AbstractMap.SimpleEntry<Node, Integer>> nodes = new ArrayList<>();
+    nodes.add(new AbstractMap.SimpleEntry<Node, Integer>(root, 0));
+
+    while (!nodes.isEmpty()) {
+
+      AbstractMap.SimpleEntry<Node, Integer> nodePair = nodes.remove(nodes.size() - 1);
+      visitedNodes.add(nodePair.getValue());
+
+      if (nodePair.getKey().getValue() == value) {
+        return ImmutableList.copyOf(visitedNodes);
+      }
+      if (nodePair.getKey().getRightNode() != null) {
+        nodes.add(new AbstractMap.SimpleEntry<>(nodePair.getKey().getRightNode(),
+            2 * nodePair.getValue() + 2));
+      }
+      if (nodePair.getKey().getLeftNode() != null) {
+        nodes.add(new AbstractMap.SimpleEntry<>(nodePair.getKey().getLeftNode(),
+            2 * nodePair.getValue() + 1));
+      }
+    }
+    return ImmutableList.copyOf(visitedNodes);
   }
 
-  private List<Integer> dfsRecursive(ArrayList<Integer> visitedNodes, Node node, int value, int index) {
-    if (node == null) {
-      return visitedNodes;
-    }
-    if (node.getValue() == value) {
-      visitedNodes.add(index);
-      System.out.println("Found");
-      return visitedNodes;
-    }
-    visitedNodes.add(index);
-    dfsRecursive(visitedNodes, node.getLeftNode(), value, 2*index+1);
-    dfsRecursive(visitedNodes, node.getRightNode(), value, 2*index+2);
-    return visitedNodes;
+  public enum Strategy {
+    BFS, DFS
   }
 
-
+  @SuppressWarnings("unused")
   public static class Node {
     private int value;
     @Nullable
@@ -171,28 +185,24 @@ public class BalancedBinaryTree {
       return this.value;
     }
 
-    public Node getLeftNode() {
-      return this.leftNode;
-    }
-
-    public Node getRightNode() {
-      return this.rightNode;
-    }
-
     public void setValue(int value) {
       this.value = value;
+    }
+
+    public Node getLeftNode() {
+      return this.leftNode;
     }
 
     public void setLeftNode(@Nullable Node leftNode) {
       this.leftNode = leftNode;
     }
 
+    public Node getRightNode() {
+      return this.rightNode;
+    }
+
     public void setRightNode(@Nullable Node rightNode) {
       this.rightNode = rightNode;
     }
-  }
-
-  public enum Strategy {
-    BFS, DFS
   }
 }
