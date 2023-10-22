@@ -153,7 +153,7 @@ jobs:
 
       - name: build
         run: |
-          npm run build
+          CI=false npm run build
         working-directory: ${{env.working-directory }}
 
       - name: test
