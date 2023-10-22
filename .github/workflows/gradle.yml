@@ -148,7 +148,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          nmp install
+          npm install
 
       - name: build
         run: |
