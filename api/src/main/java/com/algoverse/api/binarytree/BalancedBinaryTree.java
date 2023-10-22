@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Random;
 
+/**
+ * The class for a binary tree, where elements are inserted from right to left.
+ */
 public class BalancedBinaryTree {
 
   private static final Random RAND = new Random();
@@ -20,6 +23,12 @@ public class BalancedBinaryTree {
     this.root = null;
   }
 
+  /**
+   * Static constructor to create a tree with a number of random elements.
+   *
+   * @param size The number of elements in the tree
+   * @return Return a BalancedBinaryTree
+   */
   public static BalancedBinaryTree createBinaryTree(int size) {
     BalancedBinaryTree tree = new BalancedBinaryTree();
     for (int i = 0; i < size; i++) {
@@ -28,6 +37,13 @@ public class BalancedBinaryTree {
     return tree;
   }
 
+  /**
+   * Static constructor to create a tree from a list of integers. The values will be inserted from
+   * left to right.
+   *
+   * @param tree A list of integers.
+   * @return Return a BalancedBinaryTree
+   */
   public static BalancedBinaryTree createBinaryTree(List<Integer> tree) {
     BalancedBinaryTree binTree = new BalancedBinaryTree();
     for (int i = 0; i < tree.size(); i++) {
@@ -36,9 +52,14 @@ public class BalancedBinaryTree {
     return binTree;
   }
 
+  /**
+   * The method to add values into the tree.
+   *
+   * @param value The added value
+   */
   public void addNode(int value) {
     if (root == null) {
-      root = new Node(null, value, null);
+      root = new Node(value);
       return;
     }
 
@@ -50,19 +71,24 @@ public class BalancedBinaryTree {
       if (node.getLeftNode() != null) {
         nodes.add(node.getLeftNode());
       } else {
-        node.setLeftNode(new Node(null, value, null));
+        node.setLeftNode(new Node(value));
         return;
       }
       if (node.getRightNode() != null) {
         nodes.add(node.getRightNode());
       } else {
-        node.setRightNode((new Node(null, value, null)));
+        node.setRightNode((new Node(value)));
         return;
       }
     }
 
   }
 
+  /**
+   * Convert a tree back to a list. BFS is used.
+   *
+   * @return A list of values representing the tree
+   */
   public ImmutableList<Integer> traverseToList() {
 
     List<Integer> tree = new ArrayList<>();
@@ -91,6 +117,13 @@ public class BalancedBinaryTree {
     return ImmutableList.copyOf(tree);
   }
 
+  /**
+   * The search method to find a value in the tree.
+   *
+   * @param strategy The strategy that is being used
+   * @param value    The value to search for
+   * @return A list of the indexes of the elements that were visited
+   */
   public ImmutableList<Integer> search(Strategy strategy, int value) {
     if (strategy.equals(Strategy.BFS)) {
       return bfs(value);
@@ -99,6 +132,12 @@ public class BalancedBinaryTree {
     }
   }
 
+  /**
+   * The BFS search method.
+   *
+   * @param value The value to search for
+   * @return A list of the indexes of the elements that were visited
+   */
   private ImmutableList<Integer> bfs(int value) {
     List<Integer> visitedNodes = new ArrayList<>();
 
@@ -132,6 +171,12 @@ public class BalancedBinaryTree {
     return ImmutableList.copyOf(visitedNodes);
   }
 
+  /**
+   * The DFS search method.
+   *
+   * @param value The value to search for
+   * @return A list of the indexes of the elements that were visited
+   */
   private ImmutableList<Integer> dfs(int value) {
     List<Integer> visitedNodes = new ArrayList<>();
 
@@ -140,7 +185,7 @@ public class BalancedBinaryTree {
     }
 
     List<AbstractMap.SimpleEntry<Node, Integer>> nodes = new ArrayList<>();
-    nodes.add(new AbstractMap.SimpleEntry<Node, Integer>(root, 0));
+    nodes.add(new AbstractMap.SimpleEntry<>(root, 0));
 
     while (!nodes.isEmpty()) {
 
@@ -162,12 +207,18 @@ public class BalancedBinaryTree {
     return ImmutableList.copyOf(visitedNodes);
   }
 
+  /**
+   * The strategies for searching.
+   */
   public enum Strategy {
     BFS, DFS
   }
 
+  /**
+   * The Node of a tree.
+   */
   @SuppressWarnings("unused")
-  public static class Node {
+  private static class Node {
     private int value;
     @Nullable
     private Node leftNode;
@@ -175,32 +226,68 @@ public class BalancedBinaryTree {
     @Nullable
     private Node rightNode;
 
-    public Node(Node leftNode, int value, Node rightNode) {
+    /**
+     * Constructor of a node with left and right node being null.
+     *
+     * @param value The value
+     */
+    public Node(int value) {
       this.value = value;
-      this.leftNode = leftNode;
-      this.rightNode = rightNode;
+      this.leftNode = null;
+      this.rightNode = null;
     }
 
+    /**
+     * Getter method.
+     *
+     * @return Value
+     */
     public int getValue() {
       return this.value;
     }
 
+    /**
+     * Setter method.
+     *
+     * @param value The value to set
+     */
     public void setValue(int value) {
       this.value = value;
     }
 
+
+    /**
+     * Getter method.
+     *
+     * @return Left node
+     */
     public Node getLeftNode() {
       return this.leftNode;
     }
 
+    /**
+     * Setter method.
+     *
+     * @param leftNode The node to set the left node
+     */
     public void setLeftNode(@Nullable Node leftNode) {
       this.leftNode = leftNode;
     }
 
+    /**
+     * Getter method.
+     *
+     * @return Right node
+     */
     public Node getRightNode() {
       return this.rightNode;
     }
 
+    /**
+     * Setter method.
+     *
+     * @param rightNode The node to set the right node
+     */
     public void setRightNode(@Nullable Node rightNode) {
       this.rightNode = rightNode;
     }
