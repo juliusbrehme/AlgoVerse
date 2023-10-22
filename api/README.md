@@ -116,4 +116,16 @@ http://localhost:8080/sorting/random-numbers?size=5
 ```
 will return the following `[43,4,49,15,46]`, with the integers being randomized.
 
+## TreeSearch:
+Idee ist nur balancierte Bäume zu haben und die Bäume von links nach rechts zu 
+füllen, damit man es in einer Liste darstellen kann. Hoffentlich einfacher für frontend. Die idee bei search ist es 
+dann eine Liste zurückzugeben, die in der Reihenfolge die indezies der elemente in der Liste zurück gibt.
+Bsp:
+Wir haben folgenden Baum  3            
+                        /   \
+                       5     6      -> also folgende List [3, 5, 6, 2, 4]
+                      / \   / \
+                     2   4
 
+Damit wenn wir nun die 4 suchen und das ganze in BFS machen, geben wir folgendes zurück [0, 1, 2, 3, 4]. Also die 
+Indizes der nacheinander besuchten Elemente. Bei DFS würde das ganze dann so aussehen: [0, 1, 3, 4].
