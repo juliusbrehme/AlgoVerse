@@ -22,13 +22,15 @@ public class BinaryTreeController {
 
   @GetMapping("treesearch/search")
   public ImmutableList<Integer> searchTree(@RequestParam(value = "tree") List<Integer> tree,
-                                           @RequestParam(value = "element") int element) {
-    return searchTreeService.searchTree(tree, element);
+                                           @RequestParam(value = "element") int element,
+                                           @RequestParam(value = "strategy")
+                                           BalancedBinaryTree.Strategy strategy) {
+    return searchTreeService.searchTree(tree, element, strategy);
   }
 
   @GetMapping("treesearch/create-tree")
-  public ImmutableList<Integer> createSearchTree(@RequestParam(value = "size") int elements) {
-    return searchTreeService.createSearchTree(element);
+  public ImmutableList<Integer> createSearchTree(@RequestParam(value = "size") int size) {
+    return searchTreeService.createSearchTree(size);
   }
 
 
