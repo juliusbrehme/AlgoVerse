@@ -3,8 +3,11 @@
 }
 
 .side-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
-  width: 200px;
+  width: 250px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -12,16 +15,74 @@
   background-color: #334a64;
   overflow-x: hidden;
   padding-top: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .side-bar a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
-  display: block;
+  color: #ffffff;
 }
 
 .side-bar a:hover {
   color: #f1f1f1;
+}
+
+.algo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.algo-nav{
+  width: 250px;
+  
+}
+
+.algo-list{
+  list-style-type: none;
+  padding: 0;
+}
+
+.algo-items{
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.algo-list li:hover{
+  background-color: rgb(19, 46, 70);
+}
+
+.arrow-container{
+  display: flex;
+  justify-content: end;
+}
+
+.algo-side-icon{
+  align-self: end;
+}
+
+.algo-side-icon-tree{
+  align-self: center;
+}
+
+.sort-icon{
+  align-self: end;
+}
+
+.path-icon{
+  align-self: end;
+}
+
+.tree-icon{
+  align-self: center;
+}
+
+.arrow-container{
+  align-self: flex-end;
 }
