@@ -55,7 +55,7 @@ function SideBar() {
                   <img 
                   src="images/TreeSearch-img.png"
                   alt="treesearch-icon"
-                  height="30px"
+                  height="40px"
                   width="30px"
                   className="tree-icon" />
                 </div>

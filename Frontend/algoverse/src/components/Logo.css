@@ -1,5 +1,7 @@
 .HomeLogo{
-  width: 160px;
-  height: 90px;
+  width: 176px;
+  height: 99px;
   border-radius: 20rem; 
+  background-color: #1A1A5B;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
