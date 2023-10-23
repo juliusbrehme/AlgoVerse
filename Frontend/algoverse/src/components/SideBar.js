@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom';
 
 function SideBar() {  
 
+  const openDropDown = () => {
+  }
   return (
     <>
     <div className="container">
-      <div className="side-bar">
+      <div className="side-bar" >
         <Logo />
         <div className="algo-container">
           <nav className="algo-nav">
             <ul className="algo-list">
-              <li className="algo-items">
+              <li className="algo-items" onClick={openDropDown()}>
               <div className="algo-side-icon">
                   <img 
                   src="images/PathFinding-img.png"
