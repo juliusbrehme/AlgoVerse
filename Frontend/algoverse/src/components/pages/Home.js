@@ -5,6 +5,7 @@ import React from "react";
 
 function Home() {
   return (
+    <>
     <div className="home">
       <div className="grid">
         <div className="sorting">
@@ -33,7 +34,8 @@ function Home() {
         </div>
       </div>
     </div>
-  );
+    </>
+    );
 }
 
 export default Home;
