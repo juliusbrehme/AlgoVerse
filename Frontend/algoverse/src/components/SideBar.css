@@ -4,18 +4,16 @@
 
 .side-bar {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 250px;
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
   background-color: #334a64;
-  overflow-x: hidden;
-  padding-top: 50px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 .side-bar a {
@@ -23,102 +21,99 @@
   text-decoration: none;
   font-size: 20px;
   color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .side-bar a:hover {
   color: #f1f1f1;
 }
 
-.algo-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.algo-nav{
-  width: 250px;
-  
-}
-
-.algo-list{
+.algo-list {
   list-style-type: none;
   padding: 0;
+  width: 100%;
 }
 
-.algo-items{
+.algo-items {
   padding: 2rem;
   color: white;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
-.algo-list li:hover{
+.algo-items:hover {
   background-color: rgb(19, 46, 70);
 }
 
-.arrow-container{
+.arrow-container {
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  align-items: center;
+  color: yellow;
 }
 
-.algo-side-icon{
-  align-self: end;
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
 }
 
-.algo-side-icon-tree{
-  align-self: center;
+.arrow:hover {
+  border-color: yellow;
 }
 
-.sort-icon{
-  align-self: end;
+.down {
+  transform: rotate(45deg);
 }
 
-.path-icon{
-  align-self: end;
+.algo-side-icon img {
+  height: 30px;
+  width: 30px;
 }
 
-.tree-icon{
-  align-self: center;
+.algo-side-icon.tree img {
+  height: 40px;
+  width: 30px;
+}
+
+.menu-btn {
+  position: absolute;
+  right: -30px; /* Die Hälfte der Breite des Buttons, um ihn mittig an der Kante zu positionieren. Sie können diesen Wert anpassen. */
+  top: 20%;
+  transform: translateY(-50%);
+  background-color: rgb(42, 134, 141);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+}
+
+.menu-btn:hover {
+  background-color: #332851;
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-line {
+  width: 20px;
+  height: 2px;
+  background-color: white;
 }
 
 
-.arrow-container{
-  align-self: flex-end;
-}
-
-.expand-arrow{
-
-}
-
-.hover15 expand-arrow:hover::before {
-	-webkit-animation: circle .75s;
-	animation: circle .75s;
-}
-@-webkit-keyframes circle {
-	0% {
-		opacity: 1;
-	}
-	40% {
-		opacity: 1;
-	}
-	100% {
-		width: 200%;
-		height: 200%;
-		opacity: 0;
-	}
-}
-@keyframes circle {
-	0% {
-		opacity: 1;
-	}
-	40% {
-		opacity: 1;
-	}
-	100% {
-		width: 200%;
-		height: 200%;
-		opacity: 0;
-	}
+.custom-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* dunklerer Schatten beim Überfahren */
 }
