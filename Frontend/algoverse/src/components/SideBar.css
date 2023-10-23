@@ -13,9 +13,12 @@
   top: 0;
   left: 0;
   background-color: #334a64;
+  transition: transform 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
-
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
 .side-bar a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
@@ -40,12 +43,20 @@
   padding: 2rem;
   color: white;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  border-left: 8px solid transparent;
+
+  /* Hinzufügen eines Übergangs für einen weichen Hover-Effekt */
+  transition: background-color 0.3s ease, border-left-color 0.3s ease;
 }
 
 .algo-items:hover {
-  background-color: rgb(19, 46, 70);
+  background-color: #152239; 
+
+  /* Breitere und gedämpftere gelbe linke Leiste */
+  border-left: 8px solid #E8C252; 
 }
 
 .arrow-container {
@@ -67,6 +78,10 @@
 
 .down {
   transform: rotate(45deg);
+}
+.up {
+  margin-top: 10px;
+  transform: rotate(225deg);
 }
 
 .algo-side-icon img {
@@ -116,4 +131,53 @@
 
 .custom-btn:hover {
   background-color: rgba(0, 0, 0, 0.2); /* dunklerer Schatten beim Überfahren */
+}
+
+.accordion-content.open {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
+
+.accordion-content {
+  display: none;
+  width: 100%;
+  padding-left: 0;
+  position: relative; /* Damit sich die vertikale Linie relativ zum Akkordeon-Inhalt positioniert */
+}
+
+.accordion-content ul li {
+  margin: 1em; /* Dies fügt einen Abstand von 1,5 Zeilenhöhen zwischen den Listenelementen hinzu. */
+}
+
+.accordion-content ul li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.accordion-content ul li a:hover {
+  color: yellow;
+}
+
+.accordion-content ul li:hover {
+  color: yellow;
+}
+
+.accordion-list{
+  list-style-type: none;
+}
+
+.vertical-line {
+  width: 3px; /* Breite der Linie */
+  height: calc(100% - 20px); /* Die Höhe wird angepasst, damit sie nicht den gesamten Bildschirm überdeckt. Sie können den Wert "20px" ändern, um die endgültige Höhe zu steuern. */
+  background-color: white;
+  position: absolute;
+  left: 10%; /* Sie können diesen Wert ändern, um die Position der Linie zu steuern */
+  top: 10px; /* Ein wenig Abstand von oben */
+}
+
+.change-flex-dir{
+  display: flex;
+  flex-direction: row;
 }
