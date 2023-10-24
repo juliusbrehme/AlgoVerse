@@ -33,4 +33,35 @@ input[type="text"] {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 3px;
+  margin-left: 370px;
+  margin-bottom: 100px;
+}
+
+.sorting {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.treeSearch {
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.pathFinding {
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 60px;
+}
+
+.text {
+  margin-left: 50px;
+  color: white;
+  font-size: xx-large;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.image {
+  margin-left: 15px;
 }
