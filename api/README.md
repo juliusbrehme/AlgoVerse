@@ -22,7 +22,7 @@
 
 ## Installation
 To use the project gradle needs to be installed. Follow the [Installation Guide](https://gradle.org/install/) of the 
-official gradle website.
+official gradle website. The API is written with the [Spring framework](https://spring.io/) and Java 17 is used.
 
 ## Getting Started
 To start the bootstrap application run ``` gradle bootRun``` or ``` ./gradlew bootRun```. 
