@@ -2,34 +2,48 @@
 import "../../App.css";
 import "../Home.css";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <div className="home">
       <div className="grid">
         <div className="sorting">
-          <img
-            src="images/Sorting-img.png"
-            alt="description of image"
-            width="200"
-            height="200"
-          />
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <img
+              className="image"
+              src="images/Sorting-img.png"
+              alt="description of image"
+              width="250"
+              height="250"
+            />
+            <p className="text">Sorting</p>
+          </Link>
         </div>
         <div className="treeSearch">
-          <img
-            src="images/TreeSearch-img.png"
-            alt="description of image"
-            width="200"
-            height="200"
-          />
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <img
+              className="image"
+              src="images/TreeSearch-img.png"
+              alt="description of image"
+              width="250"
+              height="250"
+            />
+            <p className="text">Tree Search</p>
+          </Link>
         </div>
+
         <div className="pathFinding">
-          <img
-            src="images/PathFinding-img.png"
-            alt="description of image"
-            width="200"
-            height="200"
-          />
+          <Link to="/home" style={{ textDecoration: "none" }}>
+            <img
+              className="image"
+              src="images/PathFinding-img.png"
+              alt="description of image"
+              width="250"
+              height="250"
+            />
+            <p className="text">Path Finding</p>
+          </Link>
         </div>
       </div>
     </div>
