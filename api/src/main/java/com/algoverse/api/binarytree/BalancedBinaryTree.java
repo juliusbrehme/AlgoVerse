@@ -118,7 +118,8 @@ public class BalancedBinaryTree {
   }
 
   /**
-   * The search method to find a value in the tree.
+   * The search method to find a value in the tree. If there are more occurrences it will only find
+   * the first occurrence.
    *
    * @param strategy The strategy that is being used
    * @param value    The value to search for
