@@ -78,12 +78,12 @@ class ApiApplicationTests {
   @Test
   public void createRandomNumbersTest() {
     String result = restTemplate.getForObject("http://localhost:" + port
-        + "/sorting/random-numberss?size=10", String.class);
+        + "/sorting/random-numbers?size=10", String.class);
 
     assertThat(result).isNotEmpty();
 
     result = restTemplate.getForObject("http://localhost:" + port
-        + "/sorting/random-numberss?size=0", String.class);
+        + "/sorting/random-numbers?size=0", String.class);
 
     assertThat(result).isEqualTo("[]");
   }
