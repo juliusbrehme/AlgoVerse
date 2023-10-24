@@ -1,6 +1,6 @@
 package com.algoverse.api;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 
 import com.algoverse.api.sorting.SortingFactory;
 import com.google.common.collect.ImmutableList;
@@ -33,11 +33,10 @@ public class SortingTests {
     Collections.sort(expected);
     if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
       ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
-      assertEquals(sortArray,
-          actual.get(actual.size() - 2));
+      assertThat(actual.get(actual.size() - 2)).isEqualTo(sortArray);
     } else {
-      assertEquals(expected,
-          Iterables.getLast(factory.sort(sortArray)));
+      assertThat(Iterables.getLast(factory.sort(sortArray)))
+          .isEqualTo(expected);
     }
   }
 
@@ -55,11 +54,9 @@ public class SortingTests {
     Collections.sort(expected);
     if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
       ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
-      assertEquals(sortArray,
-          actual.get(actual.size() - 2));
+      assertThat(actual.get(actual.size() - 2)).isEqualTo(sortArray);
     } else {
-      assertEquals(expected,
-          Iterables.getLast(factory.sort(sortArray)));
+      assertThat(Iterables.getLast(factory.sort(sortArray))).isEqualTo(expected);
     }
   }
 
@@ -77,11 +74,9 @@ public class SortingTests {
     Collections.sort(expected);
     if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
       ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
-      assertEquals(sortArray,
-          actual.get(actual.size() - 2));
+      assertThat(actual.get(actual.size() - 2)).isEqualTo(sortArray);
     } else {
-      assertEquals(expected,
-          Iterables.getLast(factory.sort(sortArray)));
+      assertThat(Iterables.getLast(factory.sort(sortArray))).isEqualTo(expected);
     }
   }
 
@@ -99,11 +94,9 @@ public class SortingTests {
     Collections.sort(expected);
     if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
       ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
-      assertEquals(sortArray,
-          actual.get(actual.size() - 2));
+      assertThat(actual.get(actual.size() - 2)).isEqualTo(sortArray);
     } else {
-      assertEquals(expected,
-          Iterables.getLast(factory.sort(sortArray)));
+      assertThat(Iterables.getLast(factory.sort(sortArray))).isEqualTo(expected);
     }
   }
 
@@ -121,11 +114,9 @@ public class SortingTests {
     Collections.sort(expected);
     if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
       ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
-      assertEquals(sortArray,
-          actual.get(actual.size() - 2));
+      assertThat(actual.get(actual.size() - 2)).isEqualTo(sortArray);
     } else {
-      assertEquals(expected,
-          Iterables.getLast(factory.sort(sortArray)));
+      assertThat(Iterables.getLast(factory.sort(sortArray))).isEqualTo(expected);
     }
   }
 
@@ -143,11 +134,9 @@ public class SortingTests {
     Collections.sort(expected);
     if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
       ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
-      assertEquals(expected,
-          actual.get(actual.size() - 2));
+      assertThat(actual.get(actual.size() - 2)).isEqualTo(sortArray);
     } else {
-      assertEquals(expected,
-          Iterables.getLast(factory.sort(sortArray)));
+      assertThat(Iterables.getLast(factory.sort(sortArray))).isEqualTo(expected);
     }
   }
 
@@ -165,11 +154,9 @@ public class SortingTests {
     Collections.sort(expected);
     if (strategies.equals(SortingFactory.Strategies.QUICKSORT)) {
       ImmutableList<ImmutableList<Integer>> actual = factory.sort(sortArray);
-      assertEquals(expected,
-          actual.get(actual.size() - 2));
+      assertThat(actual.get(actual.size() - 2)).isEqualTo(sortArray);
     } else {
-      assertEquals(expected,
-          Iterables.getLast(factory.sort(sortArray)));
+      assertThat(Iterables.getLast(factory.sort(sortArray))).isEqualTo(expected);
     }
   }
 }
