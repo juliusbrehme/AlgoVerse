@@ -14,6 +14,11 @@
       - [Example request](#example-request-2)
     - [Random numbers request](#random-numbers-request)
       - [Example request](#example-request-3)
+  - [Tree search](#tree-search)
+    - [Search request](#search-request)
+      - [Example request](#example-request-4)
+    - [Create Tree](#create-tree)
+      - [Example request](#example-request-5)
 
 ## Installation
 To use the project gradle needs to be installed. Follow the [Installation Guide](https://gradle.org/install/) of the 
@@ -116,7 +121,59 @@ http://localhost:8080/sorting/random-numbers?size=5
 ```
 will return the following `[43,4,49,15,46]`, with the integers being randomized.
 
-## TreeSearch:
+### Tree search
+The main part of the tree search is to show how dfs and bfs work in a tree. For convenience, we only work with binary 
+balanced trees where elements are inserted from left to right (like a heap). Therefore, it is possible to represent 
+a tree as a list with i being the parent, 2*i+1 begin the left node and 2*i+2 being the right node.
+Example for a tree representing as a list:
+```
+          3             
+        /   \ 
+       5     6      -> the list representation is as follows: [3, 5, 6, 2, 4]
+      / \   / \
+     2   4
+```
+
+The user can give a tree as a list and search for a value or make a request to create a random tree with a given size 
+parameter.
+
+#### Search request
+The request is made with a URL `.../treesearch/search?...` and the following parameter:
+```
+tree: int[] -> input array of integers, which equal a tree
+element: int -> the value to search in the tree
+strategy: BFS, DFS (case-insensetive) -> the strategy used to search for the element
+```
+The API will return an array of integers. The integers are indexes of the visited elements. So the given list as a tree
+should be saved by the user, because the API returns a list of indexes indicating in which sequence the value were 
+visited. If there is not a match and the element is not in the tree, the returned list will have the same lenght and the
+last element will not be the same as the input element to find. Therefore, the user should check for the last element,
+if it is actually not found or just the last looked at element.
+
+##### Example request:
+The request:
+```
+http://localhost:8080/treesearch/search?tree=10,9,30,4,5,6&element=4&strategy=dfs
+```
+will return the `[0, 1, 3]`. That means, the first visited element was the 10, the second the 9 and the last one the 4.
+The element was found, because the list is smaller than the given one. 
+
+#### Create Tree:
+The request is made with the URL `.../treesearch/create-tree?...` and the following parameter:
+```
+size: int -> How many elements the tree should contain
+```
+The API will return an array of integers representing a tree with the parent on index i, the left node on index 2*i+1 
+and the right node on the index 2*i+2.
+
+##### Example request:
+The request:
+```
+http://localhost:8080/treesearch/search?size=10
+```
+will return a list containing 10 elements and represent a tree.
+
+
 Idee ist nur balancierte Bäume zu haben und die Bäume von links nach rechts zu 
 füllen, damit man es in einer Liste darstellen kann. Hoffentlich einfacher für frontend. Die idee bei search ist es 
 dann eine Liste zurückzugeben, die in der Reihenfolge die indezies der elemente in der Liste zurück gibt.
