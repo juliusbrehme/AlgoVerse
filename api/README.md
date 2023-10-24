@@ -124,7 +124,7 @@ will return the following `[43,4,49,15,46]`, with the integers being randomized.
 ### Tree search
 The main part of the tree search is to show how dfs and bfs work in a tree. For convenience, we only work with binary 
 balanced trees where elements are inserted from left to right (like a heap). Therefore, it is possible to represent 
-a tree as a list with i being the parent, 2*i+1 begin the left node and 2*i+2 being the right node.
+a tree as a list with `i being the parent, `2*i+1` begin the left node and `2*i+2` being the right node.
 Example for a tree representing as a list:
 ```
           3             
@@ -163,8 +163,8 @@ The request is made with the URL `.../treesearch/create-tree?...` and the follow
 ```
 size: int -> How many elements the tree should contain
 ```
-The API will return an array of integers representing a tree with the parent on index i, the left node on index 2*i+1 
-and the right node on the index 2*i+2.
+The API will return an array of integers representing a tree with the parent on index `i`, the left node on index `2*i+1` 
+and the right node on the index `2*i+2`.
 
 ##### Example request:
 The request:
@@ -172,17 +172,3 @@ The request:
 http://localhost:8080/treesearch/search?size=10
 ```
 will return a list containing 10 elements and represent a tree.
-
-
-Idee ist nur balancierte Bäume zu haben und die Bäume von links nach rechts zu 
-füllen, damit man es in einer Liste darstellen kann. Hoffentlich einfacher für frontend. Die idee bei search ist es 
-dann eine Liste zurückzugeben, die in der Reihenfolge die indezies der elemente in der Liste zurück gibt.
-Bsp:
-Wir haben folgenden Baum  3            
-                        /   \
-                       5     6      -> also folgende List [3, 5, 6, 2, 4]
-                      / \   / \
-                     2   4
-
-Damit wenn wir nun die 4 suchen und das ganze in BFS machen, geben wir folgendes zurück [0, 1, 2, 3, 4]. Also die 
-Indizes der nacheinander besuchten Elemente. Bei DFS würde das ganze dann so aussehen: [0, 1, 3, 4].
