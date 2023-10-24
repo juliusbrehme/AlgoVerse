@@ -37,6 +37,9 @@ public class BinaryTreeController {
                                            @RequestParam(value = "element") int element,
                                            @RequestParam(value = "strategy")
                                            BalancedBinaryTree.Strategy strategy) {
+    if (tree.isEmpty()) {
+      return ImmutableList.copyOf(tree);
+    }
     return searchTreeService.searchTree(tree, element, strategy);
   }
 
