@@ -26,10 +26,13 @@ public class TreeSearchTest {
    * @return An immutable list used a tree
    */
   public ImmutableList<Integer> randomList() {
-    int size = RAND.nextInt(1, 10);
+    int size = RAND.nextInt(1, 100);
     List<Integer> treeAsList = new ArrayList<>();
     for (int j = 0; j < size; j++) {
       int element = RAND.nextInt(0, 100);
+      while (treeAsList.contains(element)) {
+        element = RAND.nextInt(0, 100);
+      }
       treeAsList.add(element);
     }
     return ImmutableList.copyOf(treeAsList);
@@ -69,8 +72,8 @@ public class TreeSearchTest {
   public void createBinaryTreeFromListTest() {
     for (int i = 0; i < NUMBEER_OF_TESTS; i++) {
       ImmutableList<Integer> treeAsList = randomList();
-      assertThat(treeAsList)
-          .isEqualTo(BalancedBinaryTree.createBinaryTree(treeAsList).traverseToList());
+      assertThat(BalancedBinaryTree.createBinaryTree(treeAsList).traverseToList())
+          .isEqualTo(treeAsList);
     }
   }
 
@@ -94,7 +97,7 @@ public class TreeSearchTest {
       assertThat(treeAsList.get(visitedNode.get(visitedNode.size() - 1)))
           .isEqualTo(treeAsList.get(searchValueIndex));
       // Testing that the first element is the first element
-      assertThat(0).isEqualTo(visitedNode.get(0));
+      assertThat(visitedNode.get(0)).isEqualTo(0);
     }
   }
 
@@ -111,8 +114,8 @@ public class TreeSearchTest {
       tree = BalancedBinaryTree.createBinaryTree(treeAsList);
       ImmutableList<Integer> visitedNode = tree.search(strategy, 200);
 
-      assertThat(200).isNotEqualTo(visitedNode.get(visitedNode.size() - 1));
-      assertThat(treeAsList.size()).isEqualTo(visitedNode.size());
+      assertThat(visitedNode.get(visitedNode.size() - 1)).isNotEqualTo(200);
+      assertThat(visitedNode.size()).isEqualTo(treeAsList.size());
     }
   }
 
@@ -130,7 +133,7 @@ public class TreeSearchTest {
       for (Integer j : visitedNode) {
         actual.add(treeAsList.get(j));
       }
-      assertThat(treeAsList).isEqualTo(actual);
+      assertThat(actual).isEqualTo(treeAsList);
     }
   }
 
