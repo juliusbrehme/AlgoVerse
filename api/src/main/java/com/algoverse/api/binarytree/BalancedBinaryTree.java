@@ -26,7 +26,7 @@ public class BalancedBinaryTree {
   /**
    * Static constructor to create a tree with a number of random elements.
    *
-   * @param size The number of elements in the tree
+   * @param size The number of elements in the tree, if size is smaller 0, return empty tree
    * @return Return a BalancedBinaryTree
    */
   public static BalancedBinaryTree createBinaryTree(int size) {

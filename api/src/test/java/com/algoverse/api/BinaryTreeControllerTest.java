@@ -36,9 +36,9 @@ public class BinaryTreeControllerTest {
   @Test
   public void searchTreeCallTest() throws Exception {
     mockMvc.perform(get("/treesearch/search")
-        .param("tree", "1", "2", "3", "4", "5")
-        .param("element", "6")
-        .param("strategy", "bfs"))
+            .param("tree", "1", "2", "3", "4", "5")
+            .param("element", "6")
+            .param("strategy", "bfs"))
         .andExpect(status().isOk());
   }
 
@@ -63,7 +63,7 @@ public class BinaryTreeControllerTest {
   @Test
   public void createSearchTreeCall() throws Exception {
     mockMvc.perform(get("/treesearch/create-tree")
-        .param("size", "-10"))
+            .param("size", "-10"))
         .andExpect(status().isOk());
 
     mockMvc.perform(get("/treesearch/create-tree")
