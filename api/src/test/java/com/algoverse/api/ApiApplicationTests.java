@@ -64,6 +64,12 @@ class ApiApplicationTests {
 
     String expected = "[1,2,3]";
     assertThat(result).contains(expected);
+
+    result = restTemplate.getForObject("http://localhost:" + port
+        + "/sorting/sort?toSort=&strategy=selectionsort", String.class);
+
+    expected = "[[]]";
+    assertThat(result).contains(expected);
   }
 
   /**
@@ -72,8 +78,39 @@ class ApiApplicationTests {
   @Test
   public void createRandomNumbersTest() {
     String result = restTemplate.getForObject("http://localhost:" + port
-        + "/sorting/random-numbers?size=10", String.class);
+        + "/sorting/random-numberss?size=10", String.class);
 
     assertThat(result).isNotEmpty();
+
+    result = restTemplate.getForObject("http://localhost:" + port
+        + "/sorting/random-numberss?size=0", String.class);
+
+    assertThat(result).isEqualTo("[]");
+  }
+
+  @Test
+  public void createSearchTreeTest() {
+    String result = restTemplate.getForObject("http://localhost:" + port
+        + "/treesearch/create-tree?size=10", String.class);
+
+    assertThat(result).isNotEmpty();
+
+    result = restTemplate.getForObject("http://localhost:" + port
+        + "/treesearch/create-tree?size=0", String.class);
+
+    assertThat(result).isEqualTo("[]");
+  }
+
+  @Test
+  public void searchTreeTest() {
+    String result = restTemplate.getForObject("http://localhost:" + port
+        + "/treesearch/search?tree=1,2,3,4,10&element=10&strategy=bfs", String.class);
+
+    assertThat(result).isEqualTo("[0,1,2,3,4]");
+
+    result = restTemplate.getForObject("http://localhost:" + port
+        + "/treesearch/search?tree=&element=10&strategy=bfs", String.class);
+
+    assertThat(result).isEqualTo("[]");
   }
 }
