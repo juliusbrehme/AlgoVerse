@@ -7,6 +7,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
+      <a
+        className="App-link"
+        href="https://reactjs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Learn React
+      </a>
       <Router>
         <SearchBar />
         <Routes>
