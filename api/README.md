@@ -124,7 +124,7 @@ will return the following `[43,4,49,15,46]`, with the integers being randomized.
 ### Tree search
 The main part of the tree search is to show how dfs and bfs work in a tree. For convenience, we only work with binary 
 balanced trees where elements are inserted from left to right (like a heap). Therefore, it is possible to represent 
-a tree as a list with `i being the parent, `2*i+1` begin the left node and `2*i+2` being the right node.
+a tree as a list with `i` being the parent, `2*i+1` begin the left node and `2*i+2` being the right node.
 Example for a tree representing as a list:
 ```
           3             
