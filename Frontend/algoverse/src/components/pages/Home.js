@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "../../App.css";
-import "../Home.css";
+import "./Home.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -14,8 +14,8 @@ function Home() {
               className="image"
               src="images/Sorting-img.png"
               alt="description of image"
-              width="250"
-              height="250"
+              width="200"
+              height="200"
             />
             <p className="text">Sorting</p>
           </Link>
@@ -26,8 +26,8 @@ function Home() {
               className="image"
               src="images/TreeSearch-img.png"
               alt="description of image"
-              width="250"
-              height="250"
+              width="200"
+              height="220"
             />
             <p className="text">Tree Search</p>
           </Link>
@@ -39,8 +39,8 @@ function Home() {
               className="image"
               src="images/PathFinding-img.png"
               alt="description of image"
-              width="250"
-              height="250"
+              width="200"
+              height="200"
             />
             <p className="text">Path Finding</p>
           </Link>

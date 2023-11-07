@@ -38,7 +38,7 @@ function SideBar() {
                 <img src="images/PathFinding-img.png" alt="pathfinding-icon" />
               </div>
               <Link
-                to="/Pathfinding"
+                to="/"
                 onClick={() => toggleAccordion("pathfinding")}
               >
                 Pathfinding
