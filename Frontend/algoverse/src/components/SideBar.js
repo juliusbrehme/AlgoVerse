@@ -24,6 +24,7 @@ function SideBar() {
     <div className="container">
       <nav className={`side-bar ${isSidebarHidden ? "hidden" : ""}`}>
         <Logo />
+        
         <button className="menu-btn" onClick={toggleSidebar}>
           <div className="menu-icon">
             <div className="menu-line"></div>
@@ -31,6 +32,7 @@ function SideBar() {
             <div className="menu-line"></div>
           </div>
         </button>
+        
         <ul className="algo-list">
           <li className="algo-items">
             <div className="change-flex-dir">

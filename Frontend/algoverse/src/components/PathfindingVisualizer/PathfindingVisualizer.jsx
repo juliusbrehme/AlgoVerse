@@ -5,7 +5,7 @@ import {dijkstra, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
 import './PathfindingVisualizer.css';
 
 const START_NODE_ROW = 10;
-const START_NODE_COL = 15;
+const START_NODE_COL = 12;
 const FINISH_NODE_ROW = 10;
 const FINISH_NODE_COL = 35;
 
@@ -78,10 +78,11 @@ export default class PathfindingVisualizer extends Component {
 
     return (
       <>
-        <button onClick={() => this.visualizeDijkstra()}>
+        <button className="visualizeButton" onClick={() => this.visualizeDijkstra()}>
           Visualize Dijkstra's Algorithm
         </button>
-        <div className="grid">
+        <div className="gridContainer">
+        <div className="gridA">
           {grid.map((row, rowIdx) => {
             return (
               <div key={rowIdx}>
@@ -107,6 +108,7 @@ export default class PathfindingVisualizer extends Component {
             );
           })}
         </div>
+        </div>
       </>
     );
   }
@@ -116,7 +118,7 @@ const getInitialGrid = () => {
   const grid = [];
   for (let row = 0; row < 20; row++) {
     const currentRow = [];
-    for (let col = 0; col < 50; col++) {
+    for (let col = 0; col < 48; col++) {
       currentRow.push(createNode(col, row));
     }
     grid.push(currentRow);

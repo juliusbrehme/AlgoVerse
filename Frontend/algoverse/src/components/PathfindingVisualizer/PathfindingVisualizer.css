@@ -1,3 +1,19 @@
-.grid {
-  margin: 100px 0 0;
+.gridContainer{
+  display:flex;
+  flex-direction: row;
+}
+
+.gridA {
+  display: grid;
+  margin: 5%;
+  width: 90%;
+  height: 90%;
+  grid-gap: 0px;
+}
+
+.visualizeButton{
+  margin: 2em;
+  width: 4em;
+  height: 2em;
+  align-self: center;
 }
