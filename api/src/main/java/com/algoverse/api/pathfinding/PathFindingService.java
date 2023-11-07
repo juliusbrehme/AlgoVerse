@@ -2,10 +2,8 @@ package com.algoverse.api.pathfinding;
 
 import com.algoverse.api.pathfinding.board.BoardInformation;
 import com.algoverse.api.pathfinding.board.Coordinates;
-import com.algoverse.api.pathfinding.strategy.Dijkstra;
 import com.algoverse.api.pathfinding.strategy.Path;
-import com.algoverse.api.pathfinding.strategy.Strategies;
-import com.algoverse.api.pathfinding.strategy.Strategy;
+import com.google.common.collect.ImmutableList;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,42 +12,34 @@ import org.springframework.stereotype.Service;
 @Service
 public class PathFindingService {
 
-  private Strategy strategy;
-
-  /**
-   * This method sets the strategy for path finding.
-   *
-   * @param strategy Strategy to use for path finding
-   */
-  public void setStrategy(Strategy strategy) {
-    this.strategy = strategy;
-  }
-
   /**
    * This method delegates the path finding to the selected strategy.
    *
-   * @param board      The whole board information with starting/end node, obstacles etc.
-   * @param strategies The enum value of the strategy that should be used for path finding
+   * @param board                 The whole board information with starting/end node, obstacles etc.
+   * @param pathFindingStrategies The enum value of the strategy that should be used for path
+   *                              finding
    * @return Returns the record path with the path and the visited nodes
    */
-  public Path findPath(BoardInformation board, Strategies strategies) {
-    // Switch to use different strategies
-    if (strategies == Strategies.DIJKSTRA) {
-      setStrategy(new Dijkstra());
-    }
-    return strategy.findPath(board);
+  public Path findPath(BoardInformation board,
+                       PathFindingFactory.Strategies pathFindingStrategies) {
+    PathFindingFactory pathFindingFactory =
+        PathFindingFactory.createPathFindingStrategy(pathFindingStrategies);
+    return pathFindingFactory.findPath(board);
   }
 
-
-  // TODO: implement a random nodes generator
-  @SuppressWarnings("unused")
-  public Coordinates[] randomNodeGenerator(Coordinates boardSize) {
-    return null;
+  /**
+   * Method to create random nodes.
+   *
+   * @param boardSize The size of the board
+   * @return Returns an immutable list of two coordinates, starting and end node
+   */
+  public ImmutableList<Coordinates> randomNodeGenerator(Coordinates boardSize) {
+    return PathFindingFactory.randomNodeGenerator(boardSize);
   }
 
-  // TODO: implement a random board generator
+  // TODO: implement a random maze generator
   @SuppressWarnings("unused")
-  public BoardInformation randomBoardGenerator(Coordinates boardSize) {
+  public BoardInformation randomMazeGenerator(Coordinates boardSize) {
     return null;
   }
 

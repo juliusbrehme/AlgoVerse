@@ -1,0 +1,36 @@
+.container {
+  background-color: #334a64;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  width: 40%;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.search-bar {
+  background-color: white;
+  width: 40%;
+  border-radius: 0px;
+  height: 2.5rem;
+  padding: 0 15px;
+  box-shadow: 0px 0px 2px #ddd;
+  display: flex;
+  align-items: center;
+}
+
+input[type="text"] {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 1.1rem;
+  width: 100%;
+  margin-left: 5px;
+}
+
+input:focus {
+  outline: none;
+}

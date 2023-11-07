@@ -1,3 +1,6 @@
+# What to do in order to get the project to work
+Run npm install command in terminal once you are located in the root of the frontend part of the project. This will install all dependencies required for the project to work in any computer.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -70,13 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
+# Furhter Dependencies and Packages
 
-# Windows Problem
-You could encounter a problem when deploying react app on windows:
-<< Plugin "react" was confliected between "package.json" >>eslint-config-react-aoo>> >>
-
-Workaround for that is savin the package.json with ctrl+s one time
-
-To permanently fix the problem open the Algoverse folder with Code instead of a folder superior of it
-pathing is kind scuffed up in recent next.js implementations
+## npm install
 
