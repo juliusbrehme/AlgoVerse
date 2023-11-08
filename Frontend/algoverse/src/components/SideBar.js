@@ -40,11 +40,10 @@ function SideBar() {
                 <img src="images/PathFinding-img.png" alt="pathfinding-icon" />
               </div>
               <Link
-                to="/"
                 onClick={() => toggleAccordion("pathfinding")}
               >
                 Pathfinding
-              </Link>
+              
               <div className="arrow-container">
                 <i
                   className={`arrow ${
@@ -52,6 +51,7 @@ function SideBar() {
                   }`}
                 ></i>
               </div>
+              </Link>
             </div>
             <div
               className={`accordion-content ${
