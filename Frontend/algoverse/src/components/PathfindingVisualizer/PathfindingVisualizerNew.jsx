@@ -5,8 +5,8 @@ import { useState } from 'react';
 import "./PathfindingVisualizerNew.css"; // Stellen Sie sicher, dass die CSS korrekt verlinkt ist
 
 const PathfindingVisualizerNew = () => {
-  const rows = 50;
-  const cols = 30;
+  const rows = 20;
+  const cols = 40;
   const [grid, setGrid] = useState(
     new Array(rows).fill(null).map(() => new Array(cols).fill({ isWall: false }))
   );
