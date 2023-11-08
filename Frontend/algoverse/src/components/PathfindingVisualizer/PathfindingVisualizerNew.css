@@ -1,0 +1,10 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(50, 25px); /* Erstellt 30 Spalten */
+  grid-template-rows: repeat(30, 25px); /* Erstellt 50 Zeilen */
+  width: fit-content;
+}
+
+.grid-row {
+  display: flex;
+}

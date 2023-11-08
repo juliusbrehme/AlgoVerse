@@ -1,0 +1,19 @@
+.grid-cell{
+  border: 1px solid rgb(63, 64, 133); /* feste schwarze Ränder */
+  background-color: #fff; /* Hintergrundfarbe, optional */
+}
+
+.cell-wall {
+  background-color: #5A5A5A; /* Dunkelgrau */
+  box-shadow: inset 0 0 8px #000000; /* Tiefer Innen Schatten */
+  border-top: 1px solid #ffffff; /* Helle Linie oben für 3D-Effekt */
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #2E2E2E;
+  }
+  to {
+    box-shadow: 0 0 20px #FF8C00;
+  }
+}
