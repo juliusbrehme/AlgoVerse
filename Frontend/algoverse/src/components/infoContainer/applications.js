@@ -1,25 +1,25 @@
-import React from 'react';
+import React from "react";
 import "./Applications.css";
 import { useSearchParams } from "react-router-dom";
-import algorithmTexts from "./applicationsText.json"
-
+import algorithmApplicationsTexts from "./applicationsText.json";
 
 function Applications() {
   const [searchParams] = useSearchParams();
   const algorithm = searchParams.get("algorithm");
 
-  
-  const applicationsText = algorithmTexts[algorithm] || "Default";
-
+  let applicationsText =
+    algorithmApplicationsTexts[algorithm]?.applications || "Default";
 
   return (
     <>
-        <div className='applicationsContainer'>
-          {applicationsText}
-        </div>
+      <div className="applicationsContainer">
+        <h1> PseudoCode </h1>
+        {applicationsText.map((step, index) => (
+          <p key={index}>{step}</p>
+        ))}
+      </div>
     </>
   );
 }
 
 export default Applications;
-

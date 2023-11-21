@@ -6,15 +6,16 @@ import pseudoCodeTexts from "./pseudoCodeText.json";
 function PseudoCode() {  
   const [searchParams] = useSearchParams();
   const algorithm = searchParams.get("algorithm");
-
   
-  const pseudoCode = pseudoCodeTexts[algorithm] || "Default";
-
+  let pseudoCodeSteps = pseudoCodeTexts[algorithm]?.steps || "Default";
 
   return (
     <>
         <div className='pseudoCodeContainer'>
-          {pseudoCode}
+          <h1> PseudoCode </h1>
+          {pseudoCodeSteps.map((step, index) => (
+        <p key={index}>{step}</p>
+      ))}
         </div>
     </>
   );

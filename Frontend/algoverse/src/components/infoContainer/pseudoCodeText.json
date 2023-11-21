@@ -1,6 +1,44 @@
 {
-    "Dijkstra": "This is the text content for Algorithm 1. It can be as long or as short as you need it to be.",
-    "BFS": "Text content for Algorithm 2 goes here. You can include detailed descriptions, instructions, or any other relevant information.",
-    "DFS": "Here's the text for Algorithm 3. Remember, you can customize this text to suit your application's needs.",
-    "AStar": "This is default text to be shown when no specific algorithm is selected or if the algorithm is not found in this list."
+    "Dijkstra": {
+      "description": "Finds the shortest paths from a source to all vertices in the given graph",
+      "steps": [
+        "apple", 
+        "banana", 
+        "cherry"
+      ]
+    },
+    "BFS": {
+      "description": "Finds the shortest paths from a source to all vertices in the given graph",
+      "steps": [
+        "apple", 
+        "banana", 
+        "cherry"
+      ]
+    },
+    "DFS": {
+      "description": "Finds the shortest paths from a source to all vertices in the given graph",
+      "steps": [
+        "apple", 
+        "banana", 
+        "cherry"
+      ]
+    },
+    "AStar": {
+      "description": "Finds the shortest paths from a source to all vertices in the given graph",
+      "steps": [
+        "apple", 
+        "banana", 
+        "cherry"
+      ]
+    },
+    "BubbleSort": {
+      "description": "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+      "steps": [
+        "apple", 
+        "banana", 
+        "cherry"
+      ]
+    }
+    
 }
+  
