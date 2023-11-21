@@ -13,7 +13,7 @@ function Applications() {
   return (
     <>
       <div className="applicationsContainer">
-        <h1> PseudoCode </h1>
+        <h1> Useful Applications </h1>
         {applicationsText.map((step, index) => (
           <p key={index}>{step}</p>
         ))}

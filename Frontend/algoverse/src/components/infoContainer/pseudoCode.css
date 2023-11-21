@@ -13,3 +13,12 @@
   .pseudoCodeContainer h3 {
     margin-top: 0;              /* Remove top margin of the heading */
   }
+
+  .nestedList {
+    list-style-type: none; /* or your preferred style */
+    padding-left: 20px; /* adjust as needed */
+  }
+  
+  .nestedList li {
+    margin-bottom: 5px; /* adjust as needed */
+  }

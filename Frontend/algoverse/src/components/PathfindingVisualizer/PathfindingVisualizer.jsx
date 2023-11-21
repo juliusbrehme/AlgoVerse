@@ -41,8 +41,11 @@ const PathfindingVisualizer = () => {
   };
 
   const selectPathfindingAlgorithm = (algorithm) => {
+    setShortestPathNodes([]);
+    
     switch (algorithm) {
       case dijkstra:
+        visualizeDijkstra();
         break;
       case bfs:
         break;
@@ -82,6 +85,8 @@ const PathfindingVisualizer = () => {
   };
 
   const visualizeDijkstra = () => {
+    setShortestPathNodes([]);
+
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
     const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
@@ -92,7 +97,7 @@ const PathfindingVisualizer = () => {
   const resetGrid = () => {
     // Create a new grid based on the initial configuration
     const newGrid = getInitialGrid();
-
+    setShortestPathNodes([]);
     // Additionally, reset any state that might have been changed in each node
     for (let row of newGrid) {
       for (let node of row) {
@@ -100,7 +105,6 @@ const PathfindingVisualizer = () => {
         node.isVisited = false;
         node.distance = Infinity;
         node.previousNode = null;
-
         // Reset any UI changes made to the nodes
         const nodeElement = document.getElementById(
           `node-${node.row}-${node.col}`

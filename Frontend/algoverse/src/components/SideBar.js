@@ -11,7 +11,8 @@ function SideBar() {
   const toggleSidebar = () => {
       setSidebarHidden(!isSidebarHidden);
   };
-  const toggleAccordion = (accordionName) => {
+  const toggleAccordion = (e, accordionName) => {
+    e.preventDefault();
     if (openAccordion === accordionName) {
         setOpenAccordion(null);
     } else {
@@ -39,9 +40,7 @@ function SideBar() {
               <div className="algo-side-icon">
                 <img src="images/PathFinding-img.png" alt="pathfinding-icon" />
               </div>
-              <Link
-                onClick={() => toggleAccordion("pathfinding")}
-              >
+              <Link onClick={(e) => toggleAccordion(e, "pathfinding")}>
                 Pathfinding
               
               <div className="arrow-container">
