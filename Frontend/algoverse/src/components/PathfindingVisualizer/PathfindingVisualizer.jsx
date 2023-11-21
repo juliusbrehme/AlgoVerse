@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import { useSearchParams } from 'react-router-dom';
-import Node from './Node/Node';
-import {dijkstra, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
-import {astar} from '../algorithms/astar';
-import {bfs} from '../algorithms/bfs';
-import {dfs} from '../algorithms/dfs';
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import Node from "./Node/Node";
+import { dijkstra, getNodesInShortestPathOrder } from "../algorithms/dijkstra";
+import { astar } from "../algorithms/astar";
+import { bfs } from "../algorithms/bfs";
+import { dfs } from "../algorithms/dfs";
 
-import './PathfindingVisualizer.css';
+import "./PathfindingVisualizer.css";
 
 const START_NODE_ROW = 10;
 const START_NODE_COL = 12;
@@ -68,17 +68,16 @@ const PathfindingVisualizer = () => {
       animateShortestPath(nodesInShortestPathOrder);
     }, 10 * visitedNodesInOrder.length);
   };
-  
 
   const animateShortestPath = (nodesInShortestPathOrder) => {
-      for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
-        setTimeout(() => {
-          const node = nodesInShortestPathOrder[i];
-          document.getElementById(`node-${node.row}-${node.col}`).className =
-            "node node-shortest-path";
-        }, 50 * i);
-      }
-    };
+    for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
+      setTimeout(() => {
+        const node = nodesInShortestPathOrder[i];
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          "node node-shortest-path";
+      }, 50 * i);
+    }
+  };
 
   const visualizeDijkstra = () => {
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
@@ -88,13 +87,48 @@ const PathfindingVisualizer = () => {
     animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   };
 
+  const resetGrid = () => {
+    // Create a new grid based on the initial configuration
+    const newGrid = getInitialGrid();
+  
+    // Additionally, reset any state that might have been changed in each node
+    for (let row of newGrid) {
+      for (let node of row) {
+        // Reset the node properties that might have changed
+        node.isVisited = false;
+        node.distance = Infinity;
+        node.previousNode = null;
+  
+        // Reset any UI changes made to the nodes
+        const nodeElement = document.getElementById(`node-${node.row}-${node.col}`);
+        if (nodeElement) {
+          nodeElement.className = 'node';
+          // Add additional classes as needed, e.g., for start and finish nodes
+          if (node.isStart) {
+            nodeElement.classList.add('node-start');
+          } else if (node.isFinish) {
+            nodeElement.classList.add('node-finish');
+          } else if (node.isWall) {
+            nodeElement.classList.add('node-wall');
+          }
+        }
+      }
+    }
+  
+    // Update the state of the grid with the reset grid
+    setGrid(newGrid);
+  };
+  
+
   return (
     <>
-      <button
-        className="button-accent"
-        onClick={visualizeDijkstra}
-      >
-        {algorithm ? `Visualize ${algorithm}` : "Visualize Dijkstra's Algorithm"}
+      <button className="button-accent" onClick={visualizeDijkstra}>
+        {algorithm
+          ? `Visualize ${algorithm}`
+          : "Visualize Dijkstra's Algorithm"}
+      </button>
+      <button className="button-reset" onClick={resetGrid}>
+        Reset Grid
       </button>
       <div className="gridContainer">
         <div className="gridA">

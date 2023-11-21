@@ -20,7 +20,7 @@
 
 .button-accent {
   padding: 10px 20px;
-  background-color: #2C98F0; /* Hellerer Blauton, der zum Hintergrund passt */
+  background-color: #237bc2; /* Hellerer Blauton, der zum Hintergrund passt */
   color: white;
   border: none;
   cursor: pointer;
@@ -29,5 +29,18 @@
 }
 
 .button-accent:hover {
+  background-color: #165b8c; /* Dunklerer Blauton für Hover-Effekt */
+}
+.button-reset {
+  padding: 10px 20px;
+  background-color: #2C98F0; /* Hellerer Blauton, der zum Hintergrund passt */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button-reset:hover {
   background-color: #1A6CA7; /* Dunklerer Blauton für Hover-Effekt */
 }
