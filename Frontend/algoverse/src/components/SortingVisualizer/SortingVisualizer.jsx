@@ -67,8 +67,9 @@ export default class SortingVisualizer extends React.Component {
         
 
         <div className="array-container">
-        <button onClick={() => this.resetArray()}>Generate New Array</button>
-        <button onClick={() => this.mergeSort()}>Merge Sort</button>
+        <button style={{ width: '110px', height: '35px', fontSize: '19px' }} onClick={() => this.resetArray()}>New Array</button>
+        &nbsp;&nbsp;&nbsp;
+        <button style={{ width: '60px', height: '35px', fontSize: '19px' }} onClick={() => this.mergeSort()}>Start</button>
         <br></br><br></br><br></br>
         {array.map((value, idx) => (
           <div
