@@ -18,6 +18,7 @@ const PathfindingVisualizer = () => {
   const algorithm = searchParams.get("algorithm");
   const [grid, setGrid] = useState([]);
   const [mouseIsPressed, setMouseIsPressed] = useState(false);
+  const [shortestPathNodes, setShortestPathNodes] = useState([]);
 
   useEffect(() => {
     setGrid(getInitialGrid());
@@ -75,6 +76,7 @@ const PathfindingVisualizer = () => {
         const node = nodesInShortestPathOrder[i];
         document.getElementById(`node-${node.row}-${node.col}`).className =
           "node node-shortest-path";
+        setShortestPathNodes((spNodes) => [...spNodes, node]);
       }, 50 * i);
     }
   };
@@ -90,7 +92,7 @@ const PathfindingVisualizer = () => {
   const resetGrid = () => {
     // Create a new grid based on the initial configuration
     const newGrid = getInitialGrid();
-  
+
     // Additionally, reset any state that might have been changed in each node
     for (let row of newGrid) {
       for (let node of row) {
@@ -98,27 +100,28 @@ const PathfindingVisualizer = () => {
         node.isVisited = false;
         node.distance = Infinity;
         node.previousNode = null;
-  
+
         // Reset any UI changes made to the nodes
-        const nodeElement = document.getElementById(`node-${node.row}-${node.col}`);
+        const nodeElement = document.getElementById(
+          `node-${node.row}-${node.col}`
+        );
         if (nodeElement) {
-          nodeElement.className = 'node';
+          nodeElement.className = "node";
           // Add additional classes as needed, e.g., for start and finish nodes
           if (node.isStart) {
-            nodeElement.classList.add('node-start');
+            nodeElement.classList.add("node-start");
           } else if (node.isFinish) {
-            nodeElement.classList.add('node-finish');
+            nodeElement.classList.add("node-finish");
           } else if (node.isWall) {
-            nodeElement.classList.add('node-wall');
+            nodeElement.classList.add("node-wall");
           }
         }
       }
     }
-  
+
     // Update the state of the grid with the reset grid
     setGrid(newGrid);
   };
-  
 
   return (
     <>
@@ -155,6 +158,16 @@ const PathfindingVisualizer = () => {
           ))}
         </div>
       </div>
+      <div className="shortestPathNodesContainer">
+      <h3>Shortest Path Nodes (in order):</h3>
+      <div>
+        {shortestPathNodes.map((node, index) => (
+          <span key={index} style={{ margin: '0 5px' }}>
+            ({node.row}, {node.col})
+          </span>
+        ))}
+      </div>
+    </div>
     </>
   );
 };
