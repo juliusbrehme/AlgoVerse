@@ -1,0 +1,24 @@
+.body {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sortBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 85%;
+}
+
+.cutBody {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 1200px;
+}
+
+.buttonHeader {
+  height: 4em;
+}

@@ -3,25 +3,182 @@
 }
 
 .side-bar {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
-  width: 200px;
+  width: 15%;
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
   background-color: #334a64;
-  overflow-x: hidden;
-  padding-top: 50px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
-
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
 .side-bar a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
-  display: block;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .side-bar a:hover {
   color: #f1f1f1;
+}
+
+.algo-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.algo-items {
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 8px solid transparent;
+
+  /* Hinzufügen eines Übergangs für einen weichen Hover-Effekt */
+  transition: background-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+.algo-items:hover {
+  background-color: #152239;
+
+  /* Breitere und gedämpftere gelbe linke Leiste */
+  border-left: 8px solid #e8c252;
+}
+
+.arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: yellow;
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+}
+
+.arrow:hover {
+  border-color: yellow;
+}
+
+.down {
+  transform: rotate(45deg);
+}
+.up {
+  margin-top: 10px;
+  transform: rotate(225deg);
+}
+
+.algo-side-icon img {
+  height: 30px;
+  width: 30px;
+}
+
+.algo-side-icon.tree img {
+  height: 40px;
+  width: 30px;
+}
+
+.menu-btn {
+  position: absolute;
+  right: -30px; /* Die Hälfte der Breite des Buttons, um ihn mittig an der Kante zu positionieren. Sie können diesen Wert anpassen. */
+  top: 20%;
+  transform: translateY(-50%);
+  background-color: rgb(42, 134, 141);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+}
+
+.menu-btn:hover {
+  background-color: #332851;
+}
+
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-line {
+  width: 20px;
+  height: 2px;
+  background-color: white;
+}
+
+.custom-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* dunklerer Schatten beim Überfahren */
+}
+
+.accordion-content.open {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.accordion-content {
+  display: none;
+  width: 100%;
+  padding-left: 0;
+  position: relative; /* Damit sich die vertikale Linie relativ zum Akkordeon-Inhalt positioniert */
+}
+
+.accordion-content ul li {
+  margin: 1em; /* Dies fügt einen Abstand von 1,5 Zeilenhöhen zwischen den Listenelementen hinzu. */
+}
+
+.accordion-content ul li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.accordion-content ul li a:hover {
+  color: yellow;
+}
+
+.accordion-content ul li:hover {
+  color: yellow;
+}
+
+.accordion-list {
+  list-style-type: none;
+}
+
+.vertical-line {
+  width: 3px; /* Breite der Linie */
+  height: calc(
+    100% - 20px
+  ); /* Die Höhe wird angepasst, damit sie nicht den gesamten Bildschirm überdeckt. Sie können den Wert "20px" ändern, um die endgültige Höhe zu steuern. */
+  background-color: white;
+  position: absolute;
+  left: 10%; /* Sie können diesen Wert ändern, um die Position der Linie zu steuern */
+  top: 10px; /* Ein wenig Abstand von oben */
+}
+
+.change-flex-dir {
+  display: flex;
+  flex-direction: row;
 }
