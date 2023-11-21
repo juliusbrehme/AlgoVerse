@@ -10,3 +10,12 @@
   width:85%;
   height: 100%;
 }
+
+.infoContainer{
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: center;
+  gap: 20px;
+}

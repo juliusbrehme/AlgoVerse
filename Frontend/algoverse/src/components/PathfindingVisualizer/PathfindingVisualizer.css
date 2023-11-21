@@ -54,7 +54,7 @@
   align-self: center;
   padding: 20px;              /* Some padding around the text */
   box-sizing: border-box;     /* Ensure padding doesn't increase the size */
-  margin-top: 20px;           /* Space above the container */
+  margin-top: 10px;           /* Space above the container */
   margin-bottom: 20px;
   white-space: normal;        /* Keep nodes in a single line */
 }
