@@ -19,7 +19,13 @@ function PseudoCode() {
       );
     } else {
       return (
-        <li key={level} style={{ marginLeft: `${level * 20}px` }}>{step}</li>
+        <li
+          key={level}
+          className="nestedListItem"
+          style={{ marginLeft: `${level * 20}px` }}
+        >
+          {step}
+        </li>
       );
     }
   }
@@ -28,9 +34,7 @@ function PseudoCode() {
     <>
       <div className="pseudoCodeContainer">
         <h1> PseudoCode </h1>
-        <ul>
-          {pseudoCodeSteps.map((step, index) => renderStep(step, 0))}
-        </ul>
+        <ul>{pseudoCodeSteps.map((step, index) => renderStep(step, 0))}</ul>
       </div>
     </>
   );

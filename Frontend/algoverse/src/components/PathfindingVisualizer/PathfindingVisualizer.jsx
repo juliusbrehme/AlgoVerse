@@ -40,25 +40,7 @@ const PathfindingVisualizer = () => {
     setMouseIsPressed(false);
   };
 
-  const selectPathfindingAlgorithm = (algorithm) => {
-    setShortestPathNodes([]);
-    
-    switch (algorithm) {
-      case dijkstra:
-        visualizeDijkstra();
-        break;
-      case bfs:
-        break;
-      case astar:
-        break;
-      case dfs:
-        break;
-      default:
-        break;
-    }
-  };
-
-  const animateDijkstra = (visitedNodesInOrder, nodesInShortestPathOrder) => {
+  const animateAlgorithm = (visitedNodesInOrder, nodesInShortestPathOrder) => {
     for (let i = 0; i < visitedNodesInOrder.length; i++) {
       setTimeout(() => {
         const node = visitedNodesInOrder[i];
@@ -86,12 +68,27 @@ const PathfindingVisualizer = () => {
 
   const visualizeDijkstra = () => {
     setShortestPathNodes([]);
-
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
-    const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+    var visitedNodesInOrder;
+    switch (algorithm) {
+      case "Dijkstra":
+        visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+        break;
+      case "BFS":
+        visitedNodesInOrder = bfs(grid, startNode, finishNode);
+        break;
+      case "AStar":
+        visitedNodesInOrder = astar(grid, startNode, finishNode);
+        break;
+      case "DFS":
+        visitedNodesInOrder = dfs(grid, startNode, finishNode);
+        break;
+      default:
+        break;
+    }
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-    animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+    animateAlgorithm(visitedNodesInOrder, nodesInShortestPathOrder);
   };
 
   const resetGrid = () => {

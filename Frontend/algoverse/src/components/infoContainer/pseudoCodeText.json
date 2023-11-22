@@ -4,16 +4,16 @@
     "steps": [
       "Initialize Distances and Set Unvisited Nodes:",
       [
-        "for each vertex v in Graph:",
+        "for(vertex v in Graph):",
         [
           "distance[v] = infinity",
           "distance[source] = 0"
         ],
         "unvisited = set(all vertices)"
       ],
-      "While Loop for Processing Each Node:",
+      "While(Processing Each Node):",
       [
-        "while unvisited is not empty:",
+        "while(unvisited != null):",
         [
           "current_vertex = vertex in unvisited with min distance",
           "Update Distances for Neighbors:",
@@ -21,7 +21,7 @@
             "for each neighbor n of current_vertex:",
             [
               "new_dist = distance[current_vertex] + edge_weight(current_vertex, n)",
-              "if new_dist < distance[n]:",
+              "if(new_dist < distance[n]):",
               [
                 "distance[n] = new_dist"
               ]
@@ -30,7 +30,7 @@
           "unvisited.remove(current_vertex)",
           "Check if Finished:",
           [
-            "if destination in visited or min distance in unvisited is infinity:",
+            "if(destination in visited or min distance in unvisited is infinity):",
             [
               "break"
             ]

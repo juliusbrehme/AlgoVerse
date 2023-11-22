@@ -14,11 +14,59 @@
     margin-top: 0;              /* Remove top margin of the heading */
   }
 
-  .nestedList {
-    list-style-type: none; /* or your preferred style */
-    padding-left: 20px; /* adjust as needed */
-  }
-  
-  .nestedList li {
-    margin-bottom: 5px; /* adjust as needed */
-  }
+/* Base styling for all nested lists */
+.nestedList {
+  list-style-type: none; /* Removes bullet points */
+  font-family: 'Courier New', monospace; /* Monospaced font */
+  color: #ffffff; /* Default text color */
+  padding-left: 20px; /* Adjust as needed */
+  margin: 0; /* Removes default margin */
+  line-height: 1.5; /* Increased line spacing */
+}
+
+/* Styling for each list item */
+.nestedList li {
+  margin-bottom: 5px; /* Adjust as needed */
+  padding-left: 20px; /* Indentation for each level */
+  position: relative; /* For positioning the line number or border */
+}
+
+/* Hover effect for each list item */
+.nestedList li:hover {
+  background-color: #857e7e; /* Hover effect */
+}
+
+/* Line number styling */
+.nestedList li::before {
+  content: counter(item) " "; /* Add line numbers */
+  counter-increment: item; /* Increment line numbers */
+  color: #777; /* Line number color */
+  position: absolute; /* Position line number */
+  left: -20px; /* Align to the left */
+}
+
+/* Reset the counter for nested lists */
+.nestedList ul {
+  counter-reset: item;
+  list-style-type: none; /* Ensures no bullets on nested lists */
+  padding-left: 20px; /* Additional indentation for nested items */
+}
+
+/* Remove bullet points and margin for all levels of nested lists */
+.nestedList ul {
+  list-style-type: none; /* Removes bullet points */
+  margin: 0; /* Removes default margin */
+}
+
+.nestedListItem {
+  list-style-type: none; /* Removes bullet points */
+  margin-bottom: 10px; /* Spacing between items */
+  position: relative; /* For positioning the line number or border */
+  font-family: 'Courier New', monospace; /* Monospaced font */
+  font-weight: bold;
+  /* Add any other styles you wish to include here */
+}
+
+.nestedListItem:hover {
+  background-color: #857e7e; /* Hover effect */
+}
