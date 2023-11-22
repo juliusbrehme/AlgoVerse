@@ -1,0 +1,132 @@
+{
+  "Dijkstra": {
+    "description": "Finds the shortest paths from a source to all vertices in the given graph",
+    "steps": [
+      "Initialize Distances and Set Unvisited Nodes:",
+      [
+        "for(vertex v in Graph):",
+        [
+          "distance[v] = infinity",
+          "distance[source] = 0"
+        ],
+        "unvisited = set(all vertices)"
+      ],
+      "While(Processing Each Node):",
+      [
+        "while(unvisited != null):",
+        [
+          "current_vertex = vertex in unvisited with min distance",
+          "Update Distances for Neighbors:",
+          [
+            "for each neighbor n of current_vertex:",
+            [
+              "new_dist = distance[current_vertex] + edge_weight(current_vertex, n)",
+              "if(new_dist < distance[n]):",
+              [
+                "distance[n] = new_dist"
+              ]
+            ]
+          ],
+          "unvisited.remove(current_vertex)",
+          "Check if Finished:",
+          [
+            "if(destination in visited or min distance in unvisited is infinity):",
+            [
+              "break"
+            ]
+          ]
+        ]
+      ],
+      "Return Shortest Path:",
+      [
+        "return distance[destination]"
+      ]
+    ]
+  },
+  "BFS": {
+    "description": "Explores the nearest nodes first before moving to the next level neighbors.",
+    "steps": [
+      "Start by putting any one of the graph's vertices at the back of a queue.",
+      "Take the front item of the queue and add it to the visited list.",
+      "Create a list of that vertex's adjacent nodes. Add the ones which aren't in the visited list to the back of the queue.",
+      "Loop:",
+      [
+        "if queue is empty:",
+        [
+          "Break out of the loop."
+        ],
+        "Else:",
+        [
+          "Repeat the process with the new front item."
+        ]
+      ],
+      "Return visited list as the result of BFS traversal."
+    ]
+  },
+  "DFS": {
+    "description": "Explores as far as possible down a branch before backtracking.",
+    "steps": [
+      "Start by putting any one of the graph's vertices on top of a stack.",
+      "Loop:",
+      [
+        "if the stack is empty:",
+        [
+          "Return or end the function."
+        ],
+        "Else:",
+        [
+          "Pop a vertex from the stack to select the next vertex to visit.",
+          "If the vertex is not marked as discovered:",
+          [
+            "Mark it as discovered.",
+            "Add it to the visited list.",
+            "Push all adjacent vertices (that are not marked as discovered) to the stack."
+          ]
+        ]
+      ],
+      "Return the visited list as the result of DFS traversal."
+    ]
+  },
+  "AStar": {
+    "description": "Finds the shortest path in a graph using heuristics to optimize the search.",
+    "steps": [
+      "Initialize an open list (priority queue) and add the start node to it.",
+      "Initialize a closed list (set) to keep track of visited nodes.",
+      "Loop:",
+      [
+        "if the open list is empty:",
+        [
+          "Path not found. Return failure."
+        ],
+        "Else:",
+        [
+          "Remove the node with the lowest f(x) = g(x) + h(x) from the open list, where g(x) is the cost from the start node to the current node, and h(x) is the heuristic estimated cost from the current node to the target.",
+          "If the removed node is the target, reconstruct and return the path.",
+          "Mark the node as visited by adding it to the closed list.",
+          "For each neighbor of the current node:",
+          [
+            "If the neighbor is in the closed list, skip it.",
+            "Calculate g(x) for the neighbor.",
+            "If the neighbor is not in the open list or the new g(x) is lower:",
+            [
+              "Update the neighbor's g(x), h(x), and f(x).",
+              "Set the current node as the parent of the neighbor.",
+              "Add the neighbor to the open list if it's not already present."
+            ]
+          ]
+        ]
+      ],
+      "Return failure if no path is found."
+    ]
+  },
+    "BubbleSort": {
+      "description": "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+      "steps": [
+        "apple", 
+        "banana", 
+        "cherry"
+      ]
+    }
+    
+}
+  

@@ -1,3 +1,6 @@
+# What to do in order to get the project to work
+Run npm install command in terminal once you are located in the root of the frontend part of the project. This will install all dependencies required for the project to work in any computer.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +71,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# Furhter Dependencies and Packages
+
+## npm install
+
