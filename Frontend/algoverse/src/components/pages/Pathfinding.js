@@ -3,8 +3,8 @@ import "./Pathfinding.css";
 import React from "react";
 
 import PathfindingVisualizer from "../PathfindingVisualizer/PathfindingVisualizer";
-import Applications from "../infoContainer/Applications";
-import PseudoCode from "../infoContainer/PseudoCode";
+import Applications from "../infoContainer/Applications.js";
+import PseudoCode from "../infoContainer/PseudoCode.js";
 
 function Pathfinding() {
   return (
