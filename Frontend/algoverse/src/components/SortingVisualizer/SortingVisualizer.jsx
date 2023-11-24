@@ -33,7 +33,7 @@ export default class SortingVisualizer extends React.Component {
       array.push(randomIntFromInterval(5, 730));
     }
     this.setState({array});
-  }
+  };
 
   mergeSort() {
     const animations = getMergeSortAnimations(this.state.array);
@@ -57,20 +57,23 @@ export default class SortingVisualizer extends React.Component {
         }, i * ANIMATION_SPEED_MS);
       }
     }
-  }
+  };
 
   render() {
     const {array} = this.state;
 
-    return (
-        <>
-        
 
+    return (
+        <> 
+        <div className='button-container'>
+          <button className="button-accent" onClick={() => this.mergeSort()}>
+        Visualize MergeSort Algorithm
+        </button>
+        <button className="button-reset" onClick={() => this.resetArray()}>
+          Reset Array
+        </button>
+      </div>
         <div className="array-container">
-        <button style={{ width: '110px', height: '35px', fontSize: '19px' }} onClick={() => this.resetArray()}>New Array</button>
-        &nbsp;&nbsp;&nbsp;
-        <button style={{ width: '60px', height: '35px', fontSize: '19px' }} onClick={() => this.mergeSort()}>Start</button>
-        <br></br><br></br><br></br>
         {array.map((value, idx) => (
           <div
             className="array-bar"

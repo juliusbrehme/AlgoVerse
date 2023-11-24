@@ -1,11 +1,49 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: -64px;
+  width: 100%;
+}
+
 .array-container {
   position: absolute;
   left: 300px;
-  top: 165px;
+  top: 245px;
 }
 
 .array-bar {
   width: 35px;
   display: inline-block;
   margin: 0 1px;
+}
+
+.button-accent {
+  padding: 10px 20px;
+  background-color: #237bc2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  position: center;
+  width: 100%;
+}
+
+.button-accent:hover {
+  background-color: #165b8c;
+}
+.button-reset {
+  padding: 10px 20px;
+  background-color: #2c98f0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  position: center;
+  width: 100%;
+}
+
+.button-reset:hover {
+  background-color: #1a6ca7;
 }
