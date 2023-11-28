@@ -11,9 +11,11 @@ class Node {
         this.value = value;
         this.left = null;
         this.right = null;
+        this.visited = false;
+        this.created = false;
     }
 
-    _convert(item, i = 0) {
+    _convert(item, i = 0) { // 값 설정
         return isNaN(item) ? parseInt(item.charCodeAt(i), 10) : parseInt(item, 10);
     }
 
@@ -75,7 +77,48 @@ class Node {
         }
     }
 
-    toGraph(isRoot = true) {
+    delete(item) {
+        let itemValue = this._convert(item);
+
+        if (!this.value) {
+            return this; // 트리가 비어있거나 현재 노드가 null일 경우, 현재 노드를 그대로 반환
+        }
+
+        let thisValue = this._convert(this.value);
+
+        if (itemValue < thisValue && this.left) {
+            this.left = this.left.delete(item);
+        } else if (itemValue > thisValue && this.right) {
+            this.right = this.right.delete(item);
+        } else if (itemValue === thisValue) {
+            // 입력값과 현재 노드의 값이 일치하는 경우에만 삭제 수행
+
+            if (!this.left) {
+                // Case 1: 오른쪽 자식이나 자식이 없는 경우
+                return this.right;
+            } else if (!this.right) {
+                // Case 2: 왼쪽 자식만 있는 경우
+                return this.left;
+            }
+
+            // Case 3: 양쪽 자식이 모두 있는 경우
+            let minValueNode = this._findMinNode(this.right);
+            this.value = minValueNode.value;
+            this.right = this.right.delete(minValueNode.value);
+        }
+
+        return this;
+    }
+
+    _findMinNode(node) {
+        // Helper function to find the node with the minimum value in a subtree
+        while (node.left) {
+            node = node.left;
+        }
+        return node;
+    }
+
+    toGraph(isRoot = true) { // 마지막에 색깔 딱 이렇게..
         let edges = this.parent ?
             [
                 {
@@ -108,6 +151,7 @@ class Node {
         }
     }
 
+  
 }
 
 export {Node as BinaryTree};

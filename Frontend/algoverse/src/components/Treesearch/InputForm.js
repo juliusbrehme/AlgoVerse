@@ -10,8 +10,16 @@ const InputForm = (props) => {
     const [enabled, setEnabled] = useState(false);
 
     const handleInput = (event) => {
+        const buttonClass = event.nativeEvent.submitter.className;
         event.preventDefault();
-        tree.insert(event.target.input.value.toLowerCase());
+        
+        if(buttonClass.includes("add-btn")){
+            tree.insert(event.target.input.value.toLowerCase());
+        }
+        else if(buttonClass.includes("delete-btn")){
+            tree.delete(event.target.input.value.toLowerCase());
+        }
+        
         event.target.input.value = '';
         props.update(tree.toGraph());
         setEnabled(false);
@@ -26,18 +34,19 @@ const InputForm = (props) => {
     return (
         <div className={"center"}>
             { <Form onSubmit={e => handleInput(e)} className={"form"}>
-                <FormLabel className={"center"} htmlFor={"input"}>Enter word or number</FormLabel>
+                <FormLabel className={"noticebar center"} htmlFor={"input"}>Enter word or number</FormLabel>
                 <Row>
-                    <Col className={"col-1 center"}>
+                    <Col className={"col-1"}>
                         <input
                             className={"form-control"}
                             type={"text"} id="input"
-                            placeholder={"ex. 10 or desk"}
+                            placeholder={"  ex. 10 or desk"}
                             onChange={handleChange}
                         />
-                    </Col>
-                    <Col className={"col-2 center"}>
+                    {/* </Col>
+                    <Col className={"col-2 center"}> */}
                         <input type={"submit"} className={"btn btn-primary add-btn"} value={"add"} disabled={!enabled}/>
+                        <input type={"submit"} className={"btn btn-primary delete-btn"} value={"delete"} disabled={!enabled}/>
                     </Col>
                 </Row>
             </Form> }
