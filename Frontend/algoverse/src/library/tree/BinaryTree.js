@@ -1,8 +1,7 @@
 import {options} from "../../config";
 
 class Node {
-    static counter = 0;
-    
+    static counter = 0;    
 
     constructor(value, parent = null) {
         this.id = Node.counter;
@@ -12,12 +11,20 @@ class Node {
         this.value = value;
         this.left = null;
         this.right = null;
-        this.visited = false;
-        this.created = false;
+        this.valid = 1; // if this node is deleted, then it will be -1.
+        // this.visited = false;
+        // this.created = false;
     }
 
     _convert(item, i = 0) { // 값 설정
         return isNaN(item) ? parseInt(item.charCodeAt(i), 10) : parseInt(item, 10);
+    }
+
+    isroot() {
+        if(this.parent === null){
+            return 1;
+        }
+        return 0;
     }
 
     _handleEqual(item, itemValue, thisValue) {
@@ -87,43 +94,74 @@ class Node {
         }
     }
 
-    delete(item) { // 완성 root가 자식이 하나만 있따면? 아니면 없다면?
+    delete(item) {
         let itemValue = this._convert(item);
     
         if (!this.value) {
-            return this; // 트리가 비어있거나 현재 노드가 null일 경우, 현재 노드를 그대로 반환
+            return this; // Tree is empty or the current node is null, return the current node
         }
     
         let thisValue = this._convert(this.value);
     
         if (itemValue < thisValue && this.left) {
             this.left = this.left.delete(item);
-            if(this.left!=null){ this.left.parent = this; }
+            if (this.left) {
+                this.left.parent = this;
+            }
         } else if (itemValue > thisValue && this.right) {
             this.right = this.right.delete(item);
-            if(this.right!=null){ this.right.parent = this; }
-        } else if (itemValue === thisValue) {
-            // 입력값과 현재 노드의 값이 일치하는 경우에만 삭제 수행
-    
-            if (!this.left && this.right) {
-                // Case 1: 오른쪽 자식이나 자식이 없는 경우
-                return this.right;
-            } else if (!this.right && this.left) {
-                // Case 2: 왼쪽 자식만 있는 경우
-                return this.left;
-            } else if (!this.right && !this.left) {
-                return null;
+            if (this.right) {
+                this.right.parent = this;
             }
-
-            // Case 3: 양쪽 자식이 모두 있는 경우
-            let minValueNode = this._findMinNode(this.right);
-            this.value = minValueNode.value;
-            this.right = this.right.delete(minValueNode.value);
-            if(this.right!=null){ this.right.parent = this; }
+        } else if (itemValue === thisValue) {
+            if (!this.left && !this.right) {
+                // Case 1: Node with no children
+                if (this.isroot() === 1) {
+                    // If it's the root, set the value to null and update the parent
+                    this.value = null;
+                    if (this.parent) {
+                        this.parent = null;
+                    }
+                } else {
+                    // If it's not the root, return null to indicate the node should be removed
+                    return null;
+                }
+            } else if (!this.left) {
+                // Case 2: Node with one right child
+                if (this.isroot() === 1) {
+                    this.value = this.right.value;
+                    this.right = this.right.delete(this.right.value);
+                    if (this.right) {
+                        this.right.parent = this;
+                    }
+                } else {
+                    return this.right;
+                }
+            } else if (!this.right) {
+                // Case 3: Node with one left child
+                if (this.isroot() === 1) {
+                    this.value = this.left.value;
+                    this.left = this.left.delete(this.left.value);
+                    if (this.left) {
+                        this.left.parent = this;
+                    }
+                } else {
+                    return this.left;
+                }
+            } else {
+                // Case 4: Node with two children
+                let minValueNode = this._findMinNode(this.right);
+                this.value = minValueNode.value;
+                this.right = this.right.delete(minValueNode.value);
+                if (this.right) {
+                    this.right.parent = this;
+                }
+            }
         }
-    
         return this;
     }
+    
+    
     
     
 
@@ -135,7 +173,7 @@ class Node {
         return node;
     }
 
-    toGraph(isRoot = true) { // 마지막에 색깔 딱 이렇게..
+    toGraph(isRoot = true) { // 첫 노드에서 시작! 노드 하나하나씩 표현
         let edges = this.parent ?
             [
                 {
@@ -167,6 +205,11 @@ class Node {
             edges  
         }   
     }
+
+    // binarySearch(item){
+    //     let itemValue = this._convert(item);
+        
+    // }
 
   
 }
