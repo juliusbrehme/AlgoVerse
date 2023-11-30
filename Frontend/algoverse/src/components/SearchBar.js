@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 const pages = [
   { name: "Mainpage", path: "/" },
   { name: "Dijkstra", path: "/pathfinding?algorithm=Dijkstra" },
-  { name: "pathfinding", path: "/pathfinding" },
+  { name: "BFS", path: "/pathfinding?algorithm=BFS" },
+  { name: "DFS", path: "/pathfinding?algorithm=DFS" },
+  { name: "A*", path: "/pathfinding?algorithm=AStar" },
   // other pages
 ];
 

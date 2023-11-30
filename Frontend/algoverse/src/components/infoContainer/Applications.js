@@ -19,7 +19,7 @@ function Applications() {
         {applicationsText.map((step, index) => (
           <p key={index}>{step}</p>
         ))}
-        <h1>Big O Notation</h1>
+        <h1>Computational Complexity in O Notation</h1>
         <p>{bigOText}</p>
       </div>
     </>
