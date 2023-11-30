@@ -73,7 +73,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-# Furhter Dependencies and Packages
+# Further Dependencies and Packages
 
 ## npm install
+
+### Graphics
+npm install @fortawesome/fontawesome-free
 
