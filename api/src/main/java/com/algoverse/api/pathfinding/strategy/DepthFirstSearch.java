@@ -49,19 +49,20 @@ public class DepthFirstSearch implements PathFindingStrategy {
 
     while (!nextNode.isEmpty()) {
       Coordinates node = nextNode.remove(nextNode.size() - 1);
+      if (visitedNodesMap.get(node) != null) {
+        continue;
+      }
       visitedNodes.add(node);
       visitedNodesMap.put(node, 1);
       List<Coordinates> neighbors = getNeighbors(node, obstacle, visitedNodesMap, boardSize);
       for (Coordinates neighbor : neighbors) {
         parent.put(neighbor, node);
         // neighbor is not in visited, because of getNeighbor function
-        if (!nextNode.contains(neighbor)) {
-          if (endingNode.equals(neighbor)) {
-            visitedNodes.add(neighbor);
-            return reconstructPath(startingNode, endingNode, visitedNodes, parent);
-          }
-          nextNode.add(neighbor);
+        if (endingNode.equals(neighbor)) {
+          visitedNodes.add(neighbor);
+          return reconstructPath(startingNode, endingNode, visitedNodes, parent);
         }
+        nextNode.add(neighbor);
       }
     }
 
