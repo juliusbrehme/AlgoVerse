@@ -119,14 +119,146 @@
       "Return failure if no path is found."
     ]
   },
-    "BubbleSort": {
-      "description": "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
-      "steps": [
-        "apple", 
-        "banana", 
-        "cherry"
+  "BubbleSort": {
+    "description": "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+    "steps": [
+      "apple", 
+      "banana", 
+      "cherry"
+    ]
+  },
+  "Binary-add": {
+    "description": "Insert new node to binary tree.",
+    "steps": [
+      "Function for Binary insert(root, n)",
+      "Input: root , n (insert node)",
+
+      "If n is root_key",  
+      [
+        "return"
+      ],                  
+      "Else If n < root_key",   
+      [
+        "If LEFT(root) is null",    
+        [
+          "LEFT(root) < n"
+        ],    
+        "Else",           
+        [
+          "insert(LEFT(root),n)"
+        ]
+      ],   
+      "Else If n > root_key",
+      [
+        "If RIGHT(root) is null",
+        [
+          "RIGHT(root) < n"
+        ],
+        "Else",  
+        [
+          "insert(RIGHT(root),n)"  
+        ]
       ]
-    }
-    
+    ]
+  },
+  "Binary-delete": {
+    "description": "Delete a node from binary tree.",
+    "steps": [
+      "Function for Binary delete_node(root,key)",
+      "min_value_node : node that has smallest value in right sub-tree",
+      "Input: root, key(target)",
+      
+   
+      "If root is null",
+      [
+        "Return null"
+      ],
+      "If key < root_key",
+      [
+        "delete_node(LEFT(root), key"
+      ],
+      "Else If key> root_key",[
+        "delete_node(RIGHT(root), key)"
+      ],
+      "Else If ",
+      [
+        "If LEFT(root) and RIGHT(root) =null",
+        [
+          "delete(root)"
+        ],
+        "Else If LEFT(root) or RIGHT(root) =null",
+        [
+          "temp < LEFT or RIGHT (root)",
+          "root < LEFT or RIGHT (root)",
+          "delete(temp)"
+        ],
+        "Else If",
+        [
+          "search min_value_node(root)",
+          "root < min_value_node",
+          "delete(min_value_node)"
+        ]
+      
+      ]
+      
+    ]
+  },
+  "Binary-search": {
+    "description": "Explore the bianry tree.",
+    "steps": [
+      "Function for Binary search(root,key)",
+      "Input: root, key(target)",
+      
+      "If root is null",
+      [
+        "Return null"
+      ],
+      "If key = root_key",
+      [
+        "Return root"
+      ],
+      "Else If key < root_key",
+      [
+        "Return search(LEFT(root), key)"
+      ],
+      "Else If key> root_key",
+      [
+        "Return search(RIGHT(root), key)"
+      ],
+      "Return null"
+    ]
+  },
+  "BinaryTree": {
+    "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
+    "steps": [
+      "Node Structure:",
+      "struct Node:",
+      [
+        "key : Data or value stored in the node",
+        "left :Reference to the left child node",
+        "right : Reference to the right child node"
+      ],
+  
+      "Binary Tree Initialization:",
+      [
+        "root = null : Represents an empty tree"
+      ],
+      
+
+      "Binary Tree Node Creation:",
+      [
+        "createNode(value):",
+        [
+          "newNode = new Node",
+          "newNode.key = value",
+          "newNode.left = null",
+          "newNode.right = null",
+          "Return newNode"
+        ]
+      ]
+      
+    ]
+  }
+
 }
   

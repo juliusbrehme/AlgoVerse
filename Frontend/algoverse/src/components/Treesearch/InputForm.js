@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import FormLabel from "react-bootstrap/FormLabel";
 import '../../style/treeForm.css';
+import { useNavigate } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
@@ -9,22 +10,43 @@ const InputForm = (props) => {
     const { tree } = props;
     const [enabled, setEnabled] = useState(false);
 
+    const navigate = useNavigate();
+
+    const handleButtonClick = (algorithm) => {
+        // Update the URL with the selected algorithm parameter
+        navigate(`?algorithm=${algorithm}`);
+    };
+
     const handleInput = async (event) => {
         const buttonClass = event.nativeEvent.submitter.className;
-        event.preventDefault();
+        event.preventDefault();        
     
         if (buttonClass.includes("add-btn")) {
+
+            handleButtonClick("Binary-add");
+
             tree.insert(event.target.input.value.toLowerCase());
             tree.all_clear();
+
             event.target.input.value = '';
             props.update(tree.toGraph());
+
         } else if (buttonClass.includes("delete-btn")) {
+
+            handleButtonClick("Binary-delete");
+
             tree.delete(event.target.input.value.toLowerCase());
+
             event.target.input.value = '';
             props.update(tree.toGraph());
+
         } else if (buttonClass.includes("binary-select-btn")) {
+
+            handleButtonClick("Binary-search");
+
             tree.all_clear();
             let target = event.target.input.value.toLowerCase();
+            
             if(target.trim() !== ""){
                 let result = tree.binarySearch(target);
                 console.log(result);
@@ -45,6 +67,7 @@ const InputForm = (props) => {
             }
            
         }else if (buttonClass.includes("bfs-select-btn")) {
+            handleButtonClick("BFS");
             tree.all_clear();
             let target = event.target.input.value.toLowerCase();
             if (target.trim() !== ""){
@@ -69,6 +92,7 @@ const InputForm = (props) => {
             
         }
         else if (buttonClass.includes("dfs-select-btn")) {
+            handleButtonClick("DFS");
             tree.all_clear();
             let target = event.target.input.value.toLowerCase();
             if (target.trim() !== ""){
@@ -112,19 +136,16 @@ const InputForm = (props) => {
                         <input
                             className={"form-control"}
                             type={"text"} id="input"
-                            placeholder={"  ex. 10 or desk"}
+                            placeholder={" ex. 10 or desk"}
                             onChange={handleChange}
                         />
-                    {/* </Col>
-                    <Col className={"col-2 center"}> */}
-                        <input type={"submit"} className={"btn btn-primary add-btn"} value={"Add"} disabled={!enabled}/>
+                        <input type={"submit"} className={"btn btn-primary add-btn"} value={"Insert"} disabled={!enabled}/>
                         <input type={"submit"} className={"btn btn-primary delete-btn"} value={"Delete"} disabled={!enabled}/>
-                        
                     </Col>
                     <Col className={"col-2"}>
-                        <input type={"submit"} className={"btn btn-primary binary-select-btn"} value={"Binary Search"}/>
-                        <input type={"submit"} className={"btn btn-primary dfs-select-btn"} value={"DFS Search"}/>
-                        <input type={"submit"} className={"btn btn-primary dfs-select-btn"} value={"BFS Search"}/>
+                        <input type={"submit"} className={"btn btn-primary select binary-select-btn"} value={"Binary Search"} />
+                        <input type={"submit"} className={"btn btn-primary select dfs-select-btn"} value={"DFS Search"}/>
+                        <input type={"submit"} className={"btn btn-primary select bfs-select-btn"} value={"BFS Search"}/>
                     </Col>
                 </Row>
             </Form> }

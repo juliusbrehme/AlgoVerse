@@ -29,5 +29,6 @@ export const options = {
             border: "#000000" // 기본 노드 테두리 색상
         },
         borderWidth: 2, // 기본 노드 테두리 두께
+        font: "20px arial black"
     }
 };

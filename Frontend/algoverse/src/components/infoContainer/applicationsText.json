@@ -1,48 +1,83 @@
 {
-    "Dijkstra": {
+  "Dijkstra": {
+    "description": "Finds the shortest paths from a source to all vertices in the given graph",
+    "applications": [
+      "Pathfinding in Games", 
+      "Geographical Mapping", 
+      "Network Routing"
+    ]
+  },
+  "BFS": {
       "description": "Finds the shortest paths from a source to all vertices in the given graph",
       "applications": [
-        "Pathfinding in Games", 
-        "Geographical Mapping", 
-        "Network Routing"
+        "Shortest Path in Unweighted Graphs", 
+        "Social Networking Features", 
+        "Peer-to-Peer Networks",
+        "Garbage Collection Algorithms"
       ]
     },
-    "BFS": {
-        "description": "Finds the shortest paths from a source to all vertices in the given graph",
-        "applications": [
-          "Shortest Path in Unweighted Graphs", 
-          "Social Networking Features", 
-          "Peer-to-Peer Networks",
-          "Garbage Collection Algorithms"
-        ]
-      },
-      "DFS": {
-        "description": "Finds the shortest paths from a source to all vertices in the given graph",
-        "applications": [
-          "Topological Sorting", 
-          "Path Finding in Sparse Graphs", 
-          "Finding Strongly Connected Components",
-          "Generating Permutations"
-        ]
-      },
-      "AStar": {
-        "description": "Finds the shortest paths from a source to all vertices in the given graph",
-        "applications": [
-          "GPS and Route Planning", 
-          "Game Development", 
-          "Network Routing",
-          "Urban Planning and Geographic Information Systems (GIS)",
-          "Machine Learning"
-        ]
-      },
-    "BubbleSort": {
-      "description": "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
-      "steps": [
-        "apple", 
-        "banana", 
-        "cherry"
-      ]
-    }
-    
+  "DFS": {
+    "description": "Finds the shortest paths from a source to all vertices in the given graph",
+    "applications": [
+      "Topological Sorting", 
+      "Path Finding in Sparse Graphs", 
+      "Finding Strongly Connected Components",
+      "Generating Permutations"
+    ]
+  },
+  "AStar": {
+    "description": "Finds the shortest paths from a source to all vertices in the given graph",
+    "applications": [
+      "GPS and Route Planning", 
+      "Game Development", 
+      "Network Routing",
+      "Urban Planning and Geographic Information Systems (GIS)",
+      "Machine Learning"
+    ]
+  },
+  "BubbleSort": {
+    "description": "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+    "steps": [
+      "apple", 
+      "banana", 
+      "cherry"
+    ]
+  },
+  "Binary-add": {
+    "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
+    "applications": [
+      "Database Indexing", 
+      "Syntax Trees in Compilers", 
+      "File Systems",
+      "Network Routing Algorithms"
+    ]
+  },
+  "Binary-delete": {
+    "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
+    "applications": [
+      "Database Indexing", 
+      "Syntax Trees in Compilers", 
+      "File Systems",
+      "Network Routing Algorithms"
+    ]
+  },
+  "Binary-search": {
+    "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
+    "applications": [
+      "Database Indexing", 
+      "Syntax Trees in Compilers", 
+      "File Systems",
+      "Network Routing Algorithms"
+    ]
+  },
+  "BinaryTree": {
+    "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
+    "applications": [
+      "Database Indexing", 
+      "Syntax Trees in Compilers", 
+      "File Systems",
+      "Network Routing Algorithms"
+    ]
+  }
 }
   

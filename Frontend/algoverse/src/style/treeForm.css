@@ -5,6 +5,12 @@
     border-style: none;
     background-color: #dc3545;
     color: white;
+    transition: background-color 0.3s ease; 
+}
+
+.btn-clear:hover {
+    background-color: #ce2536;
+    transition: background-color 0.3s ease;
 }
 
 .btn{
@@ -22,6 +28,10 @@
 .add-btn:disabled {
     background: lightgrey;
     border-color: #2C98F0;
+}
+
+.add-btn:hover {
+    background: lightgrey;
 }
 
 .add-btn:disabled:hover {
@@ -43,14 +53,14 @@
     align-items: center;
 }   
 
-.col-2{
+.col-2 {
     flex: 100%; /* 70% width */
     text-align: center;
     background-color: #2C98F0; 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding-bottom: 10px;
 }
 
 .form{
@@ -66,13 +76,7 @@
     font-size: 16px;
     margin: 0px;
 }
-#input::placeholder {
-    color: black; /* 원하는 글자 색상으로 변경 */
-    background-color: white;
-    border-radius: 15px;
-    border-color: black;
-    padding: 10px;
-}
+
 
 #input {
     background-color: white;
@@ -80,6 +84,8 @@
 
 
 .form-control {
-  padding: 20px; /* 위아래 패딩 조절 */
-  background-color: white;
+    padding: 20px; /* 위아래 패딩 조절 */
+    margin-right: 10px;
+    background-color: white;
 }
+

@@ -91,7 +91,7 @@ function SideBar() {
               <div className="algo-side-icon tree">
                 <img src="images/TreeSearch-img.png" alt="treesearch-icon" />
               </div>
-              <Link to="/Tree">Trees</Link>
+              <Link to="/Tree?algorithm=BinaryTree">Trees</Link>
               <div className="arrow-container">
                 <i className="arrow down"></i>
               </div>
