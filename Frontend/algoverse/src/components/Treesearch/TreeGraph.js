@@ -38,6 +38,7 @@ const TreeGraph = (props) => {
         const initialTree = new BinaryTree(null);
         initialNodeValues.forEach(value => initialTree.insert(value));
         setTree(initialTree);
+        initialTree.all_clear();
     
         // Convert the initial tree to graph format and update the representation
         const initialGraph = initialTree.toGraph();

@@ -12,7 +12,8 @@ class Node {
         this.left = null;
         this.right = null;
         this.valid = 1; // if this node is deleted, then it will be -1.
-        // this.visited = false;
+        this.visited = false;
+        this.found = false;
         // this.created = false;
     }
 
@@ -25,6 +26,17 @@ class Node {
             return 1;
         }
         return 0;
+    }
+
+    all_clear() {
+        this.visited = false;
+        this.found = false;
+        if(this.left){
+            this.left.all_clear();
+        }
+        if(this.right){
+            this.right.all_clear();
+        }
     }
 
     _handleEqual(item, itemValue, thisValue) {
@@ -76,16 +88,55 @@ class Node {
         }
     }
 
+    toSearchGraph(isRoot = true) { // search를 표현하기 위한 것! 
+        let edges = this.parent ?
+            [
+                {
+                    from: this.parent.id,
+                    to: this.id
+                }
+            ] : [];
+        let nodes = this.value ?
+            [
+                {
+                    id: this.id,
+                    label: this.value,
+                    shape: isRoot? "box" : options.nodes.shape,
+                    color: this.visited? "pink" :options.nodes.color
+                }
+            ] : [];
+        if (this.left) {
+            let leftRes = this.left.toSearchGraph(false);
+            edges = [...edges, ...leftRes.edges];
+            nodes = [...nodes, ...leftRes.nodes];
+        }
+        if (this.right) {
+            let rightRes = this.right.toSearchGraph(false);
+            edges = [...edges, ...rightRes.edges];
+            nodes = [...nodes, ...rightRes.nodes];
+        }
+
+        return {
+            nodes,
+            edges  
+        }   
+    } 
+
     addLeftChild(item) {
+        this.visited = true;
         this.left ? this.left.insert(item) : this.left = new Node(item, this);
     }
 
     addRightChild(item) {
+        this.visited = true;
         this.right ? this.right.insert(item) : this.right = new Node(item, this);
     }
 
+
     insert(item) {
         let itemValue = this._convert(item);
+        this.visted = true;
+        
         if (this.value) {
             let thisValue = this._convert(this.value);
             this._compareValues(item, itemValue, thisValue);
@@ -159,11 +210,7 @@ class Node {
             }
         }
         return this;
-    }
-    
-    
-    
-    
+    }   
 
     _findMinNode(node) {
         // Helper function to find the node with the minimum value in a subtree
@@ -174,6 +221,12 @@ class Node {
     }
 
     toGraph(isRoot = true) { // 첫 노드에서 시작! 노드 하나하나씩 표현
+        let color = null;
+        if (this.found === true){
+            color = "skyblue";
+        } else if (this.visited === true){
+            color = "pink";
+        }
         let edges = this.parent ?
             [
                 {
@@ -186,7 +239,8 @@ class Node {
                 {
                     id: this.id,
                     label: this.value,
-                    shape: isRoot? "box" : options.nodes.shape
+                    shape: isRoot? "box" : options.nodes.shape,
+                    color: color? color : options.nodes.color
                 }
             ] : [];
         if (this.left) {
@@ -203,14 +257,43 @@ class Node {
         return {
             nodes,
             edges  
-        }   
+        } 
     }
 
-    // binarySearch(item){
-    //     let itemValue = this._convert(item);
-        
-    // }
+    delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
+    binarySearch(item){
+        let itemValue = this._convert(item);
+        let thisValue = this._convert(this.value);
+
+        if(!this.visited) { // 
+            this.visited = true;
+            return -1;
+        }
+        else {
+            if (thisValue > itemValue) { // to the right
+                console.log("to right");
+                if(this.left) {
+                    return this.left.binarySearch(item); 
+                }
+                else { 
+                    return 1; }
+            }
+            else if(thisValue < itemValue) { // to the left
+                console.log("to left");
+                if(this.right) {
+                    return this.right.binarySearch(item); 
+                } else { return 1; }
+            }
+            else if (thisValue === itemValue) {
+                console.log("found it");
+                this.found = true;   
+                return 1;
+            }
+        }
+    }
   
 }
 
