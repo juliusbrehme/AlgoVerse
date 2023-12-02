@@ -14,6 +14,7 @@ class Node {
         this.valid = 1; // if this node is deleted, then it will be -1.
         this.visited = false;
         this.found = false;
+        this.dfsvisited = 0;
         // this.created = false;
     }
 
@@ -294,6 +295,112 @@ class Node {
             }
         }
     }
+
+    bfsSearch(item) {
+        let itemValue = this._convert(item);
+        let queue = [this]; // Start the queue with the root node
+    
+        const bfsRecursive = () => {
+            if (queue.length === 0) {
+                return 1; // Item not found
+            }
+    
+            let currentNode = queue.shift(); // Dequeue the front node
+    
+            if (!currentNode.visited) {
+                currentNode.visited = true;
+                return -1;
+            }
+
+            else { 
+    
+                // Perform the comparison
+                let thisValue = this._convert(currentNode.value);
+                if (thisValue === itemValue) {
+                    console.log("found it");
+                    currentNode.found = true;
+                    return 1; // Item found
+                }
+    
+                // Enqueue child nodes
+                if (currentNode.left) {
+                    queue.push(currentNode.left);
+                }
+                if (currentNode.right) {
+                    queue.push(currentNode.right);
+                }
+            }
+    
+            // Continue the BFS traversal
+            return bfsRecursive();
+        };
+    
+        return bfsRecursive();
+    }
+
+    dfsSearch(item) {
+        const itemValue = this._convert(item);
+    
+        const dfsRecursive = (node) => {
+            console.log(node.value);
+    
+            if (!node) {
+                return 1; // failed to find item
+            }
+    
+            if (!node.visited) {
+                node.visited = true;
+                return -1; // when it is first visit of this node.
+            }
+    
+            // 비교 수행
+            const thisValue = this._convert(node.value);
+            if (thisValue === itemValue) {
+                console.log("찾았습니다");
+                node.found = true;
+                return 1; // find item
+            }
+    
+            // 왼쪽 서브트리를 재귀적으로 탐색
+            if (node.left) {
+                const leftResult = dfsRecursive(node.left);
+                if (leftResult === 1) {
+                    return 1; // find item at left sub-tree
+                } 
+                else if (leftResult === 0) { 
+                    if (node.right) {
+                        const rightResult = dfsRecursive(node.right);
+                        if (rightResult === 1) {
+                            return 1; // 오른쪽에서 아이템을 찾았을 때
+                        } 
+                        else if (rightResult === 0) {
+                            return 0;
+                        }
+                        else { return -1; } 
+                    } else { return 0;}    
+                    
+                } else { return -1; }
+            } else { // no left child
+                return 0; // its time for right side
+            }
+
+            // 오른쪽 서브트리를 재귀적으로 탐색
+
+    
+            
+        };
+    
+        return dfsRecursive(this);
+    }
+    
+    
+    
+
+    
+    
+    
+    
+    
   
 }
 

@@ -25,15 +25,20 @@ const InputForm = (props) => {
         } else if (buttonClass.includes("select-btn")) {
             tree.all_clear();
             let target = event.target.input.value.toLowerCase();
-            let result = tree.binarySearch(target);
+            let result = tree.bfsSearch(target);
             console.log(result);
+
             while (result === -1) {
-                // Wait for 1 second before the next iteration
+                // Wait for 500ms before the next iteration
                 event.target.input.value = '';
                 props.update(tree.toGraph());
+
+                // Wrap setTimeout in a Promise to make it asynchronous
                 await new Promise(resolve => setTimeout(resolve, 500));
-                result = tree.binarySearch(target);
-            };
+
+                result = tree.bfsSearch(target);
+            }
+
             event.target.input.value = '';
             props.update(tree.toGraph());
         }
