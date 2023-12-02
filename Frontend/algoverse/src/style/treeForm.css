@@ -42,9 +42,21 @@
     justify-content: center;
     align-items: center;
 }   
+
+.col-2{
+    flex: 100%; /* 70% width */
+    text-align: center;
+    background-color: #2C98F0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
 .form{
     width: 100%;
     color: white;
+    background-color: white;
     font-size: 16px;
 }
 .noticebar{
@@ -61,6 +73,13 @@
     border-color: black;
     padding: 10px;
 }
+
+#input {
+    background-color: white;
+  }
+
+
 .form-control {
   padding: 20px; /* 위아래 패딩 조절 */
+  background-color: white;
 }

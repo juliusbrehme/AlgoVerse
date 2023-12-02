@@ -22,25 +22,75 @@ const InputForm = (props) => {
             tree.delete(event.target.input.value.toLowerCase());
             event.target.input.value = '';
             props.update(tree.toGraph());
-        } else if (buttonClass.includes("select-btn")) {
+        } else if (buttonClass.includes("binary-select-btn")) {
             tree.all_clear();
             let target = event.target.input.value.toLowerCase();
-            let result = tree.bfsSearch(target);
-            console.log(result);
+            if(target.trim() !== ""){
+                let result = tree.binarySearch(target);
+                console.log(result);
+    
+                while (result === -1) {
+                    // Wait for 500ms before the next iteration
+                    event.target.input.value = '';
+                    props.update(tree.toGraph());
+    
+                    // Wrap setTimeout in a Promise to make it asynchronous
+                    await new Promise(resolve => setTimeout(resolve, 500));
+    
+                    result = tree.binarySearch(target);
+                }
+    
+                event.target.input.value = '';
+                props.update(tree.toGraph());
+            }
+           
+        }else if (buttonClass.includes("bfs-select-btn")) {
+            tree.all_clear();
+            let target = event.target.input.value.toLowerCase();
+            if (target.trim() !== ""){
+                let result = tree.bfsSearch(target);
+                console.log(result);
 
-            while (result === -1) {
-                // Wait for 500ms before the next iteration
+                while (result === -1) {
+                    // Wait for 500ms before the next iteration
+                    event.target.input.value = '';
+                    props.update(tree.toGraph());
+
+                    // Wrap setTimeout in a Promise to make it asynchronous
+                    await new Promise(resolve => setTimeout(resolve, 500));
+
+                    result = tree.bfsSearch(target);
+                }
+
                 event.target.input.value = '';
                 props.update(tree.toGraph());
 
-                // Wrap setTimeout in a Promise to make it asynchronous
-                await new Promise(resolve => setTimeout(resolve, 500));
-
-                result = tree.bfsSearch(target);
             }
+            
+        }
+        else if (buttonClass.includes("dfs-select-btn")) {
+            tree.all_clear();
+            let target = event.target.input.value.toLowerCase();
+            if (target.trim() !== ""){
+                let result = tree.dfsSearch(target);
+                console.log(result);
+    
+                while (result === -1) {
+                    // Wait for 500ms before the next iteration
+                    event.target.input.value = '';
+                    props.update(tree.toGraph());
+    
+                    // Wrap setTimeout in a Promise to make it asynchronous
+                    await new Promise(resolve => setTimeout(resolve, 500));
+    
+                    result = tree.dfsSearch(target);
+                }
+    
+                event.target.input.value = '';
+                props.update(tree.toGraph());
 
-            event.target.input.value = '';
-            props.update(tree.toGraph());
+            }
+           
         }
     
         setEnabled(false);
@@ -67,9 +117,14 @@ const InputForm = (props) => {
                         />
                     {/* </Col>
                     <Col className={"col-2 center"}> */}
-                        <input type={"submit"} className={"btn btn-primary add-btn"} value={"add"} disabled={!enabled}/>
-                        <input type={"submit"} className={"btn btn-primary delete-btn"} value={"delete"} disabled={!enabled}/>
-                        <input type={"submit"} className={"btn btn-primary select-btn"} value={"binary Search"} disabled={!enabled}/>
+                        <input type={"submit"} className={"btn btn-primary add-btn"} value={"Add"} disabled={!enabled}/>
+                        <input type={"submit"} className={"btn btn-primary delete-btn"} value={"Delete"} disabled={!enabled}/>
+                        
+                    </Col>
+                    <Col className={"col-2"}>
+                        <input type={"submit"} className={"btn btn-primary binary-select-btn"} value={"Binary Search"}/>
+                        <input type={"submit"} className={"btn btn-primary dfs-select-btn"} value={"DFS Search"}/>
+                        <input type={"submit"} className={"btn btn-primary dfs-select-btn"} value={"BFS Search"}/>
                     </Col>
                 </Row>
             </Form> }
