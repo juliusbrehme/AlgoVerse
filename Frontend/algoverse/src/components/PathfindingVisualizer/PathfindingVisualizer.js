@@ -66,7 +66,7 @@ const PathfindingVisualizer = () => {
     }
   };
 
-  const visualizeDijkstra = () => {
+  const visualizeAlgorithm = () => {
     setShortestPathNodes([]);
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
@@ -126,7 +126,7 @@ const PathfindingVisualizer = () => {
 
   return (
     <>
-      <button className="button-accent" onClick={visualizeDijkstra}>
+      <button className="button-accent" onClick={visualizeAlgorithm}>
         {algorithm
           ? `Visualize ${algorithm}`
           : "Visualize Dijkstra's Algorithm"}
