@@ -21,7 +21,7 @@ function Home() {
           </Link>
         </div>
         <div className="treeSearch">
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/Tree?algorithm=BinaryTree" style={{ textDecoration: "none" }}>
             <img
               className="image"
               src="images/TreeSearch-img.png"
