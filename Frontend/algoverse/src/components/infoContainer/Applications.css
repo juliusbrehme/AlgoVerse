@@ -1,0 +1,15 @@
+.applicationsContainer {
+  background-color: #2c98f0; /* Light blue background */
+  color: white; /* White text */
+  width: 90%; /* Full width */
+  height: fit-content;
+  padding: 20px; /* Some padding around the text */
+  box-sizing: border-box; /* Ensure padding doesn't increase the size */
+  margin-top: 10px; /* Space above the container */
+  margin-bottom: 20px;
+  white-space: normal; /* Keep nodes in a single line */
+}
+
+.applicationsContainer h3 {
+  margin-top: 0; /* Remove top margin of the heading */
+}
