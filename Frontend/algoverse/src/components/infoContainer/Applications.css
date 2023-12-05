@@ -8,8 +8,13 @@
   margin-top: 10px; /* Space above the container */
   margin-bottom: 20px;
   white-space: normal; /* Keep nodes in a single line */
+  margin-left: 30px;
 }
 
 .applicationsContainer h3 {
   margin-top: 0; /* Remove top margin of the heading */
+}
+
+.infoContainer {
+  margin-top: -330px;
 }
