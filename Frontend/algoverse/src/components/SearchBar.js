@@ -9,6 +9,7 @@ const pages = [
   { name: "BFS", path: "/pathfinding?algorithm=BFS" },
   { name: "DFS", path: "/pathfinding?algorithm=DFS" },
   { name: "A*", path: "/pathfinding?algorithm=AStar" },
+  { name: "Binary Search Tree", path: "/Tree?algorithm=BinaryTree" },
   // other pages
 ];
 
