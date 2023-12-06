@@ -25,6 +25,7 @@
     border-radius: 10px;
 }
 
+
 .add-btn:disabled {
     background: lightgrey;
     border-color: #2C98F0;
@@ -69,6 +70,7 @@
     background-color: white;
     font-size: 16px;
 }
+
 .noticebar{
     background-color: #237bc2; 
     color: white;
@@ -77,11 +79,9 @@
     margin: 0px;
 }
 
-
 #input {
     background-color: white;
-  }
-
+}
 
 .form-control {
     padding: 20px; /* 위아래 패딩 조절 */
