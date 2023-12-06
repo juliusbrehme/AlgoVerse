@@ -22,3 +22,9 @@
 .buttonHeader {
   height: 4em;
 }
+
+.infoContainer {
+  margin-top: -330px;
+  display: flex;
+  flex-direction: row;
+}
