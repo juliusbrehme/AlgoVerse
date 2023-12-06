@@ -1,7 +1,19 @@
-# AlgoVerse
-This is the documentation page of AlgoVerse.
+# Algoverse
 
-## Update:
-The main branch is protected. If you work on a feature or implementation 
-create your own branch. After finishing the work create a PR and assign someone
-to look over your work. Assign someone in the same Team.
+is a learning platform for visualizing algorithms. This project was developed at the Sungkyunkwan University in the fall semester of year 2023 as part of the Capstone Design Project course SWE3028-41.
+
+## Pathfinding
+
+Visualize will start the algorithm and show you the correct path. The resetButton changes the css of the nodes so you can start from anew.
+
+Clicking on nodes enables the creation of walls.
+
+![test](./Frontend//images/AlgoverseMD.png)
+
+Below additional useful information can be seen. Like real life uses for these algorithms and their computational complexity in Big O Notation. Pythonesque code is also included to make implementing them in your own code very easy.
+
+![test](./Frontend//images/AlgoverseUseful.png)
+
+## Sorting
+
+## Tree Search
