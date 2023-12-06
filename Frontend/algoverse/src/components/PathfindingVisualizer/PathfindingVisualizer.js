@@ -41,7 +41,7 @@ const PathfindingVisualizer = () => {
   };
 
   const animateAlgorithm = (visitedNodesInOrder, nodesInShortestPathOrder) => {
-    for (let i = 0; i < visitedNodesInOrder.length; i++) {
+    for (let i = 1; i < visitedNodesInOrder.length-1; i++) {
       setTimeout(() => {
         const node = visitedNodesInOrder[i];
         if (node) {
@@ -56,7 +56,7 @@ const PathfindingVisualizer = () => {
   };
 
   const animateShortestPath = (nodesInShortestPathOrder) => {
-    for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
+    for (let i = 1; i < nodesInShortestPathOrder.length-1; i++) {
       setTimeout(() => {
         const node = nodesInShortestPathOrder[i];
         document.getElementById(`node-${node.row}-${node.col}`).className =
