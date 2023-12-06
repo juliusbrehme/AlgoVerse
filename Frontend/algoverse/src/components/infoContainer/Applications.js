@@ -10,6 +10,8 @@ function Applications() {
   let applicationsText =
     algorithmApplicationsTexts[algorithm]?.applications || "Default";
 
+  let bigOText = algorithmApplicationsTexts[algorithm]?.bigO || "Default";
+
   return (
     <>
       <div className="applicationsContainer">
@@ -17,6 +19,8 @@ function Applications() {
         {applicationsText.map((step, index) => (
           <p key={index}>{step}</p>
         ))}
+        <h1>Computational Complexity in O Notation</h1>
+        <p>{bigOText}</p>
       </div>
     </>
   );
