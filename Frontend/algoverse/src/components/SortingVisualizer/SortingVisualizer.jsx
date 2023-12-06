@@ -1,5 +1,7 @@
 import React from 'react';
-import {getMergeSortAnimations} from '../sortingAlgorithms/sortingAlgorithms.jsx';
+import {getMergeSortAnimations} from '../sortingAlgorithms/mergeSort.jsx';
+import {getBubbleSortAnimations} from '../sortingAlgorithms/bubbleSort.jsx';
+
 import './SortingVisualizer.css';
 
 // Change this value for the speed of the animations.
@@ -35,8 +37,31 @@ export default class SortingVisualizer extends React.Component {
     this.setState({array});
   };
 
-  mergeSort() {
-    const animations = getMergeSortAnimations(this.state.array);
+  visualizeAlgorithm() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const algorithm = urlParams.get('algorithm');
+    var animations;
+
+    switch (algorithm) {
+      case "MergeSort":
+        animations = getMergeSortAnimations(this.state.array);
+        break;
+      case "SelectionSort":
+        animations = getMergeSortAnimations(this.state.array);
+        break;
+      case "BubbleSort":
+        animations = getBubbleSortAnimations(this.state.array);
+        break;
+      case "InsertionSort":
+        animations = getMergeSortAnimations(this.state.array);
+        break;
+        case "QuickSort":
+         animations = getMergeSortAnimations(this.state.array);
+        break;
+      default:
+        break;
+    }
+
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName('array-bar');
       const isColorChange = i % 3 !== 2;
@@ -61,13 +86,14 @@ export default class SortingVisualizer extends React.Component {
 
   render() {
     const {array} = this.state;
-
+    const urlParams = new URLSearchParams(window.location.search);
+    const algorithm = urlParams.get('algorithm');
 
     return (
         <> 
         <div className='button-container'>
-          <button className="button-accent" onClick={() => this.mergeSort()}>
-        Visualize MergeSort Algorithm
+          <button className="button-accent" onClick={() => this.visualizeAlgorithm()}>
+        Visualize {algorithm} Algorithm
         </button>
         <button className="button-reset" onClick={() => this.resetArray()}>
           Reset Array
@@ -96,14 +122,4 @@ export default class SortingVisualizer extends React.Component {
 function randomIntFromInterval(min, max) {
   // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-function arraysAreEqual(arrayOne, arrayTwo) {
-  if (arrayOne.length !== arrayTwo.length) return false;
-  for (let i = 0; i < arrayOne.length; i++) {
-    if (arrayOne[i] !== arrayTwo[i]) {
-      return false;
-    }
-  }
-  return true;
 }
