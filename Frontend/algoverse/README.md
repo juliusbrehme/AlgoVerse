@@ -77,6 +77,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## npm install
 
+The following dependencies are needed
+```npm install react-bootstrap```
+```npm install react-graph-vis```
+```npm install bootstrap```
+
 ### Graphics
 npm install @fortawesome/fontawesome-free
 
