@@ -91,10 +91,27 @@ function SideBar() {
               <div className="algo-side-icon tree">
                 <img src="images/TreeSearch-img.png" alt="treesearch-icon" />
               </div>
-              <Link to="/Tree">Trees</Link>
+              <Link onClick={(e) => toggleAccordion(e, "treesearch")}>Trees
               <div className="arrow-container">
-                <i className="arrow down"></i>
+                <i
+                  className={`arrow ${
+                    openAccordion === "treesearch" ? "up" : "down"
+                  }`}
+                ></i>
               </div>
+              </Link>
+            </div>
+            <div
+              className={`accordion-content ${
+                openAccordion === "treesearch" ? "open" : ""
+              }`}
+            >
+              <div className="vertical-line"></div>
+              <ul className="accordion-list">
+                <li>
+                  <a href="/Tree?algorithm=BinaryTree">Binary Search Tree</a>
+                </li>
+              </ul>
             </div>
           </li>
         </ul>
