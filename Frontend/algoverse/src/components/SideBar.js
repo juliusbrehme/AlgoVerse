@@ -109,7 +109,7 @@ function SideBar() {
               <div className="vertical-line"></div>
               <ul className="accordion-list">
                 <li>
-                  <a href="/Tree?algorithm=BinaryTree">Binary Tree</a>
+                  <a href="/Tree?algorithm=BinaryTree">Binary Search Tree</a>
                 </li>
               </ul>
             </div>
