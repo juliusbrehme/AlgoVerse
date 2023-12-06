@@ -35,14 +35,6 @@
       "Machine Learning"
     ]
   },
-  "BubbleSort": {
-    "description": "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
-    "steps": [
-      "apple", 
-      "banana", 
-      "cherry"
-    ]
-  },
   "Binary-add": {
     "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
     "applications": [
