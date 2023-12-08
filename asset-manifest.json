@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/AlogVerse/static/css/main.d6709442.css",
-    "main.js": "/AlogVerse/static/js/main.44cd307d.js",
-    "static/js/787.ab98c072.chunk.js": "/AlogVerse/static/js/787.ab98c072.chunk.js",
-    "index.html": "/AlogVerse/index.html",
-    "main.d6709442.css.map": "/AlogVerse/static/css/main.d6709442.css.map",
-    "main.44cd307d.js.map": "/AlogVerse/static/js/main.44cd307d.js.map",
-    "787.ab98c072.chunk.js.map": "/AlogVerse/static/js/787.ab98c072.chunk.js.map"
+    "main.css": "/AlgoVerse/static/css/main.d6709442.css",
+    "main.js": "/AlgoVerse/static/js/main.56ab6715.js",
+    "static/js/787.ab98c072.chunk.js": "/AlgoVerse/static/js/787.ab98c072.chunk.js",
+    "index.html": "/AlgoVerse/index.html",
+    "main.d6709442.css.map": "/AlgoVerse/static/css/main.d6709442.css.map",
+    "main.56ab6715.js.map": "/AlgoVerse/static/js/main.56ab6715.js.map",
+    "787.ab98c072.chunk.js.map": "/AlgoVerse/static/js/787.ab98c072.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d6709442.css",
-    "static/js/main.44cd307d.js"
+    "static/js/main.56ab6715.js"
   ]
 }
