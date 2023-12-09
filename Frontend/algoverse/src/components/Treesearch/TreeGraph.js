@@ -43,7 +43,7 @@ const TreeGraph = (props) => {
         // Convert the initial tree to graph format and update the representation
         const initialGraph = initialTree.toGraph();
         setRepresentation(initialGraph);
-        if (network) {
+        if (network) { 
             network.setData(initialGraph);
         }
     
