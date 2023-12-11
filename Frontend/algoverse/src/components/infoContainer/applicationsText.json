@@ -42,7 +42,8 @@
       "Syntax Trees in Compilers", 
       "File Systems",
       "Network Routing Algorithms"
-    ]
+    ],
+    "bigO": "O(logn) = O(log(n−1)), root node depth = 0"
   },
   "Binary-delete": {
     "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
@@ -51,7 +52,8 @@
       "Syntax Trees in Compilers", 
       "File Systems",
       "Network Routing Algorithms"
-    ]
+    ],
+    "bigO": "O(logn) = O(log(n−1)), root node depth = 0"
   },
   "Binary-search": {
     "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
@@ -60,7 +62,8 @@
       "Syntax Trees in Compilers", 
       "File Systems",
       "Network Routing Algorithms"
-    ]
+    ],
+    "bigO": "O(logn) = O(log(n−1)), root node depth = 0"
   },
   "BinaryTree": {
     "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
@@ -69,7 +72,8 @@
       "Syntax Trees in Compilers", 
       "File Systems",
       "Network Routing Algorithms"
-    ]
+    ],
+    "bigO": "O(logn) = O(log(n−1)), root node depth = 0"
   }
 }
   
