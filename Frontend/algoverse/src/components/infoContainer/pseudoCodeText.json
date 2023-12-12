@@ -118,13 +118,258 @@
       ],
       "Return failure if no path is found."
     ]
+  },"MergeSort": {
+    "description": "Sorts an array by recursively dividing it into two halves and merging them in sorted order",
+    "steps": [
+      "Define a function to merge two sorted subarrays:",
+      [
+        "FUNCTION merge(array, left, mid, right)",
+        [
+          "Initialize two pointers to track the indices of the subarrays",
+          "i = left // pointer for the left subarray",
+          "j = mid + 1 // pointer for the right subarray",
+          "Initialize an empty array to store the merged elements",
+          "merged = []",
+          "Loop until one of the subarrays is exhausted",
+          "WHILE i <= mid AND j <= right DO",
+          [
+            "Compare the current elements of the subarrays and append the smaller one to the merged array",
+            "IF array[i] <= array[j] THEN",
+            [
+              "merged.append(array[i])",
+              "i = i + 1"
+            ],
+            "ELSE",
+            [
+              "merged.append(array[j])",
+              "j = j + 1"
+            ],
+            "ENDIF"
+          ],
+          "ENDWHILE",
+          "Append the remaining elements of the left subarray, if any",
+          "WHILE i <= mid DO",
+          [
+            "merged.append(array[i])",
+            "i = i + 1"
+          ],
+          "ENDWHILE",
+          "Append the remaining elements of the right subarray, if any",
+          "WHILE j <= right DO",
+          [
+            "merged.append(array[j])",
+            "j = j + 1"
+          ],
+          "ENDWHILE",
+          "Copy the merged array back to the original array",
+          "FOR k = left TO right DO",
+          [
+            "array[k] = merged[k - left]"
+          ],
+          "ENDFOR"
+        ],
+        "ENDFUNCTION"
+      ],
+      "Define a function to sort an array using merge sort:",
+      [
+        "FUNCTION mergeSort(array, left, right)",
+        [
+          "Base case: if the array has only one element or is empty, return",
+          "IF left >= right THEN",
+          [
+            "RETURN"
+          ],
+          "ENDIF",
+          "Recursive case: divide the array into two halves and sort them recursively",
+          "Find the middle index of the array",
+          "mid = (left + right) / 2",
+          "Sort the left half",
+          "mergeSort(array, left, mid)",
+          "Sort the right half",
+          "mergeSort(array, mid + 1, right)",
+          "Merge the two sorted halves",
+          "merge(array, left, mid, right)"
+        ],
+        "ENDFUNCTION"
+      ]
+    ]
+  },
+  "SelectionSort": {
+    "description": "Sorts an array by repeatedly finding the smallest element and swapping it with the first unsorted element",
+    "steps": [
+      "Loop through the array from left to right:",
+      [
+        "for i from 0 to length of array - 1:",
+        [
+          "Find the index of the smallest element in the subarray starting from i:",
+          [
+            "min_index = i",
+            "for j from i + 1 to length of array - 1:",
+            [
+              "if array[j] < array[min_index] then:",
+              [
+                "min_index = j"
+              ]
+            ]
+          ],
+          "Swap the smallest element with the first unsorted element:",
+          [
+            "temp = array[i]",
+            "array[i] = array[min_index]",
+            "array[min_index] = temp"
+          ]
+        ]
+      ],
+      "Return the sorted array:",
+      [
+        "return array"
+      ]
+    ]
   },
   "BubbleSort": {
-    "description": "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+    "description": "Sorts an array by repeatedly swapping the adjacent elements if they are in the wrong order",
     "steps": [
-      "apple", 
-      "banana", 
-      "cherry"
+      "Loop through the array multiple times:",
+      [
+        "for i from 0 to length of array - 1:",
+        [
+          "Loop through the unsorted part of the array:",
+          [
+            "for j from 0 to length of array - 2 - i:",
+            [
+              "Compare the adjacent elements and swap them if they are in the wrong order:",
+              [
+                "if array[j] > array[j + 1] then:",
+                [
+                  "temp = array[j]",
+                  "array[j] = array[j + 1]",
+                  "array[j + 1] = temp"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "Return the sorted array:",
+      [
+        "return array"
+      ]
+    ]
+  },
+    "InsertionSort": {
+    "description": "Sorts an array by repeatedly inserting the next element into the correct position in the sorted part",
+    "steps": [
+      "Loop through the array from left to right:",
+      [
+        "for i from 1 to length of array - 1:",
+        [
+          "Store the current element as key:",
+          [
+            "key = array[i]"
+          ],
+          "Find the correct position for the key in the sorted part:",
+          [
+            "j = i - 1",
+            "while j >= 0 and array[j] > key:",
+            [
+              "Shift the element at j to the right by one position:",
+              [
+                "array[j + 1] = array[j]"
+              ],
+              "Decrement j by one:",
+              [
+                "j = j - 1"
+              ]
+            ]
+          ],
+          "Insert the key at the correct position:",
+          [
+            "array[j + 1] = key"
+          ]
+        ]
+      ],
+      "Return the sorted array:",
+      [
+        "return array"
+      ]
+    ]
+  },
+    "QuickSort": {
+    "description": "Sorts an array by recursively choosing a pivot element and partitioning the array around the pivot",
+    "steps": [
+      "Define a function to partition the array:",
+      [
+        "FUNCTION partition(array, low, high)",
+        [
+          "Choose the last element as the pivot:",
+          [
+            "pivot = array[high]"
+          ],
+          "Initialize a variable to track the index of the smaller elements:",
+          [
+            "i = low - 1"
+          ],
+          "Loop through the array from low to high:",
+          [
+            "for j from low to high - 1:",
+            [
+              "If the current element is less than or equal to the pivot:",
+              [
+                "Increment i by one:",
+                [
+                  "i = i + 1"
+                ],
+                "Swap the current element with the element at i:",
+                [
+                  "temp = array[i]",
+                  "array[i] = array[j]",
+                  "array[j] = temp"
+                ]
+              ]
+            ]
+          ],
+          "Swap the pivot with the element at i + 1:",
+          [
+            "temp = array[i + 1]",
+            "array[i + 1] = array[high]",
+            "array[high] = temp"
+          ],
+          "Return the index of the pivot:",
+          [
+            "return i + 1"
+          ]
+        ],
+        "ENDFUNCTION"
+      ],
+      "Define a function to sort the array using quick sort:",
+      [
+        "FUNCTION quickSort(array, low, high)",
+        [
+          "Base case: if the array has only one element or is empty, return:",
+          [
+            "if low >= high then:",
+            [
+              "return"
+            ]
+          ],
+          "Recursive case: partition the array and sort the subarrays:",
+          [
+            "Find the index of the pivot after partitioning:",
+            [
+              "pi = partition(array, low, high)"
+            ],
+            "Sort the left subarray:",
+            [
+              "quickSort(array, low, pi - 1)"
+            ],
+            "Sort the right subarray:",
+            [
+              "quickSort(array, pi + 1, high)"
+            ]
+          ]
+        ],
+        "ENDFUNCTION"
+      ]
     ]
   },
   "Binary-add": {
