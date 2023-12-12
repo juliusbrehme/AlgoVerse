@@ -1,0 +1,53 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.array-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 70px;
+  margin-bottom: 70px;
+  margin-top: 70px;
+}
+
+.array-bar {
+  width: 35px;
+  display: inline-block;
+  margin: 0 1px;
+}
+
+.visualizeButton {
+  margin: 2em;
+  width: 4em;
+  height: 2em;
+  align-self: center;
+}
+
+.button-accent {
+  padding: 10px 20px;
+  background-color: #237bc2; /* Hellerer Blauton, der zum Hintergrund passt */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button-accent:hover {
+  background-color: #165b8c; /* Dunklerer Blauton für Hover-Effekt */
+}
+.button-reset {
+  padding: 10px 20px;
+  background-color: #2c98f0; /* Hellerer Blauton, der zum Hintergrund passt */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button-reset:hover {
+  background-color: #1a6ca7; /* Dunklerer Blauton für Hover-Effekt */
+}
