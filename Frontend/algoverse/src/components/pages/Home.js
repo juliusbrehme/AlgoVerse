@@ -9,7 +9,7 @@ function Home() {
     <div className="home">
       <div className="grid">
         <div className="sorting">
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/sorting?algorithm=MergeSort" style={{ textDecoration: "none" }}>
             <img
               className="image"
               src="images/Sorting-img.png"
@@ -34,7 +34,7 @@ function Home() {
         </div>
 
         <div className="pathFinding">
-          <Link to="/home" style={{ textDecoration: "none" }}>
+          <Link to="/Pathfinding?algorithm=Dijkstra" style={{ textDecoration: "none" }}>
             <img
               className="image"
               src="images/PathFinding-img.png"
