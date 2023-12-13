@@ -3,7 +3,7 @@ import "./Sort.css";
 import React from "react";
 import Applications from "../infoContainer/Applications";
 import PseudoCode from "../infoContainer/PseudoCode";
-import SortingVisualizer from "../Visuals";
+import SortingVisualizer from "../SortingVisualizer/Visuals";
 
 function Sort() {
   return (
