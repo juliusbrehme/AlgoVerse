@@ -15,7 +15,7 @@ Below additional useful information can be seen. Like real life uses for these a
 ![test](./Frontend//images/AlgoverseUseful.png)
 
 ## Sorting
-Visualize 'Algorithm name'  will start the algorithm and show you the animations of every step to get the array sorted. The 'Reset Array' button randomly generates an array so that the user can visualize the algorithm with different data.
+Visualize will start the algorithm and show you the animations of every step to get the array sorted. The 'New Array' button randomly generates an array so that the user can visualize the algorithm with different data.
 
 ![test](./Frontend/images/visualization-sorting-readme.png)
 
