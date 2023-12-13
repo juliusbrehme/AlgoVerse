@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import BubbleSort from "../algorithms/BubbleSort";
 import InsertionSort from "../algorithms/InsertionSort";
 import QuickSort from "../algorithms/QuickSort";
@@ -13,6 +14,14 @@ function Visuals() {
   const dispatch = useDispatch();
   const color = myState.color;
   const range = myState.range;
+  const location = useLocation();
+
+  const useQuery = () => {
+    return new URLSearchParams(location.search);
+  };
+
+  const query = useQuery();
+  const algorithmQueryParam = query.get("algorithm");
 
   const changeValues = () => {
     let new_arr = [...myState.values];
@@ -40,13 +49,14 @@ function Visuals() {
   };
 
   useEffect(() => {
+    // This will run only once when the component mounts
+    changeValues();
+  }, []);
+
+  useEffect(() => {
     if (!myState.play) {
       document.getElementById("play-btn").disabled = false;
-      document.getElementById("play-btn").style.backgroundColor =
-        "rgb(0, 149, 199)";
       document.getElementById("change-btn").disabled = false;
-      document.getElementById("change-btn").style.backgroundColor =
-        "rgb(0, 149, 199)";
     }
   }, [myState.play]);
 
@@ -56,6 +66,21 @@ function Visuals() {
   else if (myState.algorithm === "quick") speed *= 6;
   return (
     <div className="visuals">
+      <div className="button_container">
+        <button
+          id="play-btn"
+          className="button-accent"
+          onClick={() => handlePlayPause(true)}
+        >
+          {algorithmQueryParam
+            ? `Visualize ${algorithmQueryParam}`
+            : "Visualize Dijkstra's Algorithm"}
+        </button>
+        <button id="change-btn" className="button-reset" onClick={changeValues}>
+          New Array
+        </button>
+      </div>
+
       <div className="visualizer">
         {myState.algorithm === "quick" && (
           <div className="legend">
@@ -92,14 +117,6 @@ function Visuals() {
             })}
           </div>
         }
-      </div>
-      <div className="visual__btns">
-        <button id="change-btn" onClick={changeValues}>
-          New Array
-        </button>
-        <button id="play-btn" onClick={() => handlePlayPause(true)}>
-          Visualize
-        </button>
       </div>
 
       <BubbleSort />
