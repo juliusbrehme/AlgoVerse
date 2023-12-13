@@ -8,7 +8,7 @@ import SortingVisualizer from "../Visuals";
 function Sort() {
   return (
     <div className="body">
-      <div className="cutbody">
+      <div className="cutbody" style={{ marginTop: "250px" }}>
         <SortingVisualizer></SortingVisualizer>
         <div className="infoContainer">
           <Applications></Applications>
