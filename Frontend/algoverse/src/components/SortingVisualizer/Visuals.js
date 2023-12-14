@@ -22,6 +22,7 @@ function Visuals() {
 
   const query = useQuery();
   const algorithmQueryParam = query.get("algorithm");
+  console.log(algorithmQueryParam);
 
   const changeValues = () => {
     let new_arr = [...myState.values];
@@ -35,6 +36,25 @@ function Visuals() {
 
   const handlePlayPause = (play) => {
     if (!myState.play) {
+      switch (algorithmQueryParam) {
+        case "MergeSort":
+          myState.algorithm = "merge";
+          break;
+        case "BubbleSort":
+          myState.algorithm = "bubble";
+          break;
+        case "InsertionSort":
+          myState.algorithm = "insertion";
+          break;
+        case "QuickSort":
+          myState.algorithm = "quick";
+          break;
+        case "SelectionSort":
+          myState.algorithm = "selection";
+          break;
+        default:
+          break;
+      }
       document.getElementById("change-btn").disabled = true;
       document.getElementById("change-btn").style.backgroundColor = "grey";
       document.getElementById("play-btn").disabled = true;
@@ -60,7 +80,6 @@ function Visuals() {
       document.getElementById("play-btn").style.backgroundColor = "#237bc2";
       document.getElementById("change-btn").disabled = false;
       document.getElementById("change-btn").style.backgroundColor = "#2C98F0";
-
     }
   }, [myState.play]);
 
@@ -68,8 +87,7 @@ function Visuals() {
   if (myState.algorithm === "selection") speed *= 3;
   else if (myState.algorithm === "merge") speed *= 5;
   else if (myState.algorithm === "quick") speed *= 6;
-  
-  
+
   return (
     <div className="visuals">
       <div className="button_container">
