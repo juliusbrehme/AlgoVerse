@@ -56,7 +56,10 @@ function Visuals() {
   useEffect(() => {
     if (!myState.play) {
       document.getElementById("play-btn").disabled = false;
+      document.getElementById("play-btn").style.backgroundColor = "#237bc2";
       document.getElementById("change-btn").disabled = false;
+      document.getElementById("change-btn").style.backgroundColor = "#2C98F0";
+
     }
   }, [myState.play]);
 
@@ -64,6 +67,8 @@ function Visuals() {
   if (myState.algorithm === "selection") speed *= 3;
   else if (myState.algorithm === "merge") speed *= 5;
   else if (myState.algorithm === "quick") speed *= 6;
+  
+  
   return (
     <div className="visuals">
       <div className="button_container">

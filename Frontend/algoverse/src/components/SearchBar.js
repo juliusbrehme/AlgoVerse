@@ -9,12 +9,6 @@ const pages = [
   { name: "BFS", path: "/pathfinding?algorithm=BFS" },
   { name: "DFS", path: "/pathfinding?algorithm=DFS" },
   { name: "A*", path: "/pathfinding?algorithm=AStar" },
-  { name: "MergeSort", path: "/sorting?algorithm=MergeSort" },
-  { name: "SelectionSort", path: "/sorting?algorithm=SelectionSort" },
-  { name: "BubbleSort", path: "/sorting?algorithm=BubbleSort" },
-  { name: "InsertionSort", path: "/sorting?algorithm=InsertionSort" },
-  { name: "QuickSort", path: "/sorting?algorithm=QuickSort" },
-  { name: "Binary Search Tree", path: "/Tree?algorithm=BinaryTree" },
   // other pages
 ];
 
