@@ -1,31 +1,29 @@
 import "./SideBar.css";
-import Logo from "./Logo.js"
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import Logo from "./Logo.js";
+import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
-function SideBar() {  
-
+function SideBar() {
   const [isSidebarHidden, setSidebarHidden] = useState(false);
   const [openAccordion, setOpenAccordion] = useState(null);
 
   const toggleSidebar = () => {
-      setSidebarHidden(!isSidebarHidden);
+    setSidebarHidden(!isSidebarHidden);
   };
   const toggleAccordion = (e, accordionName) => {
     e.preventDefault();
     if (openAccordion === accordionName) {
-        setOpenAccordion(null);
+      setOpenAccordion(null);
     } else {
-        setOpenAccordion(accordionName);
+      setOpenAccordion(accordionName);
     }
-};
-  
+  };
 
   return (
     <div className="container">
       <nav className={`side-bar ${isSidebarHidden ? "hidden" : ""}`}>
         <Logo />
-        
+
         <button className="menu-btn" onClick={toggleSidebar}>
           <div className="menu-icon">
             <div className="menu-line"></div>
@@ -33,7 +31,7 @@ function SideBar() {
             <div className="menu-line"></div>
           </div>
         </button>
-        
+
         <ul className="algo-list">
           <li className="algo-items">
             <div className="change-flex-dir">
@@ -42,14 +40,13 @@ function SideBar() {
               </div>
               <Link onClick={(e) => toggleAccordion(e, "pathfinding")}>
                 Pathfinding
-              
-              <div className="arrow-container">
-                <i
-                  className={`arrow ${
-                    openAccordion === "pathfinding" ? "up" : "down"
-                  }`}
-                ></i>
-              </div>
+                <div className="arrow-container">
+                  <i
+                    className={`arrow ${
+                      openAccordion === "pathfinding" ? "up" : "down"
+                    }`}
+                  ></i>
+                </div>
               </Link>
             </div>
             <div
@@ -74,15 +71,46 @@ function SideBar() {
               </ul>
             </div>
           </li>
+
           <li className="algo-items">
             <div className="change-flex-dir">
               <div className="algo-side-icon">
                 <img src="images/Sorting-img.png" alt="sort-icon" />
               </div>
-              <Link to="/Sort">Sorting</Link>
+              <Link to="/" onClick={(e) => toggleAccordion(e, "sorting")}>
+                Sorting
+              </Link>
               <div className="arrow-container">
-                <i className="arrow down"></i>
+                <i
+                  className={`arrow ${
+                    openAccordion === "sorting" ? "up" : "down"
+                  }`}
+                ></i>
               </div>
+            </div>
+            <div
+              className={`accordion-content ${
+                openAccordion === "sorting" ? "open" : ""
+              }`}
+            >
+              <div className="vertical-line"></div>
+              <ul className="accordion-list">
+                <li>
+                  <a href="/sorting?algorithm=MergeSort">MergeSort</a>
+                </li>
+                <li>
+                  <a href="/sorting?algorithm=SelectionSort">SelectionSort</a>
+                </li>
+                <li>
+                  <a href="/sorting?algorithm=BubbleSort">BubbleSort</a>
+                </li>
+                <li>
+                  <a href="/sorting?algorithm=InsertionSort">InsertionSort</a>
+                </li>
+                <li>
+                  <a href="/sorting?algorithm=QuickSort">QuickSort</a>
+                </li>
+              </ul>
             </div>
           </li>
 
@@ -91,14 +119,15 @@ function SideBar() {
               <div className="algo-side-icon tree">
                 <img src="images/TreeSearch-img.png" alt="treesearch-icon" />
               </div>
-              <Link onClick={(e) => toggleAccordion(e, "treesearch")}>Trees
-              <div className="arrow-container">
-                <i
-                  className={`arrow ${
-                    openAccordion === "treesearch" ? "up" : "down"
-                  }`}
-                ></i>
-              </div>
+              <Link onClick={(e) => toggleAccordion(e, "treesearch")}>
+                Trees
+                <div className="arrow-container">
+                  <i
+                    className={`arrow ${
+                      openAccordion === "treesearch" ? "up" : "down"
+                    }`}
+                  ></i>
+                </div>
               </Link>
             </div>
             <div

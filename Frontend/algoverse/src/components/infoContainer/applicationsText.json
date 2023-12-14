@@ -34,7 +34,53 @@
       "Urban Planning and Geographic Information Systems (GIS)",
       "Machine Learning"
     ]
-  },
+  },"MergeSort": {
+      "description": "Merge sort is a divide-and-conquer algorithm that works by dividing an array into smaller subarrays, sorting each subarray, and then merging the sorted subarrays back together to form the final sorted array",
+        "applications": [
+          "E-commerce Product Recommendation", 
+          "Medical Imaging", 
+          "Stock Market Analysis",
+          "E-commerce Search Results",
+          "Stock Portfolio Management"
+        ],
+      "bigO":"Always performs at: O(n log(n))]"
+    },
+    "SelectionSort": {
+        "description": "Selection sort is a simple sorting algorithm that works by iterating through an array and selecting the smallest element in the unsorted portion of the array and swapping it with the first element of the unsorted portion.",
+        "applications": [
+          "Embedded Systems", 
+          "Data Storage", 
+          "Computer Graphics"
+        ],
+      "bigO":"Depending on the used data structure: [O(n); O(n\u00B2)]"
+    },
+      "BubbleSort": {
+        "description": "Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+      "applications": [
+        "Error Detection in Computer Graphics", 
+        "Education", 
+        "Data Analysis"
+      ],
+      "bigO":"Depending on the used data structure: [O(n); O(n\u00B2)]"
+    },
+      "InsertionSort": {
+        "description": "Insertion sort is a simple sorting algorithm that works by iterating through an array and inserting each element into its proper position in a new sorted array.",
+        "applications": [
+          "Embedded Systems", 
+          "Flash Memory", 
+          "Error Detection in Computer Graphics"
+        ],
+      "bigO":"Always performs at: [O(n\u00B2)]"
+    },
+    "QuickSort": {
+      "description": "Quick sort is a divide-and-conquer algorithm that works by selecting an element as a pivot, partitioning the other elements into two sub-arrays based on whether they are less than or greater than the pivot, and then recursively sorting the sub-arrays.",
+      "applications": [
+        "Commercial Computing", 
+        "Information Searching", 
+        "Event-driven Simulation"
+      ],
+      "bigO":"Depending on the used data structure: [O(n log(n); O(n\u00B2)]"
+    },
   "Binary-add": {
     "description": "Tree algorithm that has maximum two child, right child has bigger value then parent's, left child has smaller value then parent's.",
     "applications": [

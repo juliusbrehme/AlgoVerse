@@ -15,16 +15,23 @@ Below additional useful information can be seen. Like real life uses for these a
 ![test](./Frontend//images/AlgoverseUseful.png)
 
 ## Sorting
+Visualize will start the algorithm and show you the animations of every step to get the array sorted. The 'New Array' button randomly generates an array so that the user can visualize the algorithm with different data.
+
+![test](./Frontend/images/visualization-sorting-readme.png)
+
+Down below useful information can be seen, as said previously in Pathfinding.
+
+![test](./Frontend/images/info-sorting-readme.png)
 
 ## Tree Search
 
-Users can create trees as they wish and can observe search algorithms animation on the created trees.
+Users can create trees as they wish and can observe search algorithm animation on the created trees.
 
-User can add, or delete node to binary tree. 
+Users can add, or delete nodes to a binary tree. 
 
 ![test](./Frontend//images/Tree_1.png)
 
-Three search buttons shows corresponding search algorithm visualization. Below is result of binary search(14).
+Three search buttons show corresponding search algorithm visualization. Below is the result of binary search(14).
 
 ![test](./Frontend//images/Tree_2.png)
 
