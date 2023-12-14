@@ -51,6 +51,7 @@ function Visuals() {
   useEffect(() => {
     // This will run only once when the component mounts
     changeValues();
+    changeValues();
   }, []);
 
   useEffect(() => {
