@@ -5,7 +5,8 @@
       "Pathfinding in Games", 
       "Geographical Mapping", 
       "Network Routing"
-    ]
+    ],
+    "bigO":"Depending on the used data structure: [O((V + E) log V); O(V\u00B2)]"
   },
   "BFS": {
       "description": "Finds the shortest paths from a source to all vertices in the given graph",
@@ -14,7 +15,8 @@
         "Social Networking Features", 
         "Peer-to-Peer Networks",
         "Garbage Collection Algorithms"
-      ]
+      ],
+      "bigO":"O(V + E)" 
     },
   "DFS": {
     "description": "Finds the shortest paths from a source to all vertices in the given graph",
@@ -23,7 +25,8 @@
       "Path Finding in Sparse Graphs", 
       "Finding Strongly Connected Components",
       "Generating Permutations"
-    ]
+    ],
+    "bigO": "O(V + E)"
   },
   "AStar": {
     "description": "Finds the shortest paths from a source to all vertices in the given graph",
@@ -33,7 +36,8 @@
       "Network Routing",
       "Urban Planning and Geographic Information Systems (GIS)",
       "Machine Learning"
-    ]
+    ],
+    "bigO": "Depending on the heuristic: [O(E) ; O(V\u00B2)] "
   },"MergeSort": {
       "description": "Merge sort is a divide-and-conquer algorithm that works by dividing an array into smaller subarrays, sorting each subarray, and then merging the sorted subarrays back together to form the final sorted array",
         "applications": [
