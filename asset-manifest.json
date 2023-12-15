@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/AlgoVerse/static/css/main.1641d0be.css",
-    "main.js": "/AlgoVerse/static/js/main.ccc8150c.js",
+    "main.js": "/AlgoVerse/static/js/main.a8cb04cb.js",
     "static/js/787.ab98c072.chunk.js": "/AlgoVerse/static/js/787.ab98c072.chunk.js",
     "index.html": "/AlgoVerse/index.html",
     "main.1641d0be.css.map": "/AlgoVerse/static/css/main.1641d0be.css.map",
-    "main.ccc8150c.js.map": "/AlgoVerse/static/js/main.ccc8150c.js.map",
+    "main.a8cb04cb.js.map": "/AlgoVerse/static/js/main.a8cb04cb.js.map",
     "787.ab98c072.chunk.js.map": "/AlgoVerse/static/js/787.ab98c072.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1641d0be.css",
-    "static/js/main.ccc8150c.js"
+    "static/js/main.a8cb04cb.js"
   ]
 }
